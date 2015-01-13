@@ -21,7 +21,9 @@
 #ifndef _CORAL_APP_CONSOLE_CORAL_MAIN_HPP
 #define _CORAL_APP_CONSOLE_CORAL_MAIN_HPP
 
+#include "coral/app/console/coral/main_opt.hpp"
 #include "coral/console/main.hpp"
+#include "coral/inet/cgi/environment/variable/name.hpp"
 
 namespace coral {
 namespace app {
@@ -45,8 +47,71 @@ public:
     virtual ~main() {
     }
 
+protected:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual int run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        inet::cgi::environment::variable::name n(inet::cgi::environment::variable::GATEWAY_INTERFACE);
+        outln(n.wrapped());
+        return err;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_argv(const char_t* to) {
+        if ((to) && (to[0])) {
+            CORAL_LOG_MESSAGE_DEBUG("set argv = \"" << to << "\"...");
+        }
+        return to;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_env(const char_t* to) {
+        if ((to) && (to[0])) {
+            CORAL_LOG_MESSAGE_DEBUG("set env = \"" << to << "\"...");
+        }
+        return to;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_input(const char_t* to) {
+        if ((to) && (to[0])) {
+            CORAL_LOG_MESSAGE_DEBUG("set input = \"" << to << "\"...");
+        }
+        return to;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_output(const char_t* to) {
+        if ((to) && (to[0])) {
+            CORAL_LOG_MESSAGE_DEBUG("set output = \"" << to << "\"...");
+        }
+        return to;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_stdin(const char_t* to) {
+        if ((to) && (to[0])) {
+            CORAL_LOG_MESSAGE_DEBUG("set stdin = \"" << to << "\"...");
+        }
+        return to;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_stdout(const char_t* to) {
+        if ((to) && (to[0])) {
+            CORAL_LOG_MESSAGE_DEBUG("set stdout = \"" << to << "\"...");
+        }
+        return to;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_stderr(const char_t* to) {
+        if ((to) && (to[0])) {
+            CORAL_LOG_MESSAGE_DEBUG("set stderr = \"" << to << "\"...");
+        }
+        return to;
+    }
+
+#include "coral/app/console/coral/main_opt.cpp"
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+protected:
 };
 
 } // namespace coral 

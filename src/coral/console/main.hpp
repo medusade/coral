@@ -25,6 +25,10 @@
 #include "xos/base/main.hpp"
 #include "xos/base/getopt/main.hpp"
 #include "xos/base/getopt/main_opt.hpp"
+#include "xos/io/main/argv/writer.hpp"
+#include "xos/io/main/in/reader.hpp"
+#include "xos/io/main/out/writer.hpp"
+#include "xos/io/main/err/writer.hpp"
 
 #define CORAL_MAIN_LOGGING_OPTVAL_C XOS_MAIN_LOGGING_OPTVAL_C
 #define CORAL_MAIN_LOGGING_OPTARG XOS_MAIN_LOGGING_OPTARG
@@ -196,6 +200,99 @@ public:
 };
 
 } // namespace console
+
+namespace io {
+namespace main {
+
+namespace argv {
+
+///////////////////////////////////////////////////////////////////////
+/// writert
+///////////////////////////////////////////////////////////////////////
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TChar = char_t, typename TWhat = void,
+ class TWriter = xos::io::writert<TWhat, TChar>,
+ class TImplements = TWriter,
+ class TExtends = xos::io::main::argv::writer_extends>
+
+using writert = typename xos::io::main::argv::writert
+<TChar, TWhat, TImplements, TExtends>;
+#endif // !defined(CPP_11)
+typedef xos::io::main::argv::writert<> writer;
+
+} // namespace argv
+
+namespace in {
+
+///////////////////////////////////////////////////////////////////////
+/// readert
+///////////////////////////////////////////////////////////////////////
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TWhat = void, typename TSized = char_t,
+ typename TEnd = int, TEnd VEnd = 0,
+ class TMain = xos::base::maint<TSized, TEnd, VEnd>,
+ class TImplements = xos::io::readert<TWhat, TSized, TEnd, VEnd>,
+ class TExtends = xos::io::main::in::reader_extends>
+
+using readert = typename xos::io::main::in::readert
+<TWhat, TSized, TEnd, VEnd, TMain, TImplements, TExtends>;
+#endif // !defined(CPP_11)
+typedef xos::io::main::in::readert<> reader;
+
+} // namespace in
+
+namespace out {
+
+///////////////////////////////////////////////////////////////////////
+/// writert
+///////////////////////////////////////////////////////////////////////
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TWhat = void, typename TSized = char_t,
+ typename TEnd = int, TEnd VEnd = 0,
+ class TMain = xos::base::maint<TSized, TEnd, VEnd>,
+ class TImplements = xos::io::writert<TWhat, TSized, TEnd, VEnd>,
+ class TExtends = xos::io::main::out::writer_extends>
+
+using writert = typename xos::io::main::out::writert
+<TWhat, TSized, TEnd, VEnd, TImplements, TExtends>;
+#endif // !defined(CPP_11)
+typedef xos::io::main::out::writert<> writer;
+
+} // namespace out
+
+namespace err {
+
+///////////////////////////////////////////////////////////////////////
+/// writert
+///////////////////////////////////////////////////////////////////////
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TWhat = void, typename TSized = char_t,
+ typename TEnd = int, TEnd VEnd = 0,
+ class TMain = xos::base::maint<TSized, TEnd, VEnd>,
+ class TImplements = xos::io::writert<TWhat, TSized, TEnd, VEnd>,
+ class TExtends = xos::io::main::err::writer_extends>
+
+using writert = typename xos::io::main::err::writert
+<TWhat, TSized, TEnd, VEnd, TImplements, TExtends>;
+#endif // !defined(CPP_11)
+typedef xos::io::main::err::writert<> writer;
+
+} // namespace err
+} // namespace main
+} // namespace io
+
 } // namespace coral
 
 #endif // _CORAL_CONSOLE_MAIN_HPP
