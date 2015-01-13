@@ -28,4 +28,10 @@ coral_SOURCES += \
 $${CORAL_SRC}/coral/app/console/coral/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
 
+coral_HEADERS += \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.hpp \
 
+coral_SOURCES += \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.cpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.cpp \

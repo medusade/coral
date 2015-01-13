@@ -13,49 +13,28 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: coral.pri
+#   File: cgicatcher.pro
 #
 # Author: $author$
-#   Date: 12/15/2014
+#   Date: 12/30/2014
 ########################################################################
+include(../../../../QtCreator/coral.pri)
+include(../../../../QtCreator/app/cgicatcher/cgicatcher.pri)
+include(../../coral.pri)
 
-CORAL_PKG = ../../../../..
-CORAL_BLD = ../..
-CORAL_PRJ = $${CORAL_PKG}
-CORAL_BIN = $${CORAL_BLD}/bin
-CORAL_LIB = $${CORAL_BLD}/lib
-CORAL_SRC = $${CORAL_PKG}/src
+TARGET = cgicatcher
 
-########################################################################
-# medusa
-MEDUSA_PKG = $${CORAL_PKG}/../medusa
-MEDUSA_PRJ = $${MEDUSA_PKG}
-MEDUSA_SRC = $${MEDUSA_PKG}/src
+INCLUDEPATH += \
+$${coral_INCLUDEPATH} \
 
-medusa_INCLUDEPATH += \
-$${MEDUSA_SRC} \
+DEFINES += \
+$${coral_DEFINES} \
 
-medusa_DEFINES += \
+HEADERS += \
+$${cgicatcher_HEADERS} \
 
-########################################################################
-# xos
-XOS_PKG = $${CORAL_PKG}/../nadir
-XOS_PRJ = $${XOS_PKG}
-XOS_SRC = $${XOS_PKG}/src
+SOURCES += \
+$${cgicatcher_SOURCES} \
 
-xos_INCLUDEPATH += \
-$${XOS_SRC} \
-
-xos_DEFINES += \
-
-########################################################################
-# coral
-coral_INCLUDEPATH += \
-$${CORAL_SRC} \
-$${medusa_INCLUDEPATH} \
-$${xos_INCLUDEPATH} \
-
-coral_DEFINES += \
-$${medusa_DEFINES} \
-$${xos_DEFINES} \
-
+LIBS += \
+$${coral_LIBS} \

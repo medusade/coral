@@ -13,49 +13,42 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: coral.pri
+#   File: cgicatcher.pri
 #
 # Author: $author$
-#   Date: 12/15/2014
+#   Date: 12/30/2014
 ########################################################################
 
-CORAL_PKG = ../../../../..
-CORAL_BLD = ../..
-CORAL_PRJ = $${CORAL_PKG}
-CORAL_BIN = $${CORAL_BLD}/bin
-CORAL_LIB = $${CORAL_BLD}/lib
-CORAL_SRC = $${CORAL_PKG}/src
+########################################################################
+cgicatcher_HEADERS += \
+$${CORAL_SRC}/coral/base/base.hpp \
+
+cgicatcher_SOURCES += \
+$${CORAL_SRC}/coral/base/base.cpp \
 
 ########################################################################
-# medusa
-MEDUSA_PKG = $${CORAL_PKG}/../medusa
-MEDUSA_PRJ = $${MEDUSA_PKG}
-MEDUSA_SRC = $${MEDUSA_PKG}/src
+cgicatcher_HEADERS += \
+$${CORAL_SRC}/coral/inet/cgi/main.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variables/writer.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variables/values.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/value.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.hpp \
 
-medusa_INCLUDEPATH += \
-$${MEDUSA_SRC} \
-
-medusa_DEFINES += \
-
-########################################################################
-# xos
-XOS_PKG = $${CORAL_PKG}/../nadir
-XOS_PRJ = $${XOS_PKG}
-XOS_SRC = $${XOS_PKG}/src
-
-xos_INCLUDEPATH += \
-$${XOS_SRC} \
-
-xos_DEFINES += \
+cgicatcher_SOURCES += \
+$${CORAL_SRC}/coral/inet/cgi/environment/variables/writer.cpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variables/values.cpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/value.cpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.cpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.cpp \
 
 ########################################################################
-# coral
-coral_INCLUDEPATH += \
-$${CORAL_SRC} \
-$${medusa_INCLUDEPATH} \
-$${xos_INCLUDEPATH} \
+cgicatcher_HEADERS += \
+$${CORAL_SRC}/coral/app/cgi/catcher/main.hpp \
+$${CORAL_SRC}/coral/console/main.hpp \
+$${CORAL_SRC}/coral/console/main_main.hpp \
 
-coral_DEFINES += \
-$${medusa_DEFINES} \
-$${xos_DEFINES} \
+cgicatcher_SOURCES += \
+$${CORAL_SRC}/coral/app/cgi/catcher/main.cpp \
+$${CORAL_SRC}/coral/console/main_main.cpp \
 
