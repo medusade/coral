@@ -28,6 +28,7 @@
 #include "xos/base/wrapped.hpp"
 #include "xos/io/read/file.hpp"
 #include "xos/io/write/file.hpp"
+#include "xos/io/echoed/writer.hpp"
 #include "xos/io/writer.hpp"
 #include "xos/io/reader.hpp"
 #include "xos/io/sequence.hpp"
@@ -201,6 +202,27 @@ typedef xos::io::reader reader;
 typedef xos::io::char_reader char_reader;
 typedef xos::io::wchar_reader wchar_reader;
 typedef xos::io::tchar_reader tchar_reader;
+} // namespace io
+
+namespace io {
+namespace echoed {
+///////////////////////////////////////////////////////////////////////
+/// writert
+///////////////////////////////////////////////////////////////////////
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TWhat = void, typename TSized = char_t,
+ typename TEnd = int, TEnd VEnd = 0,
+ class TWriter = xos::io::writert<TWhat, TSized, TEnd, VEnd>,
+ class TImplements = TWriter, class TExtends = xos::io::echoed::writer_extends>
+
+using writert = typename xos::io::echoed::writert
+<TWhat, TSized, TEnd, VEnd, TWriter, TImplements, TExtends>;
+#endif // !defined(CPP_11)
+typedef xos::io::echoed::writer writer;
+} // namespace echoed
 } // namespace io
 
 namespace io {

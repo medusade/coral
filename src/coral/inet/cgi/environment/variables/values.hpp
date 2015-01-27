@@ -22,6 +22,7 @@
 #define _CORAL_INET_CGI_ENVIRONMENT_VARIABLES_VALUES_HPP
 
 #include "coral/inet/cgi/environment/variable/value.hpp"
+#include "coral/inet/cgi/environment/variable/name.hpp"
 #include "coral/inet/cgi/environment/variable/which.hpp"
 
 namespace coral {
@@ -44,7 +45,8 @@ template
  TWhich VLast = variable::last,
  typename TSize = size_t,
  TSize VSize = variable::count,
- class TValue = variable::valuet<TChar>,
+ class TName = variable::namet<TChar, TWhich>,
+ class TValue = variable::valuet<TChar, TWhich>,
  class TExtends = arrayt<TValue, TSize, VSize>,
  class TImplements = values_implements>
 
@@ -54,6 +56,7 @@ public:
     typedef TExtends Extends;
 
     typedef TValue value_t;
+    typedef TName name_t;
     typedef TWhich which_t;
     enum { first = VFirst, last = VLast };
 
@@ -73,6 +76,18 @@ public:
             this->operator[](which).get(which);
         }
         return *this;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual value_t* operator[](const char_t* named) const {
+        if ((named) && (named[0])) {
+            which_t which = name_t::which(named);
+            if ((which >= first) && (which <= last)) {
+                return &(Extends::operator[](which-first));
+            }
+        }
+        return 0;
     }
 
     ///////////////////////////////////////////////////////////////////////

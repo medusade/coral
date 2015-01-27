@@ -71,19 +71,25 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    static const char_t* of(which_t which) {
-        static const char_t* name[count] = {
+    static const char_t** of() {
+        static const char_t* name[count + 1] = {
             CORAL_INET_CGI_ENVIRONMENT_VARIABLE_NAMES
+            0
         };
-        if ((which >= first) && (which <= last))
+        return name;
+    }
+    static const char_t* of(which_t which) {
+        const char_t** name = of();
+        if ((name) && (which >= first) && (which <= last)) {
             return name[which - first];
+        }
         return 0;
     }
     static which_t which(const char_t* of) {
         if ((of)) {
             const char_t* to;
             for (which_t which = first; which <= last; ++which) {
-                if ((to = of(which))) {
+                if ((to = namet::of(which))) {
                     if (!(chars_t::compare(of, to)))
                         return which;
                 }

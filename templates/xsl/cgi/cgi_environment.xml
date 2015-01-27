@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--========================================================================-->
+<!-- Copyright (c) 1988-2015 $organization$                                 -->
+<!--                                                                        -->
+<!-- This software is provided by the author and contributors ``as is''     -->
+<!-- and any express or implied warranties, including, but not limited to,  -->
+<!-- the implied warranties of merchantability and fitness for a particular -->
+<!-- purpose are disclaimed. In no event shall the author or contributors   -->
+<!-- be liable for any direct, indirect, incidental, special, exemplary,    -->
+<!-- or consequential damages (including, but not limited to, procurement   -->
+<!-- of substitute goods or services; loss of use, data, or profits; or     -->
+<!-- business interruption) however caused and on any theory of liability,  -->
+<!-- whether in contract, strict liability, or tort (including negligence   -->
+<!-- or otherwise) arising in any way out of the use of this software,      -->
+<!-- even if advised of the possibility of such damage.                     -->
+<!--                                                                        -->
+<!--   File: cgi_environment.xml                                            -->
+<!--                                                                        -->
+<!-- Author: $author$                                                       -->
+<!--   Date: 1/18/2015                                                      -->
+<!--========================================================================-->
+<environment
+ xmlns:cgi="http://www.medusade.org/coral/inet/cgi"
+ xmlns="http://www.medusade.org/coral/inet/cgi">
+     <variable name="GATEWAY_INTERFACE"></variable>
+     <variable name="SERVER_NAME"></variable>
+     <variable name="SERVER_PORT"></variable>
+     <variable name="SERVER_PROTOCOL"></variable>
+     <variable name="SERVER_SOFTWARE"></variable>
+     <variable name="AUTH_TYPE"></variable>
+     <variable name="CONTENT_FILE"></variable>
+     <variable name="CONTENT_LENGTH"></variable>
+     <variable name="CONTENT_TYPE"></variable>
+     <variable name="OUTPUT_FILE"></variable>
+     <variable name="PATH_INFO"></variable>
+     <variable name="PATH_TRANSLATED"></variable>
+     <variable name="QUERY_STRING"></variable>
+     <variable name="REMOTE_ADDR"></variable>
+     <variable name="REMOTE_USER"></variable>
+     <variable name="REQUEST_LINE"></variable>
+     <variable name="REQUEST_METHOD"></variable>
+     <variable name="REMOTE_HOST"></variable>
+     <variable name="REMOTE_IDENT"></variable>
+     <variable name="HTTP_ACCEPT"></variable>
+     <variable name="HTTP_USER_AGENT"></variable>
+     <variable name="SCRIPT_NAME"></variable>
+</environment>

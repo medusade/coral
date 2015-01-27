@@ -22,12 +22,18 @@
 #define _CORAL_INET_CGI_MAIN_HPP
 
 #include "coral/console/main.hpp"
+#include "coral/inet/cgi/environment/variables/reader.hpp"
+#include "coral/inet/cgi/environment/variables/writer.hpp"
 #include "coral/inet/cgi/environment/variables/values.hpp"
 #include "coral/inet/cgi/environment/variable/value.hpp"
 #include "coral/inet/cgi/environment/variable/name.hpp"
 #include "coral/inet/http/content.hpp"
 #include "coral/inet/http/header.hpp"
 #include "coral/base/base.hpp"
+
+#define CORAL_INET_CGI_CATCH_ARGV_FILE_LABEL "arguments"
+#define CORAL_INET_CGI_CATCH_ENV_FILE_LABEL "environment"
+#define CORAL_INET_CGI_CATCH_STDIN_FILE_LABEL "stdin"
 
 #define CORAL_INET_CGI_CATCH_ARGV_FILE_NAME "cgicatch-argv.txt"
 #define CORAL_INET_CGI_CATCH_ENV_FILE_NAME "cgicatch-env.txt"
@@ -57,7 +63,11 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     main()
-    : catch_argv_file_name_(CORAL_INET_CGI_CATCH_ARGV_FILE_NAME),
+    : cr_((char_t)'\r'), lf_((char_t)'\n'),
+      catch_argv_file_label_(CORAL_INET_CGI_CATCH_ARGV_FILE_LABEL),
+      catch_env_file_label_(CORAL_INET_CGI_CATCH_ENV_FILE_LABEL),
+      catch_stdin_file_label_(CORAL_INET_CGI_CATCH_STDIN_FILE_LABEL),
+      catch_argv_file_name_(CORAL_INET_CGI_CATCH_ARGV_FILE_NAME),
       catch_env_file_name_(CORAL_INET_CGI_CATCH_ENV_FILE_NAME),
       catch_stdin_file_name_(CORAL_INET_CGI_CATCH_STDIN_FILE_NAME),
       content_type_name_(http::message::header::name::of(http::message::header::content_type)),
@@ -90,14 +100,14 @@ protected:
         const char_t* chars = 0;
         size_t length = 0;
         int err = 0;
-        string_t default_query_string;
 
+        /*string_t default_query_string;
         default_query_string.append(content_type_name_);
         default_query_string.append("=");
         default_query_string.append(content_type_value_);
-        chars = default_query_string.has_chars(length);
+        chars = default_query_string.has_chars(length);*/
 
-        if ((is_cgi_run_) || (query_string.has_chars())) {
+        if (!(chars)) {
             chars = query_string.has_chars(length);
         }
         if ((chars) && (length)) {
@@ -233,8 +243,17 @@ protected:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual int read_cgi_content(int argc, char_t** argv, char_t** env) {
+    virtual int begin_read_cgi_content(int argc, char_t** argv, char_t** env) {
         int err = 0;
+        if ((open_file(content_, catch_stdin_file_label_, catch_stdin_file_name_, true))) {
+        }
+        return err;
+    }
+    virtual int end_read_cgi_content(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        if ((content_.attached_to())) {
+            content_.close();
+        }
         return err;
     }
     virtual int before_read_cgi_content(int argc, char_t** argv, char_t** env) {
@@ -250,6 +269,13 @@ protected:
     ///////////////////////////////////////////////////////////////////////
     virtual int read_cgi_environment(int argc, char_t** argv, char_t** env) {
         int err = 0;
+        io::read::file f;
+
+        if ((open_file(f, catch_env_file_label_, catch_env_file_name_))) {
+            inet::cgi::environment::variables::reader e;
+            e.read(environment_, f);
+            f.close();
+        }
         return err;
     }
     virtual int before_read_cgi_environment(int argc, char_t** argv, char_t** env) {
@@ -309,8 +335,11 @@ protected:
         if (!(err = before_read_cgi_environment(argc, argv, env))) {
             if (!(err = read_cgi_environment(argc, argv, env))) {
                 if (!(err = before_read_cgi_content(argc, argv, env))) {
-                    if (!(err = read_cgi_content(argc, argv, env))) {
+                    if (!(err = begin_read_cgi_content(argc, argv, env))) {
                         if (!(err = cgi_main(argc, argv, env))) {
+                        }
+                        if ((err2 = end_read_cgi_content(argc, argv, env)) && (!err)) {
+                            err = err2;
                         }
                     }
                     if ((err2 = after_read_cgi_content(argc, argv, env)) && (!err)) {
@@ -350,6 +379,22 @@ protected:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_content_type(const string_t& to) {
+        return set_content_type(to.chars());
+    }
+    virtual const char_t* set_content_type(const char_t* chars) {
+        if ((chars) && (chars[0])) {
+            content_type_value_.assign(chars);
+        }
+        chars = content_type_value_.chars();
+        return chars;
+    }
+    virtual const char_t* content_type() const {
+        return content_type_value_.chars();
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
     virtual const char_t* set_content_type() {
         const char_t* chars = 0;
         if (!(chars = content_type_.has_chars())) {
@@ -383,11 +428,54 @@ protected:
         out_content_type();
         return this->std_out();
     }
+    virtual FILE* std_in() const {
+        FILE* file = 0;
+        if ((file = content_.attached_to())) {
+            return file;
+        }
+        return stdin;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool open_file
+    (io::read::file& f, const string_t& line,
+     const string_t& name, bool mode_is_binary = false) {
+        size_t length;
+
+        if ((line.has_chars(length))) {
+            char_t chars[length + 3];
+
+            if ((f.open(name.chars(), (mode_is_binary)
+                ?(f.mode_read_binary()):(f.mode_read())))) {
+                if (!((length + 2) != (f.read(chars, length + 2)))) {
+                    if (!(line.compare(chars, length))) {
+                        if (!((cr_ != chars[length]) || (lf_ != chars[length+1]))) {
+                            return true;
+                        }
+                    }
+                }
+                f.close();
+            }
+        }
+        return false;
+    }
+
+public:
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual http::form::fields& form() const {
+        return ((http::form::fields&)form_);
+    }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 protected:
-    string_t catch_argv_file_name_,
+    const char_t cr_, lf_;
+    string_t catch_argv_file_label_,
+             catch_env_file_label_,
+             catch_stdin_file_label_,
+             catch_argv_file_name_,
              catch_env_file_name_,
              catch_stdin_file_name_,
              content_type_name_,
@@ -397,6 +485,7 @@ protected:
     const char_t* out_content_type_;
     environment::variables::values environment_;
     http::form::fields form_;
+    io::read::file content_;
 };
 
 } // namespace cgi 
