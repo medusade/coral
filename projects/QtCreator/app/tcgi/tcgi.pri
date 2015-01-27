@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2015 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,29 +13,37 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgicatcher.pro
+#   File: tcgi.pri
 #
 # Author: $author$
-#   Date: 12/30/2014
+#   Date: 1/22/2015
 ########################################################################
-include(../../../../QtCreator/coral.pri)
-include(../../../../QtCreator/app/cgicatcher/cgicatcher.pri)
-include(../../coral.pri)
 
-TARGET = cgicatcher
-
-INCLUDEPATH += \
+tcgi_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
+$${XOS_SRC}/thirdparty/xde/clib/cos/cplatform \
+$${xde_ccgi_INCLUDEPATH} \
+$${xde_cos_INCLUDEPATH} \
+$${xde_cbase_INCLUDEPATH} \
 
-DEFINES += \
+tcgi_DEFINES += \
 $${coral_DEFINES} \
+$${xde_DEFINES} \
 
-HEADERS += \
-$${cgicatcher_HEADERS} \
+tcgi_HEADERS += \
+$${CORAL_SRC}/coral/app/cgi/t/main.hpp \
+$${CORAL_SRC}/coral/console/main.hpp \
+$${CORAL_SRC}/coral/console/main_main.hpp \
+$${XOS_SRC}/thirdparty/xde/clib/cos/cplatform/cplatform.hpp \
 
-SOURCES += \
-$${cgicatcher_SOURCES} \
+tcgi_SOURCES += \
+$${CORAL_SRC}/coral/app/cgi/t/main.cpp \
+$${CORAL_SRC}/coral/console/main_main.cpp \
+$${XOS_SRC}/thirdparty/xde/clib/cos/cplatform/cplatform.cpp \
 
-LIBS += \
-$${coral_LIBS} \
+tcgi_SOURCES += \
+$${XDE_SRC}/clib/ct/ctfunctions.cxx \
+$${XDE_SRC}/clib/ct/ctfilefunctions.cxx \
+$${XDE_SRC}/clib/ct/ctdatefunctions.cxx \
 
+tcgi_LIBS += \

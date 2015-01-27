@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2015 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,29 +13,33 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgicatcher.pro
+#   File: tcgi.pro
 #
 # Author: $author$
-#   Date: 12/30/2014
+#   Date: 1/22/2015
 ########################################################################
 include(../../../../QtCreator/coral.pri)
-include(../../../../QtCreator/app/cgicatcher/cgicatcher.pri)
+include(../../../../QtCreator/app/tcgi/tcgi.pri)
 include(../../coral.pri)
 
-TARGET = cgicatcher
+TARGET = tcgi
 
 INCLUDEPATH += \
-$${coral_INCLUDEPATH} \
+$${tcgi_INCLUDEPATH} \
 
 DEFINES += \
-$${coral_DEFINES} \
+$${tcgi_DEFINES} \
 
 HEADERS += \
-$${cgicatcher_HEADERS} \
+$${tcgi_HEADERS} \
 
 SOURCES += \
-$${cgicatcher_SOURCES} \
+$${tcgi_SOURCES} \
 
 LIBS += \
 $${coral_LIBS} \
+$${xde_ct_LIBS} \
+$${xde_cbase_LIBS} \
+-lpthread \
+-ldl \
 

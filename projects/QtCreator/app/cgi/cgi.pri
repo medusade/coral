@@ -13,65 +13,42 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: coral.pri
+#   File: cgi.pri
 #
 # Author: $author$
-#   Date: 12/15/2014
+#   Date: 1/16/2015
 ########################################################################
 
-QMAKE_CXXFLAGS += -std=c++11
+########################################################################
+cgi_HEADERS += \
+$${CORAL_SRC}/coral/base/base.hpp \
+
+cgi_SOURCES += \
+$${CORAL_SRC}/coral/base/base.cpp \
 
 ########################################################################
-# xde
-XDE_BLD = ../$${XDE_PKG}/c/build/macosx/QtCreator/Debug
-XDE_LIB = $${XDE_BLD}/lib
+cgi_HEADERS += \
+$${CORAL_SRC}/coral/inet/cgi/main.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variables/writer.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variables/values.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/value.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.hpp \
 
-xde_cbase_LIBS += \
--L$${XDE_LIB}/libcos \
--lcos \
--L$${XDE_LIB}/libcbase \
--lcbase \
-
-xde_ct_LIBS += \
--L$${XDE_LIB}/libct \
--lct \
-
-########################################################################
-# medusaxde
-MEDUSAXDE_BLD = ../$${MEDUSAXDE_PKG}/c/build/macosx/QtCreator/Debug
-MEDUSAXDE_LIB = $${MEDUSAXDE_BLD}/lib
-
-medusaxde_cbase_LIBS += \
--L$${MEDUSAXDE_LIB}/libcos \
--lcos \
--L$${MEDUSAXDE_LIB}/libcbase \
--lcbase \
-
-medusaxde_clibxslt_LIBS += \
--L$${MEDUSAXDE_LIB}/libclibxslt \
--lclibxslt \
--L$${MEDUSAXDE_LIB}/libcxslt \
--lcxslt \
--L$${MEDUSAXDE_LIB}/libcxml \
--lcxml \
--L${HOME}/build/libxslt/lib \
--lxslt \
--lexslt \
--L${HOME}/build/libxml2/lib \
--lxml2 \
+cgi_SOURCES += \
+$${CORAL_SRC}/coral/inet/cgi/environment/variables/writer.cpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variables/values.cpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/value.cpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.cpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.cpp \
 
 ########################################################################
-# xos
-XOS_BLD = ../$${XOS_PKG}/build/macosx/QtCreator/Debug
-XOS_LIB = $${XOS_BLD}/lib
+cgi_HEADERS += \
+$${CORAL_SRC}/coral/app/cgi/main.hpp \
+$${CORAL_SRC}/coral/console/main.hpp \
+$${CORAL_SRC}/coral/console/main_main.hpp \
 
-########################################################################
-# coral
-coral_LIBS += \
--L$${CORAL_LIB}/libcoral \
--lcoral \
--L$${XOS_LIB}/libxosnadir \
--lxosnadir \
--lpthread \
--ldl \
+cgi_SOURCES += \
+$${CORAL_SRC}/coral/app/cgi/main.cpp \
+$${CORAL_SRC}/coral/console/main_main.cpp \
 

@@ -13,16 +13,16 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgicatcher.pro
+#   File: cgi.pro
 #
 # Author: $author$
-#   Date: 12/30/2014
+#   Date: 1/26/2014
 ########################################################################
 include(../../../../QtCreator/coral.pri)
-include(../../../../QtCreator/app/cgicatcher/cgicatcher.pri)
+include(../../../../QtCreator/app/cgi/cgi.pri)
 include(../../coral.pri)
 
-TARGET = cgicatcher
+TARGET = cgi
 
 INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
@@ -31,10 +31,10 @@ DEFINES += \
 $${coral_DEFINES} \
 
 HEADERS += \
-$${cgicatcher_HEADERS} \
+$${cgi_HEADERS} \
 
 SOURCES += \
-$${cgicatcher_SOURCES} \
+$${cgi_SOURCES} \
 
 LIBS += \
 $${coral_LIBS} \

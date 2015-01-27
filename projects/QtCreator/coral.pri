@@ -27,6 +27,53 @@ CORAL_LIB = $${CORAL_BLD}/lib
 CORAL_SRC = $${CORAL_PKG}/src
 
 ########################################################################
+# xde
+XDE_PKG = $${CORAL_PKG}/../xde
+XDE_PRJ = $${XDE_PKG}
+XDE_SRC = $${XDE_PKG}/c/src
+
+xde_ccgi_INCLUDEPATH += \
+$${XDE_SRC}/clib/ccgi \
+$${XDE_SRC}/clib/cxttp \
+$${XDE_SRC}/clib/ct \
+$${XDE_SRC}/clib/cyy \
+
+xde_cos_INCLUDEPATH += \
+$${XDE_SRC}/clib/csocket \
+$${XDE_SRC}/clib/cfs \
+$${XDE_SRC}/clib/cos/cwin \
+$${XDE_SRC}/clib/cos/cunix \
+$${XDE_SRC}/clib/cos \
+
+xde_cbase_INCLUDEPATH += \
+$${XDE_SRC}/clib/cbase \
+$${XDE_SRC}/clib \
+
+xde_DEFINES += \
+DB_PRINTF=platform_db_printf \
+NO_CDEBUG_PRINTF \
+
+########################################################################
+# medusaxde
+MEDUSAXDE_PKG = $${CORAL_PKG}/../medusaxde
+MEDUSAXDE_PRJ = $${MEDUSAXDE_PKG}
+MEDUSAXDE_SRC = $${MEDUSAXDE_PKG}/c/src
+
+medusaxde_cbase_INCLUDEPATH += \
+$${MEDUSAXDE_SRC}/clib/cos/cthread/cpthread \
+$${MEDUSAXDE_SRC}/clib/cos/cthread \
+$${MEDUSAXDE_SRC}/clib/cos/cfs/cunixfs \
+$${MEDUSAXDE_SRC}/clib/cos/cfs \
+$${MEDUSAXDE_SRC}/clib/cos \
+$${MEDUSAXDE_SRC}/clib/cbase \
+
+medusaxde_clibxslt_INCLUDEPATH += \
+${HOME}/build/libxslt/include \
+${HOME}/build/libxml2/include/libxml2 \
+$${MEDUSAXDE_SRC}/clib/cxml/cxslt \
+$${MEDUSAXDE_SRC}/clib/cxml \
+
+########################################################################
 # medusa
 MEDUSA_PKG = $${CORAL_PKG}/../medusa
 MEDUSA_PRJ = $${MEDUSA_PKG}
