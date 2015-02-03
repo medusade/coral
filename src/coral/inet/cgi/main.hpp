@@ -30,6 +30,7 @@
 #include "coral/inet/http/content.hpp"
 #include "coral/inet/http/header.hpp"
 #include "coral/base/base.hpp"
+#include "coral/inet/cgi/main_opt.hpp"
 
 #define CORAL_INET_CGI_CATCH_ARGV_FILE_LABEL "arguments"
 #define CORAL_INET_CGI_CATCH_ENV_FILE_LABEL "environment"
@@ -72,7 +73,7 @@ public:
       catch_stdin_file_name_(CORAL_INET_CGI_CATCH_STDIN_FILE_NAME),
       content_type_name_(http::message::header::name::of(http::message::header::content_type)),
       content_type_value_(http::content::type::name::of(http::content::type::text)),
-      is_cgi_run_(false), out_content_type_(0) {
+      is_cgi_run_(false), out_content_type_(0), content_length_(0) {
     }
     virtual ~main() {
     }
@@ -90,6 +91,21 @@ protected:
     }
     virtual int after_run_cgi(int argc, char_t** argv, char_t** env) {
         int err = 0;
+        return err;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual int run_console(int argc, char_t** argv, char_t** env) {
+        int err = run_cgi(argc, argv, env);
+        return err;
+    }
+    virtual int before_run_console(int argc, char_t** argv, char_t** env) {
+        int err = before_run_cgi(argc, argv, env);
+        return err;
+    }
+    virtual int after_run_console(int argc, char_t** argv, char_t** env) {
+        int err = after_run_cgi(argc, argv, env);
         return err;
     }
 
@@ -123,30 +139,43 @@ protected:
     ///////////////////////////////////////////////////////////////////////
     virtual int get_cgi_form_data(int argc, char_t** argv, char_t** env) {
         const environment::variable::value& content_length = environment_[environment::variable::CONTENT_LENGTH];
-        const environment::variable::value& content_type = environment_[environment::variable::CONTENT_TYPE];
         const char_t* chars = 0;
         size_t length = 0;
         int err = 0;
         if ((chars = content_length.has_chars(length))) {
-            size_t content_length = 0;
-            if ((content_length = chars_t::to_unsigned(chars, length))) {
-                if (!(err = before_read_cgi_form_data(content_length, argc, argv, env))) {
-                    if ((chars = content_type.has_chars(length))) {
-                        http::content::type::name name(chars, length);
-                        http::content::type::which_t which = name.which();
-                        switch(which) {
-                        case http::content::type::urlencoded_form_data:
-                            err = get_cgi_urlencoded_form_data(content_length, argc, argv, env);
-                            break;
-                        case http::content::type::multipart_form_data:
-                            err = get_cgi_multipart_form_data(content_length, argc, argv, env);
-                            break;
-                        default:
-                            break;
-                        }
+            if ((content_length_ = chars_t::to_unsigned(chars, length))) {
+                err = get_cgi_form_data(content_length_, argc, argv, env);
+            }
+        }
+        return err;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual int get_cgi_form_data
+    (size_t content_length, int argc, char_t** argv, char_t** env) {
+        const environment::variable::value& content_type = environment_[environment::variable::CONTENT_TYPE];
+        const char_t* chars = 0;
+        size_t length = 0;
+        int err = 0;
+
+        if ((content_length)) {
+            if (!(err = before_read_cgi_form_data(content_length, argc, argv, env))) {
+                if ((chars = content_type.has_chars(length))) {
+                    http::content::type::name name(chars, length);
+                    http::content::type::which_t which = name.which();
+                    switch(which) {
+                    case http::content::type::urlencoded_form_data:
+                        err = get_cgi_urlencoded_form_data(content_length, argc, argv, env);
+                        break;
+                    case http::content::type::multipart_form_data:
+                        err = get_cgi_multipart_form_data(content_length, argc, argv, env);
+                        break;
+                    default:
+                        break;
                     }
-                    if (!(err = after_read_cgi_form_data(content_length, argc, argv, env))) {
-                    }
+                }
+                if (!(err = after_read_cgi_form_data(content_length, argc, argv, env))) {
                 }
             }
         }
@@ -245,14 +274,13 @@ protected:
     ///////////////////////////////////////////////////////////////////////
     virtual int begin_read_cgi_content(int argc, char_t** argv, char_t** env) {
         int err = 0;
-        if ((open_file(content_, catch_stdin_file_label_, catch_stdin_file_name_, true))) {
+        if ((open_content_file(content_))) {
         }
         return err;
     }
     virtual int end_read_cgi_content(int argc, char_t** argv, char_t** env) {
         int err = 0;
-        if ((content_.attached_to())) {
-            content_.close();
+        if ((close_file(content_))) {
         }
         return err;
     }
@@ -307,6 +335,24 @@ protected:
         }
         return err;
     }
+    virtual int console_main(int argc, char_t** argv, char_t** env) {
+        int err = 0, err2 = 0;
+        if (!(err = before_get_cgi_form(argc, argv, env))) {
+            if (!(err = get_cgi_form(argc, argv, env))) {
+                if (!(err = before_run_console(argc, argv, env))) {
+                    if (!(err = run_console(argc, argv, env))) {
+                    }
+                    if ((err2 = after_run_console(argc, argv, env)) && (!err)) {
+                        err = err2;
+                    }
+                }
+            }
+            if ((err2 = after_get_cgi_form(argc, argv, env)) && (!err)) {
+                err = err2;
+            }
+        }
+        return err;
+    }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -336,7 +382,7 @@ protected:
             if (!(err = read_cgi_environment(argc, argv, env))) {
                 if (!(err = before_read_cgi_content(argc, argv, env))) {
                     if (!(err = begin_read_cgi_content(argc, argv, env))) {
-                        if (!(err = cgi_main(argc, argv, env))) {
+                        if (!(err = console_main(argc, argv, env))) {
                         }
                         if ((err2 = end_read_cgi_content(argc, argv, env)) && (!err)) {
                             err = err2;
@@ -438,27 +484,79 @@ protected:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual bool open_content_file(io::read::file& file) {
+        return open_file(file, catch_stdin_file_label_, catch_stdin_file_name_, true);
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
     virtual bool open_file
-    (io::read::file& f, const string_t& line,
+    (io::read::file& file, const string_t& line,
      const string_t& name, bool mode_is_binary = false) {
         size_t length;
 
         if ((line.has_chars(length))) {
             char_t chars[length + 3];
 
-            if ((f.open(name.chars(), (mode_is_binary)
-                ?(f.mode_read_binary()):(f.mode_read())))) {
-                if (!((length + 2) != (f.read(chars, length + 2)))) {
+            if ((file.open(name.chars(), (mode_is_binary)
+                ?(file.mode_read_binary()):(file.mode_read())))) {
+                if (!((length + 2) != (file.read(chars, length + 2)))) {
                     if (!(line.compare(chars, length))) {
                         if (!((cr_ != chars[length]) || (lf_ != chars[length+1]))) {
                             return true;
                         }
                     }
                 }
-                f.close();
+                file.close();
             }
         }
         return false;
+    }
+    virtual bool close_file(io::read::file& file) {
+        return file.close();
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual io::write::file* safe_open_file
+    (io::write::file& file, const char_t* line,
+     const char_t* name, bool mode_is_binary = false) {
+        if ((line) && (line[0]) && (name) && (name[0])) {
+            ssize_t length = chars_t::count(line);
+            ssize_t amount = 0;
+            io::read::file f;
+
+            if ((f.open(name, (mode_is_binary)
+                ?(f.mode_read_binary()):(f.mode_read())))) {
+                char_t chars[length+3];
+
+                if (!((length + 2) != (amount = f.read(chars, length + 2)))) {
+                    if ((chars_t::compare(line, chars, length))
+                        || (chars[length] != cr_) || (chars[length+1] != lf_)) {
+                        outl("file \"", name, "\" already exists", 0);
+                        outln();
+                        f.close();
+                        return 0;
+                    }
+                }
+                f.close();
+            }
+            if ((file.open(name, (mode_is_binary)
+                ?(file.mode_write_binary()):(file.mode_write())))) {
+                if (!(length != (amount = file.write(line, length)))) {
+                    if (!(1 != (amount = file.write(&cr_, 1)))) {
+                        if (!(1 != (amount = file.write(&lf_, 1)))) {
+                            return &file;
+                        }
+                    }
+                }
+                file.close();
+            }
+        }
+        return 0;
+    }
+    virtual bool close_file(io::write::file& file) {
+        return file.close();
     }
 
 public:
@@ -468,6 +566,31 @@ public:
         return ((http::form::fields&)form_);
     }
 
+protected:
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_argv_file_name(const char_t* to) {
+        //if ((to) && (to[0])) {
+        //    CORAL_LOG_MESSAGE_DEBUG("set argv_file_name = \"" << to << "\"...");
+        //}
+        return to;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_env_file_name(const char_t* to) {
+        //if ((to) && (to[0])) {
+        //    CORAL_LOG_MESSAGE_DEBUG("set env_file_name = \"" << to << "\"...");
+        //}
+        return to;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_stdin_file_name(const char_t* to) {
+        //if ((to) && (to[0])) {
+        //    CORAL_LOG_MESSAGE_DEBUG("set stdin_file_name = \"" << to << "\"...");
+        //}
+        return to;
+    }
+
+#include "coral/inet/cgi/main_opt.cpp"
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 protected:
@@ -483,6 +606,7 @@ protected:
              content_type_;
     bool is_cgi_run_;
     const char_t* out_content_type_;
+    size_t content_length_;
     environment::variables::values environment_;
     http::form::fields form_;
     io::read::file content_;

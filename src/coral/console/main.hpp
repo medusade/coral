@@ -60,8 +60,35 @@ enum {
     MAIN_OPT_ARGUMENT_OPTIONAL = coral::console::MAIN_OPT_ARGUMENT_OPTIONAL
 };
 
-} // namespace app
 } // namespace console
+} // namespace app
+
+namespace inet {
+namespace cgi {
+
+typedef coral::console::main_opt_argument_t main_opt_argument_t;
+enum {
+    MAIN_OPT_ARGUMENT_NONE     = coral::console::MAIN_OPT_ARGUMENT_NONE,
+    MAIN_OPT_ARGUMENT_REQUIRED = coral::console::MAIN_OPT_ARGUMENT_REQUIRED,
+    MAIN_OPT_ARGUMENT_OPTIONAL = coral::console::MAIN_OPT_ARGUMENT_OPTIONAL
+};
+
+} // namespace cgi
+} // namespace inet
+
+namespace app {
+namespace cgi {
+
+typedef coral::console::main_opt_argument_t main_opt_argument_t;
+enum {
+    MAIN_OPT_ARGUMENT_NONE     = coral::console::MAIN_OPT_ARGUMENT_NONE,
+    MAIN_OPT_ARGUMENT_REQUIRED = coral::console::MAIN_OPT_ARGUMENT_REQUIRED,
+    MAIN_OPT_ARGUMENT_OPTIONAL = coral::console::MAIN_OPT_ARGUMENT_OPTIONAL
+};
+
+} // namespace cgi
+} // namespace app
+
 } // namespace coral
 
 #define CORAL_CONSOLE_MAIN_LOGGING_LEVELS_OPT "logging"

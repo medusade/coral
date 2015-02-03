@@ -24,6 +24,7 @@
 #include "xos/base/base.hpp"
 #include "xos/base/array.hpp"
 #include "xos/base/string.hpp"
+#include "xos/base/string_base.hpp"
 #include "xos/base/types.hpp"
 #include "xos/base/wrapped.hpp"
 #include "xos/io/read/file.hpp"
@@ -111,6 +112,28 @@ using stringt = typename xos::base::stringt
 typedef xos::base::string string_t;
 typedef xos::base::tstring tstring_t;
 typedef xos::base::wstring wstring_t;
+
+///////////////////////////////////////////////////////////////////////
+/// string_base
+///////////////////////////////////////////////////////////////////////
+typedef xos::base::string_base_implements string_base_implements;
+typedef xos::base::string_base_extends string_base_extends;
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TChar = char, typename TSize = size_t,
+ TSize VSize = XOS_BASE_STRING_BASE_DEFAULT_SIZE,
+ typename TEnd = TChar, TEnd VEnd = 0,
+ class TExtends = string_base_extends,
+ class TImplements = string_base_implements>
+
+using string_baset = typename xos::base::string_baset
+<TChar, TSize, VSize, TEnd, VEnd, TExtends, TImplements>;
+#endif // !defined(CPP_11)
+typedef xos::base::string_base string_base_t;
+typedef xos::base::tstring_base tstring_base_t;
+typedef xos::base::wstring_base wstring_base_t;
 
 ///////////////////////////////////////////////////////////////////////
 /// types
