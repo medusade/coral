@@ -22,7 +22,12 @@
 #define _CORAL_BASE_BASE_HPP
 
 #include "xos/base/base.hpp"
+#include "xos/base/argv.hpp"
 #include "xos/base/array.hpp"
+#include "xos/base/attached.hpp"
+#include "xos/base/attacher.hpp"
+#include "xos/base/created.hpp"
+#include "xos/base/creator.hpp"
 #include "xos/base/string.hpp"
 #include "xos/base/string_base.hpp"
 #include "xos/base/types.hpp"
@@ -74,6 +79,11 @@ typedef xos::base::implement_base implement_base;
 typedef xos::base::base base;
 
 ///////////////////////////////////////////////////////////////////////
+/// argv
+///////////////////////////////////////////////////////////////////////
+typedef xos::base::argv_t argv_t;
+
+///////////////////////////////////////////////////////////////////////
 /// array
 ///////////////////////////////////////////////////////////////////////
 #define CORAL_ARRAY_DEFAULT_SIZE XOS_ARRAY_DEFAULT_SIZE
@@ -94,6 +104,80 @@ typedef xos::base::arrayt<wchar_t> wchar_array;
 typedef xos::base::arrayt<tchar_t> tchar_array;
 typedef xos::base::arrayt<byte_t> byte_array;
 typedef xos::base::arrayt<word_t> word_array;
+
+typedef xos::base::implement_base attacher_implements;
+///////////////////////////////////////////////////////////////////////
+///  attacher
+///////////////////////////////////////////////////////////////////////
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TAttached = void*, typename TUnattached = int,
+ TUnattached VUnattached = 0, class TImplements = attacher_implements>
+
+using attachert = typename xos::base::attachert
+<TAttached, TUnattached, VUnattached, TImplements>;
+#endif // !defined(CPP_11)
+
+typedef xos::base::base attached_extends;
+///////////////////////////////////////////////////////////////////////
+///  attached
+///////////////////////////////////////////////////////////////////////
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TAttached = void*, typename TUnattached = int,
+ TUnattached VUnattached = 0, class TImplements = xos::base::attachert
+ <TAttached, TUnattached, VUnattached, attacher_implements>,
+ class TExtends = attached_extends>
+
+using attachedt = typename xos::base::attachedt
+<TAttached, TUnattached, VUnattached, TImplements, TExtends>;
+#endif // !defined(CPP_11)
+
+///////////////////////////////////////////////////////////////////////
+///  creator exception
+///////////////////////////////////////////////////////////////////////
+enum creator_exception {
+    failed_to_create = xos::base::failed_to_create,
+    failed_to_destroy = xos::base::failed_to_destroy
+};
+typedef xos::base::implement_base creator_implements;
+///////////////////////////////////////////////////////////////////////
+///  creator
+///////////////////////////////////////////////////////////////////////
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TAttached = void*, typename TUnattached = int,
+ TUnattached VUnattached = 0, class TImplements = creator_implements>
+
+using creatort = typename xos::base::creatort
+<TAttached, TUnattached, VUnattached, TImplements>;
+#endif // !defined(CPP_11)
+
+typedef xos::base::creator created_implements;
+typedef xos::base::base created_extends;
+///////////////////////////////////////////////////////////////////////
+///  created
+///////////////////////////////////////////////////////////////////////
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TAttached = void*,
+ typename TUnattached = int, TUnattached VUnattached = 0,
+ class TImplements = attachert
+ <TAttached, TUnattached, VUnattached, created_implements>,
+ class TExtends = attachedt
+ <TAttached, TUnattached, VUnattached, TImplements, created_extends> >
+
+using createdt = typename xos::base::createdt
+<TAttached, TUnattached, VUnattached, TImplements, TExtends>;
+#endif // !defined(CPP_11)
 
 ///////////////////////////////////////////////////////////////////////
 /// string

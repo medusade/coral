@@ -22,32 +22,13 @@
 #define _CORAL_APP_CGI_THROWER_MAIN_HPP
 
 #include "coral/inet/cgi/main.hpp"
+#include "coral/inet/cgi/process.hpp"
 #include "coral/inet/cgi/environment/variables/array.hpp"
-#include "xos/mt/unix/process.hpp"
-#include "xos/mt/unix/pipe.hpp"
-#include "xos/base/argv.hpp"
 #include "coral/app/cgi/thrower/main_opt.hpp"
 
 #define CORAL_APP_CGI_THROWER_MAIN_PATH_TRANSLATED ""
 #define CORAL_APP_CGI_THROWER_MAIN_SCRIPT_NAME ""
 #define CORAL_APP_CGI_THROWER_MAIN_EXEC_NAME "./cgi"
-
-namespace coral {
-typedef xos::base::argv_t argv_t;
-} // namespace coral
-
-namespace coral {
-namespace mt {
-namespace unix {
-typedef xos::mt::unix::process process;
-typedef xos::mt::unix::pipe pipe;
-} // namespace unix
-namespace os {
-typedef mt::unix::process process;
-typedef mt::unix::pipe pipe;
-} // namespace os
-} // namespace mt
-} // namespace coral
 
 namespace coral {
 namespace app {
@@ -81,7 +62,6 @@ protected:
         int err = 0;
         inet::cgi::environment::variables::array e(environment_);
         const char_t* chars = 0;
-        char_t** envp = 0;
 
         if ((chars = path_translated_.has_chars())) {
             e.set(inet::cgi::environment::variable::PATH_TRANSLATED, chars);
@@ -92,40 +72,16 @@ protected:
         }
 
         if ((chars = exec_name_.has_chars())) {
-            argv_t a(&chars, 1);
-            char_t** argvp = 0;
+            inet::cgi::process p;
 
-            if ((argvp = a.elements()) && (envp = e.elements())) {
-                mt::os::process p;
-                mt::os::pipe inp;
-
-                if ((inp.create())) {
-                    mt::os::pipe::pipe_fd_t* pdup[] = {inp, 0};
-
-                    if ((p.create(chars, argvp, envp, 0, pdup))) {
-                        inp.close(0);
-
-                        if (0 < (content_length_)) {
-                            if ((open_content_file(content_))) {
-                                char_t c;
-
-                                for (size_t i = 0; i < content_length_; ++i) {
-                                    if (1 > (content_.read(&c, 1))) {
-                                        break;
-                                    } else {
-                                        if (1 > (inp.write(&c, 1))) {
-                                            break;
-                                        }
-                                    }
-                                }
-                                close_file(content_);
-                            }
-                        }
-                        inp.close(1);
-                        p.destroy();
+            if ((p.create(exec_name_, e, inet::cgi::process::mode_write))) {
+                if (0 < (content_length_)) {
+                    if ((open_content_file(content_))) {
+                        p.write(content_, content_length_);
+                        close_file(content_);
                     }
-                    inp.destroy();
                 }
+                p.destroy();
             }
         }
         return err;
