@@ -38,23 +38,21 @@ class _EXPORT_CLASS process_stream
 : virtual public io::reader, virtual public io::writer {
 };
 
+typedef creatort<process_stream> process_creator;
+
 typedef attachert
 <process_attached_t, process_unattached_t,
- process_unattached, process_stream> process_attacher;
-
-typedef creatort
-<process_attached_t, process_unattached_t,
- process_unattached, process_attacher> process_creator;
+ process_unattached, process_creator> process_attacher;
 
 typedef attachedt
 <process_attached_t, process_unattached_t,
- process_unattached, process_creator, base> process_attached;
+ process_unattached, process_attacher, base> process_attached;
 
 typedef createdt
 <process_attached_t, process_unattached_t,
- process_unattached, process_creator, process_attached> process_created;
+ process_unattached, process_attacher, process_attached> process_created;
 
-typedef process_creator process_implements;
+typedef process_attacher process_implements;
 typedef process_created process_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: processt

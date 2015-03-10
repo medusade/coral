@@ -152,11 +152,9 @@ typedef xos::base::implement_base creator_implements;
 #error Requires C++11
 #else // !defined(CPP_11)
 template
-<typename TAttached = void*, typename TUnattached = int,
- TUnattached VUnattached = 0, class TImplements = creator_implements>
+<class TImplements = creator_implements>
 
-using creatort = typename xos::base::creatort
-<TAttached, TUnattached, VUnattached, TImplements>;
+using creatort = typename xos::base::creatort<TImplements>;
 #endif // !defined(CPP_11)
 
 typedef xos::base::creator created_implements;
