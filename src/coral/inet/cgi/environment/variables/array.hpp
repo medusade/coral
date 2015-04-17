@@ -32,7 +32,7 @@ namespace environment {
 namespace variables {
 
 typedef array_implements array_implements;
-typedef arrayt<char_t*, size_t, variable::count+1> array_extends;
+typedef xos::base::arrayt<char_t*, size_t, variable::count+1> array_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: array
 ///////////////////////////////////////////////////////////////////////

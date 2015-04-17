@@ -41,7 +41,7 @@ typedef base writer_extends;
 template
 <typename TChar = char_t,
  typename TWhat = void,
- class TWriter = io::writert<TWhat, TChar>,
+ class TWriter = xos::io::writert<TWhat, TChar>,
  typename TWhich = variable::which_t,
  TWhich VFirst = variable::first, TWhich VLast = variable::last,
  class TName = variable::namet<TChar, TWhich>,

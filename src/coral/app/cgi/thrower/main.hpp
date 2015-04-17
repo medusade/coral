@@ -72,13 +72,20 @@ protected:
         }
 
         if ((chars = exec_name_.has_chars())) {
+            inet::cgi::process::mode_t m = inet::cgi::process::mode_all;
             inet::cgi::process p;
 
-            if ((p.create(exec_name_, e, inet::cgi::process::mode_write))) {
+            if ((p.create(exec_name_, e, m))) {
                 if (0 < (content_length_)) {
                     if ((open_content_file(content_))) {
                         p.write(content_, content_length_);
                         close_file(content_);
+                    }
+                }
+                if (inet::cgi::process::mode_read == (inet::cgi::process::mode_read & m)) {
+                    char_t content[1];
+                    while (0 < (p.read(content, 1))) {
+                        this->out(content, 1);
                     }
                 }
                 p.destroy();

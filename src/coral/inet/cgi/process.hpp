@@ -24,6 +24,7 @@
 #include "coral/inet/cgi/environment/variables/array.hpp"
 #include "coral/mt/os/process.hpp"
 #include "coral/mt/os/pipe.hpp"
+#include "coral/io/os/file.hpp"
 #include "coral/base/base.hpp"
 
 namespace coral {
@@ -38,17 +39,17 @@ class _EXPORT_CLASS process_stream
 : virtual public io::reader, virtual public io::writer {
 };
 
-typedef creatort<process_stream> process_creator;
+typedef xos::base::creatort<process_stream> process_creator;
 
-typedef attachert
+typedef xos::base::attachert
 <process_attached_t, process_unattached_t,
  process_unattached, process_creator> process_attacher;
 
-typedef attachedt
+typedef xos::base::attachedt
 <process_attached_t, process_unattached_t,
  process_unattached, process_attacher, base> process_attached;
 
-typedef createdt
+typedef xos::base::createdt
 <process_attached_t, process_unattached_t,
  process_unattached, process_attacher, process_attached> process_created;
 
@@ -69,10 +70,16 @@ public:
     enum {
         mode_none = 0,
 
-        mode_read = (1 << 0),
+        mode_read  = 1,
         mode_write = (1 << 1),
+        mode_error = (1 << 2),
 
-        mode_all = ((1 << 2) - 1)
+        last_mode_plus_1,
+        first_mode = 1,
+        last_mode = (last_mode_plus_1 - 1),
+        next_mode = (last_mode << 1),
+
+        mode_all = (next_mode - 1)
     };
 
     typedef io::reader reader_t;
@@ -105,30 +112,50 @@ public:
                 char_t** envp = 0;
 
                 if ((argvp = argv.elements()) && (envp = env.elements())) {
-                    mt::os::pipe::pipe_fd_t* pdup[3] = {0, 0, 0};
+                    mt::os::pipe::fd_t invalid_fd = mt::os::pipe::invalid_fd;
+                    mt::os::pipe::fd_t 
+                        fdin[2] = {invalid_fd, invalid_fd}, 
+                        fdout[2] = {invalid_fd, invalid_fd}, 
+                        fderr[2] = {invalid_fd, invalid_fd};
+                    mt::os::pipe::fd_t* pdup[3] = {fdin, fdout, fderr};
+
+                    if ((mode & mode_write)) {
+                        if ((inp_.create_inherited(mt::os::pipe::in))) {
+                            fdin[0] = inp_[0];
+                            fdin[1] = inp_[1];
+                            mode_ |= mode_write;
+                        }
+                    }
 
                     if ((mode & mode_read)) {
-                        if ((inp_.create())) {
-                            pdup[0] = inp_;
+                        if ((outp_.create_inherited(mt::os::pipe::out))) {
+                            fdout[0] = outp_[0];
+                            fdout[1] = outp_[1];
                             mode_ |= mode_read;
                         }
                     }
 
-                    if ((mode & mode_write)) {
-                        if ((outp_.create())) {
-                            pdup[1] = outp_;
-                            mode_ != mode_write;
+                    if ((mode & mode_error)) {
+                        if ((errp_.create_inherited(mt::os::pipe::out))) {
+                            fderr[0] = errp_[0];
+                            fderr[1] = errp_[1];
+                            mode_ |= mode_error;
                         }
                     }
 
                     if ((p_.create(chars, argvp, envp, 0, pdup))) {
 
-                        if ((mode_ & mode_write)) {
-                            if ((outp_.close(mt::os::pipe::out))) {
+                        if ((mode_ & mode_error)) {
+                            if ((errp_.close(mt::os::pipe::out))) {
                             }
                         }
 
                         if ((mode_ & mode_read)) {
+                            if ((outp_.close(mt::os::pipe::out))) {
+                            }
+                        }
+
+                        if ((mode_ & mode_write)) {
                             if ((inp_.close(mt::os::pipe::in))) {
                             }
                         }
@@ -145,6 +172,11 @@ public:
         process_attached_t detached;
 
         if ((detached = this->detach()) == &p_) {
+
+            if ((mode_ & mode_error)) {
+                if ((errp_.close(mt::os::pipe::in))) {
+                }
+            }
 
             if ((mode_ & mode_write)) {
                 if ((outp_.close(mt::os::pipe::in))) {
@@ -181,6 +213,14 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual ssize_t read(what_t* what, size_t size) {
+        process_attached_t detached;
+        if (((detached = this->attached_to()) == &p_) && (mode_ & mode_read)) {
+            ssize_t count = outp_.read(what, size);
+            return count;
+        }
+        return 0;
+    }
     virtual ssize_t write(const what_t* what, ssize_t size = -1) {
         process_attached_t detached;
         if (((detached = this->attached_to()) == &p_) && (mode_ & mode_write)) {
@@ -195,7 +235,7 @@ public:
 protected:
     mode_t mode_;
     mt::os::process p_;
-    mt::os::pipe inp_, outp_;
+    mt::os::pipe inp_, outp_, errp_;
 };
 typedef processt<> process;
 

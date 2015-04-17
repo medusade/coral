@@ -47,7 +47,7 @@ template
  TSize VSize = variable::count,
  class TName = variable::namet<TChar, TWhich>,
  class TValue = variable::valuet<TChar, TWhich>,
- class TExtends = arrayt<TValue, TSize, VSize>,
+ class TExtends = xos::base::arrayt<TValue, TSize, VSize>,
  class TImplements = values_implements>
 
 class _EXPORT_CLASS valuest: virtual public TImplements, public TExtends {

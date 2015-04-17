@@ -31,6 +31,7 @@
 #include "coral/inet/http/header.hpp"
 #include "coral/base/base.hpp"
 #include "coral/inet/cgi/main_opt.hpp"
+#include "xos/os/file/stream.hpp"
 
 #define CORAL_INET_CGI_CATCH_ARGV_FILE_LABEL "arguments"
 #define CORAL_INET_CGI_CATCH_ENV_FILE_LABEL "environment"
@@ -299,7 +300,7 @@ protected:
         int err = 0;
         io::read::file f;
 
-        if ((open_file(f, catch_env_file_label_, catch_env_file_name_))) {
+        if ((open_file(f, catch_env_file_label_, catch_env_file_name_, true))) {
             inet::cgi::environment::variables::reader e;
             e.read(environment_, f);
             f.close();
@@ -376,6 +377,19 @@ protected:
         }
         return err;
     }
+    virtual int before_cgi_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        set_file_mode_is_binary(std_in());
+        set_file_mode_is_binary(std_out());
+        return err;
+    }
+    virtual int after_cgi_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
     virtual int console_run(int argc, char_t** argv, char_t** env) {
         int err = 0, err2 = 0;
         if (!(err = before_read_cgi_environment(argc, argv, env))) {
@@ -399,16 +413,34 @@ protected:
         }
         return err;
     }
+    virtual int before_console_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int after_console_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     virtual int run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
+        int err = 0, err2 = 0;
         inet::cgi::environment::variable::value gateway_interface(inet::cgi::environment::variable::GATEWAY_INTERFACE);
         if ((is_cgi_run_ = (gateway_interface.has_chars()))) {
-            err = cgi_run(argc, argv, env);
+            if (!(err = before_cgi_run(argc, argv, env))) {
+                err = cgi_run(argc, argv, env);
+                if ((err2 = after_cgi_run(argc, argv, env))) {
+                    if (!(err)) err = err2;
+                }
+            }
         } else {
-            err = console_run(argc, argv, env);
+            if (!(err = before_console_run(argc, argv, env))) {
+                err = console_run(argc, argv, env);
+                if ((err2 = after_console_run(argc, argv, env))) {
+                    if (!(err)) err = err2;
+                }
+            }
         }
         return err;
     }
@@ -496,7 +528,12 @@ protected:
         size_t length;
 
         if ((line.has_chars(length))) {
+#if defined(__GNUC__)
             char_t chars[length + 3];
+#else // defined(__GNUC__)
+            xos::base::arrayt<char_t> a(length + 3);
+            char_t* chars = a.elements();
+#endif // defined(__GNUC__)
 
             if ((file.open(name.chars(), (mode_is_binary)
                 ?(file.mode_read_binary()):(file.mode_read())))) {
@@ -528,7 +565,12 @@ protected:
 
             if ((f.open(name, (mode_is_binary)
                 ?(f.mode_read_binary()):(f.mode_read())))) {
+#if defined(__GNUC__)
                 char_t chars[length+3];
+#else // defined(__GNUC__)
+                xos::base::arrayt<char_t> a(length + 3);
+                char_t* chars = a.elements();
+#endif // defined(__GNUC__)
 
                 if (!((length + 2) != (amount = f.read(chars, length + 2)))) {
                     if ((chars_t::compare(line, chars, length))
@@ -557,6 +599,27 @@ protected:
     }
     virtual bool close_file(io::write::file& file) {
         return file.close();
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool set_file_mode_is_binary
+    (io::read::file& file, bool mode_is_binary = true) {
+        FILE* detached = 0;
+        if ((detached = file.attached_to())) {
+            return set_file_mode_is_binary(detached, mode_is_binary);
+        }
+        return false;
+    }
+    virtual bool set_file_mode_is_binary
+    (FILE* file, bool mode_is_binary = true) {
+        if ((file)) {
+            xos::os::file::stream fs(file);
+            if ((fs.set_mode_is_binary(mode_is_binary))) {
+                return true;
+            }
+        }
+        return false;
     }
 
 public:

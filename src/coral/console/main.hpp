@@ -236,9 +236,7 @@ namespace argv {
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
-#if !defined(CPP_11)
-#error Requires C++11
-#else // !defined(CPP_11)
+#if defined(USE_CPP_11)
 template
 <typename TChar = char_t, typename TWhat = void,
  class TWriter = xos::io::writert<TWhat, TChar>,
@@ -247,7 +245,8 @@ template
 
 using writert = typename xos::io::main::argv::writert
 <TChar, TWhat, TImplements, TExtends>;
-#endif // !defined(CPP_11)
+#else // defined(USE_CPP_11)
+#endif // defined(USE_CPP_11)
 typedef xos::io::main::argv::writert<> writer;
 
 } // namespace argv
@@ -257,9 +256,7 @@ namespace in {
 ///////////////////////////////////////////////////////////////////////
 /// readert
 ///////////////////////////////////////////////////////////////////////
-#if !defined(CPP_11)
-#error Requires C++11
-#else // !defined(CPP_11)
+#if defined(USE_CPP_11)
 template
 <typename TWhat = void, typename TSized = char_t,
  typename TEnd = int, TEnd VEnd = 0,
@@ -269,7 +266,8 @@ template
 
 using readert = typename xos::io::main::in::readert
 <TWhat, TSized, TEnd, VEnd, TMain, TImplements, TExtends>;
-#endif // !defined(CPP_11)
+#else // defined(USE_CPP_11)
+#endif // defined(USE_CPP_11)
 typedef xos::io::main::in::readert<> reader;
 
 } // namespace in
@@ -279,9 +277,7 @@ namespace out {
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
-#if !defined(CPP_11)
-#error Requires C++11
-#else // !defined(CPP_11)
+#if defined(USE_CPP_11)
 template
 <typename TWhat = void, typename TSized = char_t,
  typename TEnd = int, TEnd VEnd = 0,
@@ -291,7 +287,8 @@ template
 
 using writert = typename xos::io::main::out::writert
 <TWhat, TSized, TEnd, VEnd, TImplements, TExtends>;
-#endif // !defined(CPP_11)
+#else // defined(USE_CPP_11)
+#endif // defined(USE_CPP_11)
 typedef xos::io::main::out::writert<> writer;
 
 } // namespace out
@@ -301,9 +298,7 @@ namespace err {
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
-#if !defined(CPP_11)
-#error Requires C++11
-#else // !defined(CPP_11)
+#if defined(USE_CPP_11)
 template
 <typename TWhat = void, typename TSized = char_t,
  typename TEnd = int, TEnd VEnd = 0,
@@ -313,7 +308,8 @@ template
 
 using writert = typename xos::io::main::err::writert
 <TWhat, TSized, TEnd, VEnd, TImplements, TExtends>;
-#endif // !defined(CPP_11)
+#else // defined(USE_CPP_11)
+#endif // defined(USE_CPP_11)
 typedef xos::io::main::err::writert<> writer;
 
 } // namespace err

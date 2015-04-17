@@ -73,7 +73,7 @@ protected:
 
         if ((label = catch_env_file_label_.chars())
             && (name = catch_env_file_name_.chars())) {
-            if ((safe_open_file(file_, label, name))) {
+            if ((safe_open_file(file_, label, name, true))) {
                 io::echoed::writer echoed(file_, out);
                 outl(label, ": ", name, 0);
                 outln();
@@ -85,7 +85,7 @@ protected:
 
         if ((label = catch_argv_file_label_.chars())
             && (name = catch_argv_file_name_.chars())) {
-            if ((safe_open_file(file_, label, name))) {
+            if ((safe_open_file(file_, label, name, true))) {
                 io::echoed::writer echoed(file_, out);
                 outl(label, ": ", name, 0);
                 outln();

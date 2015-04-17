@@ -41,8 +41,8 @@ typedef base reader_extends;
 template
 <typename TChar = char_t,
  typename TWhat = void,
- class TString = stringt<TChar>,
- class TReader = io::readert<TWhat, TChar>,
+ class TString = xos::base::stringt<TChar>,
+ class TReader = xos::io::readert<TWhat, TChar>,
  typename TWhich = variable::which_t,
  TWhich VFirst = variable::first, TWhich VLast = variable::last,
  class TName = variable::namet<TChar, TWhich>,

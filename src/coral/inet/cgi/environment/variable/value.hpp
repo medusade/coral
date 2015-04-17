@@ -37,10 +37,10 @@ typedef implement_base value_implements;
 template
 <typename TChar = char_t,
  typename TWhich = which_t,
- typename TChars = typest<TChar>,
- typename TString = stringt<TChar>,
+ typename TChars = xos::base::typest<TChar>,
+ typename TString = xos::base::stringt<TChar>,
  typename TName = namet<TChar, TWhich>,
- class TExtends = wrappedt<const TChar*>,
+ class TExtends = xos::base::wrappedt<const TChar*>,
  class TImplements = value_implements>
 
 class _EXPORT_CLASS valuet: virtual public TImplements, public TExtends {

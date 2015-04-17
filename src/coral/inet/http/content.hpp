@@ -59,9 +59,7 @@ enum {
 ///////////////////////////////////////////////////////////////////////
 ///  Class: name
 ///////////////////////////////////////////////////////////////////////
-#if !defined(CPP_11)
-#error Requires C++11
-#else // !defined(CPP_11)
+#if defined(USE_CPP_11)
 template
 <typename TChar = char_t, typename TWhich = which_t,
  class TExtends = xos::base::stringt<TChar>,
@@ -69,7 +67,8 @@ template
 
 using namet = typename medusa::inet::http::content::type::namet
 <TChar, TWhich, TExtends, TImplements>;
-#endif // !defined(CPP_11)
+#else // defined(USE_CPP_11)
+#endif // defined(USE_CPP_11)
 typedef medusa::inet::http::content::type::name name;
 
 } // namespace type
@@ -86,9 +85,7 @@ typedef medusa::inet::http::content::reader_extends reader_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: reader
 ///////////////////////////////////////////////////////////////////////
-#if !defined(CPP_11)
-#error Requires C++11
-#else // !defined(CPP_11)
+#if defined(USE_CPP_11)
 template
 <typename TWhat = void, typename TSized = char_t,
  typename TEnd = int, TEnd VEnd = 0,
@@ -97,7 +94,8 @@ template
 
 using readert = typename medusa::inet::http::content::readert
 <TWhat, TSized, TEnd, VEnd, TReader, TImplements, TExtends>;
-#endif // !defined(CPP_11)
+#else // defined(USE_CPP_11)
+#endif // defined(USE_CPP_11)
 typedef medusa::inet::http::content::reader reader;
 } // namespace content
 
@@ -108,9 +106,7 @@ typedef medusa::inet::http::url::encoded::reader_extends reader_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: reader
 ///////////////////////////////////////////////////////////////////////
-#if !defined(CPP_11)
-#error Requires C++11
-#else // !defined(CPP_11)
+#if defined(USE_CPP_11)
 template
 <typename TWhat = void, typename TSized = char_t,
  typename TEnd = int, TEnd VEnd = 0,
@@ -119,7 +115,8 @@ template
 
 using readert = typename medusa::inet::http::url::encoded::readert
 <TWhat, TSized, TEnd, VEnd, TReader, TImplements, TExtends>;
-#endif // !defined(CPP_11)
+#else // defined(USE_CPP_11)
+#endif // defined(USE_CPP_11)
 typedef medusa::inet::http::url::encoded::reader reader;
 
 } // namespace encoded
@@ -132,9 +129,7 @@ typedef base field_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: field
 ///////////////////////////////////////////////////////////////////////
-#if !defined(CPP_11)
-#error Requires C++11
-#else // !defined(CPP_11)
+#if defined(USE_CPP_11)
 template
 <typename TChar = char_t, typename TEnd = int, TEnd VEnd = 0,
  class TString = stringt<TChar, TEnd, VEnd>,
@@ -142,23 +137,23 @@ template
 
 using fieldt = typename medusa::inet::http::form::fieldt
 <TChar, TEnd, VEnd, TString, TImplements, TExtends>;
-#endif // !defined(CPP_11)
+#else // defined(USE_CPP_11)
+#endif // defined(USE_CPP_11)
 typedef medusa::inet::http::form::field field;
 
 typedef implement_base fields_implements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: fields
 ///////////////////////////////////////////////////////////////////////
-#if !defined(CPP_11)
-#error Requires C++11
-#else // !defined(CPP_11)
+#if defined(USE_CPP_11)
 template
 <class TField = field, class TFields = std::list<TField>,
  class TExtends = TFields, class TImplements = fields_implements>
 
 using fieldst = typename medusa::inet::http::form::fieldst
 <TField, TFields, TExtends, TImplements>;
-#endif // !defined(CPP_11)
+#else // defined(USE_CPP_11)
+#endif // defined(USE_CPP_11)
 typedef medusa::inet::http::form::fields fields;
 
 typedef implement_base reader_implements;
@@ -166,9 +161,7 @@ typedef base reader_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: reader
 ///////////////////////////////////////////////////////////////////////
-#if !defined(CPP_11)
-#error Requires C++11
-#else // !defined(CPP_11)
+#if defined(USE_CPP_11)
 template
 <typename TWhat = void, typename TSized = char_t,
  typename TEnd = int, TEnd VEnd = 0,
@@ -178,7 +171,8 @@ template
 
 using readert = typename medusa::inet::http::form::readert
 <TWhat, TSized, TEnd, VEnd, TReader, TField, TFields, TImplements, TExtends>;
-#endif // !defined(CPP_11)
+#else // defined(USE_CPP_11)
+#endif // defined(USE_CPP_11)
 typedef medusa::inet::http::form::reader reader;
 
 } // namespace form
