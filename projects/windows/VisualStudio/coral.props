@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!--========================================================================-->
+<!-- Copyright (c) 1988-2015 $organization$                                 -->
+<!--                                                                        -->
+<!-- This software is provided by the author and contributors ``as is''     -->
+<!-- and any express or implied warranties, including, but not limited to,  -->
+<!-- the implied warranties of merchantability and fitness for a particular -->
+<!-- purpose are disclaimed. In no event shall the author or contributors   -->
+<!-- be liable for any direct, indirect, incidental, special, exemplary,    -->
+<!-- or consequential damages (including, but not limited to, procurement   -->
+<!-- of substitute goods or services; loss of use, data, or profits; or     -->
+<!-- business interruption) however caused and on any theory of liability,  -->
+<!-- whether in contract, strict liability, or tort (including negligence   -->
+<!-- or otherwise) arising in any way out of the use of this software,      -->
+<!-- even if advised of the possibility of such damage.                     -->
+<!--                                                                        -->
+<!--   File: coral.props                                                    -->
+<!--                                                                        -->
+<!-- Author: $author$                                                       -->
+<!--   Date: 3/14/2015                                                      -->
+<!--========================================================================-->
+<Project
+  ToolsVersion="4.0"
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ImportGroup Label="PropertySheets" />
+
+  <PropertyGroup Label="UserMacros">
+      <CORAL_GROUP></CORAL_GROUP>
+      <CORAL_NAME>coral</CORAL_NAME>
+      <CORAL_VERSION></CORAL_VERSION>
+      <CORAL_DIR>$(CORAL_GROUP)$(CORAL_NAME)$(CORAL_VERSION)</CORAL_DIR>
+      <CORAL_SOURCE_DIR>$(SOURCE_ROOT_DIR)/$(CORAL_DIR)/src</CORAL_SOURCE_DIR>
+      <CORAL_BUILD_DIR>$(SOURCE_BUILD_DIR)/$(CORAL_DIR)/build</CORAL_BUILD_DIR>
+      <CORAL_BUILD>$(CORAL_BUILD_DIR)/$(PlatformName)/$(VCVersion)/$(Configuration)</CORAL_BUILD>
+      <CORAL_OBJ>$(CORAL_BUILD)/obj/$(ProjectName)</CORAL_OBJ>
+      <CORAL_LIB>$(CORAL_BUILD)/lib</CORAL_LIB>
+      <CORAL_BIN>$(CORAL_BUILD)/bin</CORAL_BIN>
+      <CORAL_DEFINES>$(NADIR_DEFINES)</CORAL_DEFINES>
+      <CORAL_INCLUDE_DIRS>$(CORAL_SOURCE_DIR);$(NADIR_INCLUDE_DIRS)</CORAL_INCLUDE_DIRS>
+      <CORAL_LIB_DIRS>$(CORAL_LIB);$(NADIR_LIB_DIRS)</CORAL_LIB_DIRS>
+      <CORAL_LIBS>libcoral;$(NADIR_LIBS)</CORAL_LIBS>
+  </PropertyGroup>
+
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+
+  <ItemGroup>
+      <BuildMacro Include="CORAL_GROUP">
+          <Value>$(CORAL_GROUP)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_NAME">
+          <Value>$(CORAL_NAME)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_VERSION">
+          <Value>$(CORAL_VERSION)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_DIR">
+          <Value>$(CORAL_DIR)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_SOURCE_DIR">
+          <Value>$(CORAL_SOURCE_DIR)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_BUILD_DIR">
+          <Value>$(CORAL_BUILD_DIR)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_BUILD">
+          <Value>$(CORAL_BUILD)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_OBJ">
+          <Value>$(CORAL_OBJ)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_LIB">
+          <Value>$(CORAL_LIB)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_BIN">
+          <Value>$(CORAL_BIN)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_DEFINES">
+          <Value>$(CORAL_DEFINES)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_INCLUDE_DIRS">
+          <Value>$(CORAL_INCLUDE_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_LIB_DIRS">
+          <Value>$(CORAL_LIB_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_LIBS">
+          <Value>$(CORAL_LIBS)</Value>
+      </BuildMacro>
+  </ItemGroup>
+</Project>
+
+        
+

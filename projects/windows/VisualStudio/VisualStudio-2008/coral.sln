@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Property Sheets", "Property Sheets", "{1454EB72-9808-4FBC-BAC2-58E9FB67613F}"
+	ProjectSection(SolutionItems) = preProject
+		..\coral-medusa.vsprops = ..\coral-medusa.vsprops
+		..\coral-nadir.vsprops = ..\coral-nadir.vsprops
+		coral-vcversion.vsprops = coral-vcversion.vsprops
+		..\coral.vsprops = ..\coral.vsprops
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{4ACDE6A8-86C9-4FA3-87B5-885AF34EAE4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{88DF86FB-5863-4C17-87FE-8EE902E951E6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcoral", "libcoral\libcoral.vcproj", "{7EE9045A-3676-4DAA-AED8-6196922B198D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgi", "cgi\cgi.vcproj", "{4C546544-E0EE-4119-B963-C7DA8B439A66}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgicatcher", "cgicatcher\cgicatcher.vcproj", "{AF6F408C-6CF2-4E0E-864F-A1921794A252}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgithrower", "cgithrower\cgithrower.vcproj", "{EFB05133-0830-4611-A4F6-DCFF872B5BEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7EE9045A-3676-4DAA-AED8-6196922B198D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7EE9045A-3676-4DAA-AED8-6196922B198D}.Debug|Win32.Build.0 = Debug|Win32
+		{7EE9045A-3676-4DAA-AED8-6196922B198D}.Debug|x64.ActiveCfg = Debug|x64
+		{7EE9045A-3676-4DAA-AED8-6196922B198D}.Debug|x64.Build.0 = Debug|x64
+		{7EE9045A-3676-4DAA-AED8-6196922B198D}.Release|Win32.ActiveCfg = Release|Win32
+		{7EE9045A-3676-4DAA-AED8-6196922B198D}.Release|Win32.Build.0 = Release|Win32
+		{7EE9045A-3676-4DAA-AED8-6196922B198D}.Release|x64.ActiveCfg = Release|x64
+		{7EE9045A-3676-4DAA-AED8-6196922B198D}.Release|x64.Build.0 = Release|x64
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Debug|Win32.Build.0 = Debug|Win32
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Debug|x64.ActiveCfg = Debug|Win32
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Release|Win32.ActiveCfg = Release|Win32
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Release|Win32.Build.0 = Release|Win32
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Release|x64.ActiveCfg = Release|Win32
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Debug|Win32.Build.0 = Debug|Win32
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Debug|x64.ActiveCfg = Debug|Win32
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Release|Win32.ActiveCfg = Release|Win32
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Release|Win32.Build.0 = Release|Win32
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Release|x64.ActiveCfg = Release|Win32
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Debug|Win32.Build.0 = Debug|Win32
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Debug|x64.ActiveCfg = Debug|Win32
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Release|Win32.ActiveCfg = Release|Win32
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Release|Win32.Build.0 = Release|Win32
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Release|x64.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4C546544-E0EE-4119-B963-C7DA8B439A66} = {4ACDE6A8-86C9-4FA3-87B5-885AF34EAE4C}
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252} = {4ACDE6A8-86C9-4FA3-87B5-885AF34EAE4C}
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE} = {4ACDE6A8-86C9-4FA3-87B5-885AF34EAE4C}
+		{7EE9045A-3676-4DAA-AED8-6196922B198D} = {88DF86FB-5863-4C17-87FE-8EE902E951E6}
+	EndGlobalSection
+EndGlobal

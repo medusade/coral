@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Property Sheets", "Property Sheets", "{C1AC1156-A1E0-4FAF-980C-FE5D35F7AA4C}"
+	ProjectSection(SolutionItems) = preProject
+		..\coral-nadir.props = ..\coral-nadir.props
+		coral-vcversion.props = coral-vcversion.props
+		..\coral.props = ..\coral.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{9D0EE361-7BE3-4B39-9345-01E5DA2EFAFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{5435FFC8-FC85-42C8-B272-088DA3B22F6A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcoral", "libcoral\libcoral.vcxproj", "{B5A856D1-196F-4F7F-9D19-6024E45BA314}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5A856D1-196F-4F7F-9D19-6024E45BA314}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B5A856D1-196F-4F7F-9D19-6024E45BA314}.Debug|Win32.Build.0 = Debug|Win32
+		{B5A856D1-196F-4F7F-9D19-6024E45BA314}.Debug|x64.ActiveCfg = Debug|x64
+		{B5A856D1-196F-4F7F-9D19-6024E45BA314}.Debug|x64.Build.0 = Debug|x64
+		{B5A856D1-196F-4F7F-9D19-6024E45BA314}.Release|Win32.ActiveCfg = Release|Win32
+		{B5A856D1-196F-4F7F-9D19-6024E45BA314}.Release|Win32.Build.0 = Release|Win32
+		{B5A856D1-196F-4F7F-9D19-6024E45BA314}.Release|x64.ActiveCfg = Release|x64
+		{B5A856D1-196F-4F7F-9D19-6024E45BA314}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B5A856D1-196F-4F7F-9D19-6024E45BA314} = {5435FFC8-FC85-42C8-B272-088DA3B22F6A}
+	EndGlobalSection
+EndGlobal

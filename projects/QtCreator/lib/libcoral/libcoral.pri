@@ -27,9 +27,11 @@ $${coral_DEFINES} \
 
 libcoral_HEADERS += \
 $${CORAL_SRC}/coral/base/base.hpp \
+$${CORAL_SRC}/coral/base/string.hpp \
 
 libcoral_SOURCES += \
 $${CORAL_SRC}/coral/base/base.cpp \
+$${CORAL_SRC}/coral/base/string.cpp \
 
 libcoral_LIBS += \
 $${coral_LIBS} \
