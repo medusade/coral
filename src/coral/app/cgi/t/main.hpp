@@ -23,7 +23,7 @@
 
 #include "coral/inet/cgi/main.hpp"
 #include "cplatform.hpp"
-#include "cFile.hxx"
+#include "cfile.hxx"
 #include "ct.hxx"
 #include "htmlmacro.h"
 
