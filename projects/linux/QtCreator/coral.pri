@@ -21,9 +21,14 @@
 
 QMAKE_CXXFLAGS += -std=c++11
 
+CONFIG(debug, debug|release) {
+CORAL_BLD_CONFIG = Debug
+} else {
+CORAL_BLD_CONFIG = Release
+}
 ########################################################################
 # xde
-XDE_BLD = ../$${XDE_PKG}/c/build/linux/QtCreator/Debug
+XDE_BLD = ../$${XDE_PKG}/c/build/linux/QtCreator/$${CORAL_BLD_CONFIG}
 XDE_LIB = $${XDE_BLD}/lib
 
 xde_cbase_LIBS += \
@@ -38,7 +43,7 @@ xde_ct_LIBS += \
 
 ########################################################################
 # medusaxde
-MEDUSAXDE_BLD = ../$${MEDUSAXDE_PKG}/c/build/linux/QtCreator/Debug
+MEDUSAXDE_BLD = ../$${MEDUSAXDE_PKG}/c/build/linux/QtCreator/$${CORAL_BLD_CONFIG}
 MEDUSAXDE_LIB = $${MEDUSAXDE_BLD}/lib
 
 medusaxde_cbase_LIBS += \
@@ -62,7 +67,7 @@ medusaxde_clibxslt_LIBS += \
 
 ########################################################################
 # xos
-XOS_BLD = ../$${XOS_PKG}/build/linux/QtCreator/Debug
+XOS_BLD = ../$${XOS_PKG}/build/linux/QtCreator/$${CORAL_BLD_CONFIG}
 XOS_LIB = $${XOS_BLD}/lib
 
 ########################################################################

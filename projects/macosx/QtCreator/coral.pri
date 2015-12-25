@@ -21,9 +21,15 @@
 
 QMAKE_CXXFLAGS += -std=c++11
 
+CONFIG(debug, debug|release) {
+CORAL_BLD_CONFIG = Debug
+} else {
+CORAL_BLD_CONFIG = Release
+}
+
 ########################################################################
 # xde
-XDE_BLD = ../$${XDE_PKG}/c/build/macosx/QtCreator/Debug
+XDE_BLD = ../$${XDE_PKG}/c/build/macosx/QtCreator/$${CORAL_BLD_CONFIG}
 XDE_LIB = $${XDE_BLD}/lib
 
 xde_cbase_LIBS += \
@@ -38,7 +44,7 @@ xde_ct_LIBS += \
 
 ########################################################################
 # medusaxde
-MEDUSAXDE_BLD = ../$${MEDUSAXDE_PKG}/c/build/macosx/QtCreator/Debug
+MEDUSAXDE_BLD = ../$${MEDUSAXDE_PKG}/c/build/macosx/QtCreator/$${CORAL_BLD_CONFIG}
 MEDUSAXDE_LIB = $${MEDUSAXDE_BLD}/lib
 
 medusaxde_cbase_LIBS += \
@@ -61,8 +67,13 @@ medusaxde_clibxslt_LIBS += \
 -lxml2 \
 
 ########################################################################
+# medusa
+MEDUSA_BLD = ../$${MEDUSA_PKG}/build/macosx/QtCreator/$${CORAL_BLD_CONFIG}
+MEDUSA_LIB = $${MEDUSA_BLD}/lib
+
+########################################################################
 # xos
-XOS_BLD = ../$${XOS_PKG}/build/macosx/QtCreator/Debug
+XOS_BLD = ../$${XOS_PKG}/build/macosx/QtCreator/$${CORAL_BLD_CONFIG}
 XOS_LIB = $${XOS_BLD}/lib
 
 ########################################################################
