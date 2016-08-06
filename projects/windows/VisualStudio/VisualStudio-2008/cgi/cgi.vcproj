@@ -344,10 +344,6 @@
 				RelativePath="..\..\..\..\..\src\coral\console\main_main.cpp"
 				>
 			</File>
-			<File
-				RelativePath="..\..\..\..\..\..\nadir\src\xos\os\file\stream.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -356,10 +352,6 @@
 			>
 			<File
 				RelativePath="..\..\..\..\..\src\coral\app\cgi\main.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\..\..\nadir\src\xos\os\file\stream.hpp"
 				>
 			</File>
 		</Filter>

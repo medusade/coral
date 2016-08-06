@@ -337,23 +337,11 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\..\..\..\..\nadir\src\xos\os\windows\security\attributes.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\..\..\src\coral\app\cgi\thrower\main.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\..\..\..\..\src\coral\console\main_main.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\..\..\nadir\src\xos\mt\windows\pipe.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\..\..\nadir\src\xos\mt\windows\process.cpp"
 				>
 			</File>
 		</Filter>

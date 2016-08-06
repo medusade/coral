@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <MEDUSA_GROUP />
+    <MEDUSA_NAME>medusa</MEDUSA_NAME>
+    <MEDUSA_VERSION />
+    <MEDUSA_DIR>$(MEDUSA_GROUP)$(MEDUSA_NAME)$(MEDUSA_VERSION)</MEDUSA_DIR>
+    <MEDUSA_SOURCE_DIR>$(SOURCE_ROOT_DIR)/$(MEDUSA_DIR)/src</MEDUSA_SOURCE_DIR>
+    <MEDUSA_BUILD_DIR>$(SOURCE_BUILD_DIR)/$(MEDUSA_DIR)/build</MEDUSA_BUILD_DIR>
+    <MEDUSA_BUILD>$(MEDUSA_BUILD_DIR)/$(Platform)/$(VCVersion)/$(Configuration)</MEDUSA_BUILD>
+    <MEDUSA_OBJ>$(MEDUSA_BUILD)/obj/$(ProjectName)</MEDUSA_OBJ>
+    <MEDUSA_LIB>$(MEDUSA_BUILD)/lib</MEDUSA_LIB>
+    <MEDUSA_BIN>$(MEDUSA_BUILD)/bin</MEDUSA_BIN>
+    <MEDUSA_DEFINES />
+    <MEDUSA_INCLUDE_DIRS>$(MEDUSA_SOURCE_DIR)</MEDUSA_INCLUDE_DIRS>
+    <MEDUSA_LIB_DIRS>$(MEDUSA_LIB)</MEDUSA_LIB_DIRS>
+    <MEDUSA_LIBS>libmedusa.lib</MEDUSA_LIBS>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <BuildMacro Include="MEDUSA_GROUP">
+      <Value>$(MEDUSA_GROUP)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_NAME">
+      <Value>$(MEDUSA_NAME)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_VERSION">
+      <Value>$(MEDUSA_VERSION)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_DIR">
+      <Value>$(MEDUSA_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_SOURCE_DIR">
+      <Value>$(MEDUSA_SOURCE_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_BUILD_DIR">
+      <Value>$(MEDUSA_BUILD_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_BUILD">
+      <Value>$(MEDUSA_BUILD)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_OBJ">
+      <Value>$(MEDUSA_OBJ)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_LIB">
+      <Value>$(MEDUSA_LIB)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_BIN">
+      <Value>$(MEDUSA_BIN)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_DEFINES">
+      <Value>$(MEDUSA_DEFINES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_INCLUDE_DIRS">
+      <Value>$(MEDUSA_INCLUDE_DIRS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_LIB_DIRS">
+      <Value>$(MEDUSA_LIB_DIRS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MEDUSA_LIBS">
+      <Value>$(MEDUSA_LIBS)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

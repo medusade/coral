@@ -16,6 +16,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcoral", "libcoral\libcoral.vcproj", "{7EE9045A-3676-4DAA-AED8-6196922B198D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgi", "cgi\cgi.vcproj", "{4C546544-E0EE-4119-B963-C7DA8B439A66}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7EE9045A-3676-4DAA-AED8-6196922B198D} = {7EE9045A-3676-4DAA-AED8-6196922B198D}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgicatcher", "cgicatcher\cgicatcher.vcproj", "{AF6F408C-6CF2-4E0E-864F-A1921794A252}"
 EndProject

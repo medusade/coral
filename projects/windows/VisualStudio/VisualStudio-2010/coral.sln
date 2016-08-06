@@ -3,6 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Property Sheets", "Property Sheets", "{10B3D1E5-4112-4901-8C8E-C1C14AB8CAEC}"
 	ProjectSection(SolutionItems) = preProject
+		..\coral-medusa.props = ..\coral-medusa.props
 		..\coral-nadir.props = ..\coral-nadir.props
 		coral-vcversion.props = coral-vcversion.props
 		..\coral.props = ..\coral.props
@@ -13,6 +14,21 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{1AA1C7F5-D845-4E3B-90B7-49845B68A160}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcoral", "libcoral\libcoral.vcxproj", "{5CD279E5-87BA-417C-84A4-B7285EFEEFAC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgi", "cgi\cgi.vcxproj", "{4C546544-E0EE-4119-B963-C7DA8B439A66}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5CD279E5-87BA-417C-84A4-B7285EFEEFAC} = {5CD279E5-87BA-417C-84A4-B7285EFEEFAC}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgicatcher", "cgicatcher\cgicatcher.vcxproj", "{AF6F408C-6CF2-4E0E-864F-A1921794A252}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5CD279E5-87BA-417C-84A4-B7285EFEEFAC} = {5CD279E5-87BA-417C-84A4-B7285EFEEFAC}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgithrower", "cgithrower\cgithrower.vcxproj", "{EFB05133-0830-4611-A4F6-DCFF872B5BEE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5CD279E5-87BA-417C-84A4-B7285EFEEFAC} = {5CD279E5-87BA-417C-84A4-B7285EFEEFAC}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,11 +46,38 @@ Global
 		{5CD279E5-87BA-417C-84A4-B7285EFEEFAC}.Release|Win32.Build.0 = Release|Win32
 		{5CD279E5-87BA-417C-84A4-B7285EFEEFAC}.Release|x64.ActiveCfg = Release|x64
 		{5CD279E5-87BA-417C-84A4-B7285EFEEFAC}.Release|x64.Build.0 = Release|x64
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Debug|Win32.Build.0 = Debug|Win32
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Debug|x64.ActiveCfg = Debug|x64
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Debug|x64.Build.0 = Debug|x64
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Release|Win32.ActiveCfg = Release|Win32
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Release|Win32.Build.0 = Release|Win32
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Release|x64.ActiveCfg = Release|x64
+		{4C546544-E0EE-4119-B963-C7DA8B439A66}.Release|x64.Build.0 = Release|x64
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Debug|Win32.Build.0 = Debug|Win32
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Debug|x64.ActiveCfg = Debug|x64
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Debug|x64.Build.0 = Debug|x64
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Release|Win32.ActiveCfg = Release|Win32
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Release|Win32.Build.0 = Release|Win32
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Release|x64.ActiveCfg = Release|x64
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252}.Release|x64.Build.0 = Release|x64
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Debug|Win32.Build.0 = Debug|Win32
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Debug|x64.ActiveCfg = Debug|x64
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Debug|x64.Build.0 = Debug|x64
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Release|Win32.ActiveCfg = Release|Win32
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Release|Win32.Build.0 = Release|Win32
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Release|x64.ActiveCfg = Release|x64
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{4C546544-E0EE-4119-B963-C7DA8B439A66} = {19A2468B-C1AE-4106-9133-767BD3051A8B}
+		{AF6F408C-6CF2-4E0E-864F-A1921794A252} = {19A2468B-C1AE-4106-9133-767BD3051A8B}
+		{EFB05133-0830-4611-A4F6-DCFF872B5BEE} = {19A2468B-C1AE-4106-9133-767BD3051A8B}
 		{5CD279E5-87BA-417C-84A4-B7285EFEEFAC} = {1AA1C7F5-D845-4E3B-90B7-49845B68A160}
 	EndGlobalSection
 EndGlobal
