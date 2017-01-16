@@ -19,23 +19,25 @@
 #   Date: 1/26/2014
 ########################################################################
 include(../../../../QtCreator/coral.pri)
-include(../../../../QtCreator/app/cgi/cgi.pri)
 include(../../coral.pri)
+include(../../../../QtCreator/app/cgi/cgi.pri)
 
-TARGET = cgi
+TARGET = $${cgi_TARGET}
 
 INCLUDEPATH += \
-$${coral_INCLUDEPATH} \
+$${cgi_INCLUDEPATH} \
 
 DEFINES += \
-$${coral_DEFINES} \
+$${cgi_DEFINES} \
 
+########################################################################
 HEADERS += \
 $${cgi_HEADERS} \
 
 SOURCES += \
 $${cgi_SOURCES} \
 
+########################################################################
 LIBS += \
-$${coral_LIBS} \
+$${cgi_LIBS} \
 

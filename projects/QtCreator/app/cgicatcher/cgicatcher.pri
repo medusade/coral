@@ -19,6 +19,14 @@
 #   Date: 12/30/2014
 ########################################################################
 
+cgicatcher_TARGET = coral-cgicatcher
+
+cgicatcher_INCLUDEPATH += \
+$${coral_INCLUDEPATH} \
+
+cgicatcher_DEFINES += \
+$${coral_DEFINES} \
+
 ########################################################################
 cgicatcher_HEADERS += \
 $${CORAL_SRC}/coral/base/base.hpp \
@@ -52,3 +60,10 @@ cgicatcher_SOURCES += \
 $${CORAL_SRC}/coral/app/cgi/catcher/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
 
+########################################################################
+cgicatcher_LIBS += \
+$${xoscoral_LIBS} \
+
+########################################################################
+# NO Qt
+QT -= gui core

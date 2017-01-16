@@ -19,20 +19,40 @@
 #   Date: 12/15/2014
 ########################################################################
 
-libcoral_INCLUDEPATH += \
+TEMPLATE = lib
+CONFIG += staticlib
+
+########################################################################
+# libxoscoral
+libxoscoral_TARGET = xoscoral
+
+libxoscoral_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
 
-libcoral_DEFINES += \
+libxoscoral_DEFINES += \
 $${coral_DEFINES} \
 
-libcoral_HEADERS += \
+########################################################################
+libxoscoral_HEADERS += \
 $${CORAL_SRC}/coral/base/base.hpp \
-$${CORAL_SRC}/coral/base/string.hpp \
+
+libxoscoral_SOURCES += \
+$${CORAL_SRC}/coral/base/base.cpp \
+
+########################################################################
+# libcoral
+libcoral_TARGET = coral
+
+libcoral_INCLUDEPATH += \
+$${libxoscoral_INCLUDEPATH} \
+
+libcoral_DEFINES += \
+$${libxoscoral_DEFINES} \
+USE_NADIR_BASE \
+
+########################################################################
+libcoral_HEADERS += \
+$${libxoscoral_HEADERS} \
 
 libcoral_SOURCES += \
-$${CORAL_SRC}/coral/base/base.cpp \
-$${CORAL_SRC}/coral/base/string.cpp \
-
-libcoral_LIBS += \
-$${coral_LIBS} \
-
+$${libxoscoral_SOURCES} \

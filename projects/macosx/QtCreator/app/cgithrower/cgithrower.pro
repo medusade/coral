@@ -19,23 +19,25 @@
 #   Date: 1/30/2015
 ########################################################################
 include(../../../../QtCreator/coral.pri)
-include(../../../../QtCreator/app/cgithrower/cgithrower.pri)
 include(../../coral.pri)
+include(../../../../QtCreator/app/cgithrower/cgithrower.pri)
 
-TARGET = cgithrower
+TARGET = $${cgithrower_TARGET}
 
 INCLUDEPATH += \
-$${coral_INCLUDEPATH} \
+$${cgithrower_INCLUDEPATH} \
 
 DEFINES += \
-$${coral_DEFINES} \
+$${cgithrower_DEFINES} \
 
+########################################################################
 HEADERS += \
 $${cgithrower_HEADERS} \
 
 SOURCES += \
 $${cgithrower_SOURCES} \
 
+########################################################################
 LIBS += \
-$${coral_LIBS} \
+$${cgithrower_LIBS} \
 

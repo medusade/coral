@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,28 +13,32 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: coral.pri
+#   File: datecgi.pro
 #
 # Author: $author$
-#   Date: 12/15/2014
+#   Date: 1/13/2017
 ########################################################################
+include(../../../../QtCreator/coral.pri)
+include(../../coral.pri)
+include(../../../../QtCreator/app/datecgi/datecgi.pri)
+
+TARGET = datecgi
+
+INCLUDEPATH += \
+$${datecgi_INCLUDEPATH} \
+
+DEFINES += \
+$${datecgi_DEFINES} \
 
 ########################################################################
-coral_HEADERS += \
-$${CORAL_SRC}/coral/app/console/coral/main.hpp \
-$${CORAL_SRC}/coral/console/main.hpp \
-$${CORAL_SRC}/coral/console/main_main.hpp \
+HEADERS += \
+$${datecgi_HEADERS} \
 
-coral_SOURCES += \
-$${CORAL_SRC}/coral/app/console/coral/main.cpp \
-$${CORAL_SRC}/coral/console/main_main.cpp \
+SOURCES += \
+$${datecgi_SOURCES} \
 
 ########################################################################
-coral_HEADERS += \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.hpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.hpp \
-
-coral_SOURCES += \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.cpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.cpp \
+LIBS += \
+$${coral_LIBS} \
+$${nadir_LIBS} \
 

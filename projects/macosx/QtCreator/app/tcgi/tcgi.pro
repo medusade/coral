@@ -19,10 +19,10 @@
 #   Date: 1/22/2015
 ########################################################################
 include(../../../../QtCreator/coral.pri)
-include(../../../../QtCreator/app/tcgi/tcgi.pri)
 include(../../coral.pri)
+include(../../../../QtCreator/app/tcgi/tcgi.pri)
 
-TARGET = tcgi
+TARGET = $${tcgi_TARGET}
 
 INCLUDEPATH += \
 $${tcgi_INCLUDEPATH} \
@@ -30,16 +30,13 @@ $${tcgi_INCLUDEPATH} \
 DEFINES += \
 $${tcgi_DEFINES} \
 
+########################################################################
 HEADERS += \
 $${tcgi_HEADERS} \
 
 SOURCES += \
 $${tcgi_SOURCES} \
 
+########################################################################
 LIBS += \
-$${coral_LIBS} \
-$${xde_ct_LIBS} \
-$${xde_cbase_LIBS} \
--lpthread \
--ldl \
-
+$${tcgi_LIBS} \

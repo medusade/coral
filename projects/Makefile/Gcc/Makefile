@@ -95,6 +95,7 @@ medusaxde_cbase_USRLIBDIRS += \
 medusaxde_clibxslt_USRLIBDIRS += \
 -L${HOME}/build/libxslt/lib \
 -L${HOME}/build/libxml2/lib \
+-L${HOME}/build/zlib/lib \
 
 medusaxde_cbase_LIBS += \
 -lcos \

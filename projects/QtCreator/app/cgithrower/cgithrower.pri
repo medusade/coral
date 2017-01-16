@@ -19,6 +19,14 @@
 #   Date: 1/30/2015
 ########################################################################
 
+cgithrower_TARGET = coral-cgithrower
+
+cgithrower_INCLUDEPATH += \
+$${coral_INCLUDEPATH} \
+
+cgithrower_DEFINES += \
+$${coral_DEFINES} \
+
 ########################################################################
 cgithrower_HEADERS += \
 $${CORAL_SRC}/coral/base/base.hpp \
@@ -52,3 +60,10 @@ cgithrower_SOURCES += \
 $${CORAL_SRC}/coral/app/cgi/thrower/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
 
+########################################################################
+LIBS += \
+$${xoscoral_LIBS} \
+
+########################################################################
+# NO Qt
+QT -= gui core

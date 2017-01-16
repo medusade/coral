@@ -19,13 +19,10 @@
 #   Date: 12/15/2014
 ########################################################################
 include(../../../../QtCreator/coral.pri)
-include(../../../../QtCreator/lib/libcoral/libcoral.pri)
 include(../../coral.pri)
+include(../../../../QtCreator/lib/libcoral/libcoral.pri)
 
-TARGET = coral
-
-TEMPLATE = lib
-CONFIG += staticlib
+TARGET = $${libcoral_TARGET}
 
 INCLUDEPATH += \
 $${libcoral_INCLUDEPATH} \
@@ -33,9 +30,11 @@ $${libcoral_INCLUDEPATH} \
 DEFINES += \
 $${libcoral_DEFINES} \
 
+########################################################################
 HEADERS += \
 $${libcoral_HEADERS} \
 
 SOURCES += \
 $${libcoral_SOURCES} \
 
+########################################################################

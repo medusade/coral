@@ -19,10 +19,16 @@
 #   Date: 1/15/2015
 ########################################################################
 
+libxsltcgi_TARGET = coral-libxsltcgi
+
 libxsltcgi_INCLUDEPATH += \
-$${XOS_SRC}/thirdparty/medusaxde/clib/cplatform \
+$${coral_INCLUDEPATH} \
+$${NADIR_SRC}/thirdparty/medusaxde/clib/cplatform \
 $${medusaxde_clibxslt_INCLUDEPATH} \
 $${medusaxde_cbase_INCLUDEPATH} \
+
+libxsltcgi_DEFINES += \
+$${coral_DEFINES} \
 
 ########################################################################
 libxsltcgi_HEADERS += \
@@ -34,3 +40,8 @@ libxsltcgi_SOURCES += \
 $${CORAL_SRC}/coral/app/cgi/libxslt/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
 
+########################################################################
+libxsltcgi_LIBS += \
+$${xoscoral_LIBS} \
+$${medusaxde_clibxslt_LIBS} \
+$${medusaxde_cbase_LIBS} \

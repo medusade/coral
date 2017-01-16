@@ -19,17 +19,15 @@
 #   Date: 1/15/2015
 ########################################################################
 include(../../../../QtCreator/coral.pri)
-include(../../../../QtCreator/app/libxsltcgi/libxsltcgi.pri)
 include(../../coral.pri)
+include(../../../../QtCreator/app/libxsltcgi/libxsltcgi.pri)
 
-TARGET = libxsltcgi
+TARGET = $${libxsltcgi_TARGET}
 
 INCLUDEPATH += \
-$${coral_INCLUDEPATH} \
 $${libxsltcgi_INCLUDEPATH} \
 
 DEFINES += \
-$${coral_DEFINES} \
 $${libxsltcgi_DEFINES} \
 
 ########################################################################
@@ -40,12 +38,6 @@ SOURCES += \
 $${libxsltcgi_SOURCES} \
 
 ########################################################################
-libxsltcgi_LIBS += \
-$${medusaxde_clibxslt_LIBS} \
-$${medusaxde_cbase_LIBS} \
-
-########################################################################
 LIBS += \
-$${coral_LIBS} \
 $${libxsltcgi_LIBS} \
 

@@ -19,8 +19,8 @@
 #   Date: 12/15/2014
 ########################################################################
 include(../../../../QtCreator/coral.pri)
-include(../../../../QtCreator/app/coral/coral.pri)
 include(../../coral.pri)
+include(../../../../QtCreator/app/coral/coral.pri)
 
 TARGET = coral
 
@@ -30,13 +30,13 @@ $${coral_INCLUDEPATH} \
 DEFINES += \
 $${coral_DEFINES} \
 
+########################################################################
 HEADERS += \
 $${coral_HEADERS} \
 
 SOURCES += \
 $${coral_SOURCES} \
 
+########################################################################
 LIBS += \
-$${coral_LIBS} \
-
-
+$${xoscoral_LIBS} \

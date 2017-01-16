@@ -19,6 +19,14 @@
 #   Date: 1/16/2015
 ########################################################################
 
+cgi_TARGET = coral-cgi
+
+cgi_INCLUDEPATH += \
+$${coral_INCLUDEPATH} \
+
+cgi_DEFINES += \
+$${coral_DEFINES} \
+
 ########################################################################
 cgi_HEADERS += \
 $${CORAL_SRC}/coral/base/base.hpp \
@@ -51,4 +59,12 @@ $${CORAL_SRC}/coral/console/main_main.hpp \
 cgi_SOURCES += \
 $${CORAL_SRC}/coral/app/cgi/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
+
+########################################################################
+cgi_LIBS += \
+$${xoscoral_LIBS} \
+
+########################################################################
+# NO Qt
+QT -= gui core
 

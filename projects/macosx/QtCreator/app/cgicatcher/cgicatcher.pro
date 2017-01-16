@@ -19,23 +19,25 @@
 #   Date: 12/30/2014
 ########################################################################
 include(../../../../QtCreator/coral.pri)
-include(../../../../QtCreator/app/cgicatcher/cgicatcher.pri)
 include(../../coral.pri)
+include(../../../../QtCreator/app/cgicatcher/cgicatcher.pri)
 
-TARGET = cgicatcher
+TARGET = $${cgicatcher_TARGET}
 
 INCLUDEPATH += \
-$${coral_INCLUDEPATH} \
+$${cgicatcher_INCLUDEPATH} \
 
 DEFINES += \
-$${coral_DEFINES} \
+$${cgicatcher_DEFINES} \
 
+########################################################################
 HEADERS += \
 $${cgicatcher_HEADERS} \
 
 SOURCES += \
 $${cgicatcher_SOURCES} \
 
+########################################################################
 LIBS += \
-$${coral_LIBS} \
+$${cgicatcher_LIBS} \
 

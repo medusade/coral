@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2015 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,57 +13,54 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: tcgi.pri
+#   File: datecgi.pri
 #
 # Author: $author$
-#   Date: 1/22/2015
+#   Date: 1/13/2017
 ########################################################################
 
-tcgi_TARGET = coral-tcgi
-
-tcgi_INCLUDEPATH += \
+datecgi_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
-$${NADIR_SRC}/thirdparty/xde/clib/cos/cplatform \
-$${xde_ccgi_INCLUDEPATH} \
-$${xde_cos_INCLUDEPATH} \
-$${xde_cbase_INCLUDEPATH} \
 
-tcgi_DEFINES += \
+datecgi_DEFINES += \
 $${coral_DEFINES} \
-$${xde_DEFINES} \
+USE_NADIR_BASE \
 
 ########################################################################
-_tcgi_HEADERS += \
-$${XDE_SRC}/clib/cbase/cattachedinterface.hxx \
-$${XDE_SRC}/clib/cbase/cattached.hxx \
+datecgi_HEADERS += \
+$${NADIR_SRC}/nadir/console/getopt/main_opt.hpp \
+$${NADIR_SRC}/nadir/io/crt/file_stream.hpp \
+$${NADIR_SRC}/nadir/io/crt/file.hpp \
+$${NADIR_SRC}/nadir/io/stream.hpp \
+$${NADIR_SRC}/nadir/io/writer.hpp \
+$${NADIR_SRC}/nadir/io/reader.hpp \
+$${NADIR_SRC}/nadir/base/string_base.hpp \
+$${NADIR_SRC}/nadir/base/argv.hpp \
 
-_tcgi_SOURCES += \
-$${XDE_SRC}/clib/cbase/cattachedinterface.cxx \
-$${XDE_SRC}/clib/cbase/cattached.cxx \
+datecgi_SOURCES += \
+$${NADIR_SRC}/nadir/console/getopt/main_opt.cpp \
+$${NADIR_SRC}/nadir/io/crt/file_stream.cpp \
+$${NADIR_SRC}/nadir/io/crt/file.cpp \
+$${NADIR_SRC}/nadir/io/stream.cpp \
+$${NADIR_SRC}/nadir/io/writer.cpp \
+$${NADIR_SRC}/nadir/io/reader.cpp \
+$${NADIR_SRC}/nadir/base/string_base.cpp \
+$${NADIR_SRC}/nadir/base/argv.cpp \
 
 ########################################################################
-tcgi_HEADERS += \
-$${CORAL_SRC}/coral/app/cgi/t/main.hpp \
+datecgi_HEADERS += \
+$${CORAL_SRC}/coral/base/base.hpp \
+
+datecgi_SOURCES += \
+$${CORAL_SRC}/coral/base/base.cpp \
+
+########################################################################
+datecgi_HEADERS += \
+$${CORAL_SRC}/coral/app/cgi/date/main.hpp \
 $${CORAL_SRC}/coral/console/main.hpp \
 $${CORAL_SRC}/coral/console/main_main.hpp \
-$${NADIR_SRC}/thirdparty/xde/clib/cos/cplatform/cplatform.hpp \
 
-tcgi_SOURCES += \
-$${CORAL_SRC}/coral/app/cgi/t/main.cpp \
+datecgi_SOURCES += \
+$${CORAL_SRC}/coral/app/cgi/date/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
-$${NADIR_SRC}/thirdparty/xde/clib/cos/cplatform/cplatform.cpp \
 
-########################################################################
-tcgi_HEADERS += \
-
-tcgi_SOURCES += \
-$${XDE_SRC}/clib/ct/ctfunctions.cxx \
-$${XDE_SRC}/clib/ct/ctfilefunctions.cxx \
-$${XDE_SRC}/clib/ct/ctdatefunctions.cxx \
-
-########################################################################
-tcgi_LIBS += \
-$${xoscoral_LIBS} \
-$${xde_ct_LIBS} \
-$${xde_cbase_LIBS} \
-$${xos_LIBS} \

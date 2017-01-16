@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,28 +13,28 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: coral.pri
+#   File: libxoscoral.pri
 #
 # Author: $author$
-#   Date: 12/15/2014
+#   Date: 1/15/2017
 ########################################################################
+include(../../../../QtCreator/coral.pri)
+include(../../coral.pri)
+include(../../../../QtCreator/lib/libcoral/libcoral.pri)
+
+TARGET = $${libxoscoral_TARGET}
+
+INCLUDEPATH += \
+$${libxoscoral_INCLUDEPATH} \
+
+DEFINES += \
+$${libxoscoral_DEFINES} \
 
 ########################################################################
-coral_HEADERS += \
-$${CORAL_SRC}/coral/app/console/coral/main.hpp \
-$${CORAL_SRC}/coral/console/main.hpp \
-$${CORAL_SRC}/coral/console/main_main.hpp \
+HEADERS += \
+$${libxoscoral_HEADERS} \
 
-coral_SOURCES += \
-$${CORAL_SRC}/coral/app/console/coral/main.cpp \
-$${CORAL_SRC}/coral/console/main_main.cpp \
+SOURCES += \
+$${libxoscoral_SOURCES} \
 
 ########################################################################
-coral_HEADERS += \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.hpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.hpp \
-
-coral_SOURCES += \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.cpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.cpp \
-

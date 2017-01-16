@@ -20,16 +20,11 @@
 ########################################################################
 
 QMAKE_CXXFLAGS += -std=c++11
-
-CONFIG(debug, debug|release) {
-CORAL_BLD_CONFIG = Debug
-} else {
-CORAL_BLD_CONFIG = Release
-}
+BUILD_OS = macosx
 
 ########################################################################
 # xde
-XDE_BLD = ../$${XDE_PKG}/c/build/macosx/QtCreator/$${CORAL_BLD_CONFIG}
+XDE_BLD = ../$${XDE_PKG}/c/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
 XDE_LIB = $${XDE_BLD}/lib
 
 xde_cbase_LIBS += \
@@ -44,7 +39,7 @@ xde_ct_LIBS += \
 
 ########################################################################
 # medusaxde
-MEDUSAXDE_BLD = ../$${MEDUSAXDE_PKG}/c/build/macosx/QtCreator/$${CORAL_BLD_CONFIG}
+MEDUSAXDE_BLD = ../$${MEDUSAXDE_PKG}/c/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
 MEDUSAXDE_LIB = $${MEDUSAXDE_BLD}/lib
 
 medusaxde_cbase_LIBS += \
@@ -67,22 +62,43 @@ medusaxde_clibxslt_LIBS += \
 -lxml2 \
 
 ########################################################################
-# medusa
-MEDUSA_BLD = ../$${MEDUSA_PKG}/build/macosx/QtCreator/$${CORAL_BLD_CONFIG}
-MEDUSA_LIB = $${MEDUSA_BLD}/lib
+# nadir
+NADIR_BLD = ../$${NADIR_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
+NADIR_LIB = $${NADIR_BLD}/lib
+
+nadir_LIBS += \
+-L$${NADIR_LIB}/libnadir \
+-lnadir \
+-lpthread \
+-ldl \
+
+xosnadir_LIBS += \
+-L$${NADIR_LIB}/libxosnadir \
+-lxosnadir \
+-lpthread \
+-ldl \
 
 ########################################################################
-# xos
-XOS_BLD = ../$${XOS_PKG}/build/macosx/QtCreator/$${CORAL_BLD_CONFIG}
-XOS_LIB = $${XOS_BLD}/lib
+# medusa
+MEDUSA_BLD = ../$${MEDUSA_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
+MEDUSA_LIB = $${MEDUSA_BLD}/lib
+
+medusa_LIBS += \
+-L$${MEDUSA_LIB}/libmedusa \
+-lmedusa \
+
+xosmedusa_LIBS += \
+-L$${MEDUSA_LIB}/libxosmedusa \
+-lxosmedusa \
 
 ########################################################################
 # coral
 coral_LIBS += \
 -L$${CORAL_LIB}/libcoral \
 -lcoral \
--L$${XOS_LIB}/libxosnadir \
--lxosnadir \
--lpthread \
--ldl \
+$${nadir_LIBS} \
 
+xoscoral_LIBS += \
+-L$${CORAL_LIB}/libxoscoral \
+-lxoscoral \
+$${xosnadir_LIBS} \

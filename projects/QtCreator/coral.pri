@@ -18,13 +18,20 @@
 # Author: $author$
 #   Date: 12/15/2014
 ########################################################################
-
 CORAL_PKG = ../../../../..
 CORAL_BLD = ../..
 CORAL_PRJ = $${CORAL_PKG}
 CORAL_BIN = $${CORAL_BLD}/bin
 CORAL_LIB = $${CORAL_BLD}/lib
 CORAL_SRC = $${CORAL_PKG}/src
+
+CONFIG(debug, debug|release) {
+BUILD_CONFIG = Debug
+DEFINES += DEBUG_BUILD
+} else {
+BUILD_CONFIG = Release
+DEFINES += RELEASE_BUILD
+}
 
 ########################################################################
 # xde
@@ -74,6 +81,17 @@ $${MEDUSAXDE_SRC}/clib/cxml/cxslt \
 $${MEDUSAXDE_SRC}/clib/cxml \
 
 ########################################################################
+# nadir
+NADIR_PKG = $${CORAL_PKG}/../nadir
+NADIR_PRJ = $${NADIR_PKG}
+NADIR_SRC = $${NADIR_PKG}/src
+
+nadir_INCLUDEPATH += \
+$${NADIR_SRC} \
+
+nadir_DEFINES += \
+
+########################################################################
 # medusa
 MEDUSA_PKG = $${CORAL_PKG}/../medusa
 MEDUSA_PRJ = $${MEDUSA_PKG}
@@ -85,24 +103,13 @@ $${MEDUSA_SRC} \
 medusa_DEFINES += \
 
 ########################################################################
-# xos
-XOS_PKG = $${CORAL_PKG}/../nadir
-XOS_PRJ = $${XOS_PKG}
-XOS_SRC = $${XOS_PKG}/src
-
-xos_INCLUDEPATH += \
-$${XOS_SRC} \
-
-xos_DEFINES += \
-
-########################################################################
 # coral
 coral_INCLUDEPATH += \
 $${CORAL_SRC} \
 $${medusa_INCLUDEPATH} \
-$${xos_INCLUDEPATH} \
+$${nadir_INCLUDEPATH} \
 
 coral_DEFINES += \
 $${medusa_DEFINES} \
-$${xos_DEFINES} \
+$${nadir_DEFINES} \
 
