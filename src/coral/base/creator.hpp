@@ -22,10 +22,14 @@
 #define _CORAL_BASE_CREATOR_HPP
 
 #include "coral/base/base.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/base/creator.hpp"
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 
+#if !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 ///  Enum: creator_exception
 ///////////////////////////////////////////////////////////////////////
@@ -45,6 +49,8 @@ template
 using creatort = typename xos::base::creatort<TImplements>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace coral
 

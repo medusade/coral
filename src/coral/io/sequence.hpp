@@ -22,11 +22,15 @@
 #define _CORAL_IO_SEQUENCE_HPP
 
 #include "coral/base/base.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/io/sequence.hpp"
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 namespace io {
 
+#if !defined(USE_NADIR_BASE)
 typedef xos::io::sequence_implement sequence_implement;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: sequencet
@@ -45,6 +49,8 @@ typedef xos::io::sequence sequence;
 typedef xos::io::char_sequence char_sequence;
 typedef xos::io::wchar_sequence wchar_sequence;
 typedef xos::io::tchar_sequence tchar_sequence;
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace io
 } // namespace coral 

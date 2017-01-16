@@ -31,7 +31,11 @@
 #include "coral/inet/http/header.hpp"
 #include "coral/base/base.hpp"
 #include "coral/inet/cgi/main_opt.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/os/file/stream.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/io/crt/file_stream.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
 #define CORAL_INET_CGI_CATCH_ARGV_FILE_LABEL "arguments"
 #define CORAL_INET_CGI_CATCH_ENV_FILE_LABEL "environment"

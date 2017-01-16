@@ -22,14 +22,22 @@
 #define _CORAL_BASE_ARGV_HPP
 
 #include "coral/base/base.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/base/argv.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/base/argv.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 
 ///////////////////////////////////////////////////////////////////////
 /// argv
 ///////////////////////////////////////////////////////////////////////
+#if !defined(USE_NADIR_BASE)
 typedef xos::base::argv_t argv_t;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::argv_t argv_t;
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace coral
 

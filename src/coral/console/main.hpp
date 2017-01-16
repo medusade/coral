@@ -22,6 +22,7 @@
 #define _CORAL_CONSOLE_MAIN_HPP
 
 #include "coral/base/base.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/base/main.hpp"
 #include "xos/base/getopt/main.hpp"
 #include "xos/base/getopt/main_opt.hpp"
@@ -29,7 +30,11 @@
 #include "xos/io/main/in/reader.hpp"
 #include "xos/io/main/out/writer.hpp"
 #include "xos/io/main/err/writer.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/console/getopt/main.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
+#if !defined(USE_NADIR_BASE)
 #define CORAL_MAIN_LOGGING_OPTVAL_C XOS_MAIN_LOGGING_OPTVAL_C
 #define CORAL_MAIN_LOGGING_OPTARG XOS_MAIN_LOGGING_OPTARG
 #define CORAL_MAIN_LOGGING_OPTUSE XOS_MAIN_LOGGING_OPTUSE
@@ -38,14 +43,35 @@
 #define CORAL_MAIN_HELP_OPTARG XOS_MAIN_HELP_OPTARG
 #define CORAL_MAIN_HELP_OPTUSE XOS_MAIN_HELP_OPTUSE
 
+enum {
+    CORAL_MAIN_OPT_ARGUMENT_NONE     = XOS_MAIN_OPT_ARGUMENT_NONE,
+    CORAL_MAIN_OPT_ARGUMENT_REQUIRED = XOS_MAIN_OPT_ARGUMENT_REQUIRED,
+    CORAL_MAIN_OPT_ARGUMENT_OPTIONAL = XOS_MAIN_OPT_ARGUMENT_OPTIONAL
+};
+#else // !defined(USE_NADIR_BASE)
+#define CORAL_MAIN_LOGGING_OPTVAL_C NADIR_CONSOLE_GETOPT_MAIN_LOGGING_OPTVAL_C
+#define CORAL_MAIN_LOGGING_OPTARG NADIR_CONSOLE_GETOPT_MAIN_LOGGING_OPTARG
+#define CORAL_MAIN_LOGGING_OPTUSE NADIR_CONSOLE_GETOPT_MAIN_LOGGING_OPTUSE
+
+#define CORAL_MAIN_HELP_OPTVAL_C NADIR_CONSOLE_GETOPT_MAIN_HELP_OPTVAL_C
+#define CORAL_MAIN_HELP_OPTARG NADIR_CONSOLE_GETOPT_MAIN_HELP_OPTARG
+#define CORAL_MAIN_HELP_OPTUSE NADIR_CONSOLE_GETOPT_MAIN_HELP_OPTUSE
+
+enum {
+    CORAL_MAIN_OPT_ARGUMENT_NONE     = NADIR_CONSOLE_GETOPT_MAIN_OPT_ARGUMENT_NONE,
+    CORAL_MAIN_OPT_ARGUMENT_REQUIRED = NADIR_CONSOLE_GETOPT_MAIN_OPT_ARGUMENT_REQUIRED,
+    CORAL_MAIN_OPT_ARGUMENT_OPTIONAL = NADIR_CONSOLE_GETOPT_MAIN_OPT_ARGUMENT_OPTIONAL
+};
+#endif // !defined(USE_NADIR_BASE)
+
 namespace coral {
 namespace console {
 
 typedef int main_opt_argument_t;
 enum {
-    MAIN_OPT_ARGUMENT_NONE     = XOS_MAIN_OPT_ARGUMENT_NONE,
-    MAIN_OPT_ARGUMENT_REQUIRED = XOS_MAIN_OPT_ARGUMENT_REQUIRED,
-    MAIN_OPT_ARGUMENT_OPTIONAL = XOS_MAIN_OPT_ARGUMENT_OPTIONAL
+    MAIN_OPT_ARGUMENT_NONE     = CORAL_MAIN_OPT_ARGUMENT_NONE,
+    MAIN_OPT_ARGUMENT_REQUIRED = CORAL_MAIN_OPT_ARGUMENT_REQUIRED,
+    MAIN_OPT_ARGUMENT_OPTIONAL = CORAL_MAIN_OPT_ARGUMENT_OPTIONAL
 };
 
 } // namespace console
@@ -91,8 +117,10 @@ enum {
 
 } // namespace coral
 
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 #define CORAL_CONSOLE_MAIN_LOGGING_LEVELS_OPT "logging"
-#define CORAL_CONSOLE_MAIN_LOGGING_LEVELS_OPTARG_REQUIRED XOS_MAIN_OPT_ARGUMENT_REQUIRED
+#define CORAL_CONSOLE_MAIN_LOGGING_LEVELS_OPTARG_REQUIRED CORAL_MAIN_OPT_ARGUMENT_REQUIRED
 #define CORAL_CONSOLE_MAIN_LOGGING_LEVELS_OPTARG_RESULT 0
 #define CORAL_CONSOLE_MAIN_LOGGING_LEVELS_OPTARG CORAL_MAIN_LOGGING_OPTARG
 #define CORAL_CONSOLE_MAIN_LOGGING_LEVELS_OPTUSE CORAL_MAIN_LOGGING_OPTUSE
@@ -105,7 +133,7 @@ enum {
     CORAL_CONSOLE_MAIN_LOGGING_LEVELS_OPTVAL_C}, \
 
 #define CORAL_CONSOLE_MAIN_HELP_OPT "help"
-#define CORAL_CONSOLE_MAIN_HELP_OPTARG_REQUIRED XOS_MAIN_OPT_ARGUMENT_NONE
+#define CORAL_CONSOLE_MAIN_HELP_OPTARG_REQUIRED CORAL_MAIN_OPT_ARGUMENT_NONE
 #define CORAL_CONSOLE_MAIN_HELP_OPTARG_RESULT 0
 #define CORAL_CONSOLE_MAIN_HELP_OPTARG CORAL_MAIN_HELP_OPTARG
 #define CORAL_CONSOLE_MAIN_HELP_OPTUSE CORAL_MAIN_HELP_OPTUSE
@@ -130,8 +158,13 @@ enum {
 namespace coral {
 namespace console {
 
+#if !defined(USE_NADIR_BASE)
 typedef xos::base::getopt::main_implement main_implements;
 typedef xos::base::getopt::main main_extends;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::console::maint_implements main_implements;
+typedef nadir::console::getopt::main main_extends;
+#endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main
 ///////////////////////////////////////////////////////////////////////
@@ -153,9 +186,8 @@ public:
     (int optval, const char* optarg,
      const char* optname, int optind,
      int argc, char**argv, char**env) {
-        int err = on_logging_option
-        (CORAL_MAIN_LOGGING_OPTVAL_C,
-         optarg, optname, optind, argc, argv, env);
+        int err = Extends::on_logging_option
+        (CORAL_MAIN_LOGGING_OPTVAL_C, optarg, optname, optind, argc, argv, env);
         return err;
     }
     ///////////////////////////////////////////////////////////////////////
@@ -163,7 +195,8 @@ public:
     (int optval, const char* optarg,
      const char* optname, int optind,
      int argc, char**argv, char**env) {
-        int err = usage(argc, argv, env);
+        int err = Extends::on_usage_option
+        (optval, optarg, optname, optind, argc, argv, env);
         return err;
     }
 
@@ -233,6 +266,9 @@ namespace main {
 
 namespace argv {
 
+#if !defined(USE_NADIR_BASE)
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
@@ -247,12 +283,18 @@ using writert = typename xos::io::main::argv::writert
 <TChar, TWhat, TImplements, TExtends>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
+#if !defined(USE_NADIR_BASE)
 typedef xos::io::main::argv::writert<> writer;
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace argv
 
 namespace in {
 
+#if !defined(USE_NADIR_BASE)
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// readert
 ///////////////////////////////////////////////////////////////////////
@@ -268,12 +310,18 @@ using readert = typename xos::io::main::in::readert
 <TWhat, TSized, TEnd, VEnd, TMain, TImplements, TExtends>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
+#if !defined(USE_NADIR_BASE)
 typedef xos::io::main::in::readert<> reader;
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace in
 
 namespace out {
 
+#if !defined(USE_NADIR_BASE)
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
@@ -289,12 +337,18 @@ using writert = typename xos::io::main::out::writert
 <TWhat, TSized, TEnd, VEnd, TImplements, TExtends>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
+#if !defined(USE_NADIR_BASE)
 typedef xos::io::main::out::writert<> writer;
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace out
 
 namespace err {
 
+#if !defined(USE_NADIR_BASE)
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
@@ -310,7 +364,10 @@ using writert = typename xos::io::main::err::writert
 <TWhat, TSized, TEnd, VEnd, TImplements, TExtends>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
+#if !defined(USE_NADIR_BASE)
 typedef xos::io::main::err::writert<> writer;
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace err
 } // namespace main

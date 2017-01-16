@@ -22,11 +22,17 @@
 #define _CORAL_BASE_STRING_HPP
 
 #include "coral/base/types.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/base/string.hpp"
 #include "xos/base/string_base.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/base/string.hpp"
+#include "nadir/base/string_base.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 
+#if !defined(USE_NADIR_BASE)
 typedef xos::base::string_implements string_implements;
 typedef xos::base::string_extends string_extends;
 typedef xos::base::tstring_extends tstring_extends;
@@ -70,6 +76,15 @@ using string_baset = typename xos::base::string_baset
 typedef xos::base::string_base string_base_t;
 typedef xos::base::tstring_base tstring_base_t;
 typedef xos::base::wstring_base wstring_base_t;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::string_base string_base_t;
+typedef nadir::tstring_base tstring_base_t;
+typedef nadir::wstring_base wstring_base_t;
+
+typedef nadir::char_string string_t;
+typedef nadir::tchar_string tstring_t;
+typedef nadir::wchar_string wstring_t;
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace coral
 

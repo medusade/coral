@@ -21,7 +21,11 @@
 #ifndef _CORAL_BASE_BASE_HPP
 #define _CORAL_BASE_BASE_HPP
 
+#if !defined(USE_NADIR_BASE)
 #include "xos/base/base.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/base/base.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
 #if defined(CPP_11)
 #if !defined(USE_CPP_11)
@@ -31,8 +35,13 @@
 
 namespace coral {
 
+#if !defined(USE_NADIR_BASE)
 typedef xos::base::implement_base implement_base;
 typedef xos::base::base base;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::implement_base implement_base;
+typedef nadir::base base;
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace coral
 

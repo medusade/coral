@@ -23,10 +23,15 @@
 
 #include "coral/base/attached.hpp"
 #include "coral/base/creator.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/base/created.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/base/created.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 
+#if !defined(USE_NADIR_BASE)
 typedef xos::base::creator created_implements;
 typedef xos::base::base created_extends;
 ///////////////////////////////////////////////////////////////////////
@@ -45,6 +50,8 @@ using createdt = typename xos::base::createdt
 <TAttached, TUnattached, VUnattached, TImplements, TExtends>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace coral
 

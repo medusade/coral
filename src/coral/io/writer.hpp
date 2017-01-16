@@ -21,13 +21,17 @@
 #ifndef _CORAL_IO_WRITER_HPP
 #define _CORAL_IO_WRITER_HPP
 
+#if !defined(USE_NADIR_BASE)
 #include "xos/io/echoed/writer.hpp"
 #include "xos/io/writer.hpp"
 #include "xos/io/sequence.hpp"
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 namespace io {
 
+#if !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 ///  Class: writert
 ///////////////////////////////////////////////////////////////////////
@@ -46,9 +50,12 @@ typedef xos::io::writer writer;
 typedef xos::io::char_writer char_writer;
 typedef xos::io::wchar_writer wchar_writer;
 typedef xos::io::tchar_writer tchar_writer;
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 namespace echoed {
 
+#if !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 ///  Class: writert
 ///////////////////////////////////////////////////////////////////////
@@ -65,6 +72,8 @@ using writert = typename xos::io::echoed::writert
 #endif // defined(USE_CPP_11)
 
 typedef xos::io::echoed::writer writer;
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace echoed
 

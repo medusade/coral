@@ -41,7 +41,11 @@ typedef base writer_extends;
 template
 <typename TChar = char_t,
  typename TWhat = void,
+ #if !defined(USE_NADIR_BASE)
  class TWriter = xos::io::writert<TWhat, TChar>,
+ #else // !defined(USE_NADIR_BASE)
+ class TWriter = nadir::io::writert<TWhat, TChar>,
+ #endif // !defined(USE_NADIR_BASE)
  typename TWhich = variable::which_t,
  TWhich VFirst = variable::first, TWhich VLast = variable::last,
  class TName = variable::namet<TChar, TWhich>,
