@@ -50,7 +50,6 @@ namespace inet {
 namespace cgi {
 
 typedef console::main main_extends;
-//typedef console::main_implements main_implements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main_implements
 ///////////////////////////////////////////////////////////////////////
@@ -302,7 +301,7 @@ protected:
     ///////////////////////////////////////////////////////////////////////
     virtual int read_cgi_environment(int argc, char_t** argv, char_t** env) {
         int err = 0;
-        io::read::file f;
+        coral::io::read::file f;
 
         if ((open_file(f, catch_env_file_label_, catch_env_file_name_, true))) {
             inet::cgi::environment::variables::reader e;
@@ -618,7 +617,7 @@ protected:
     virtual bool set_file_mode_is_binary
     (FILE* file, bool mode_is_binary = true) {
         if ((file)) {
-            xos::os::file::stream fs(file);
+            io::file::stream fs(file);
             if ((fs.set_mode_is_binary(mode_is_binary))) {
                 return true;
             }

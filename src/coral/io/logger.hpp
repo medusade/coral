@@ -25,6 +25,7 @@
 #if !defined(USE_NADIR_BASE)
 #include "xos/io/logger.hpp"
 #else // !defined(USE_NADIR_BASE)
+#include "nadir/io/logger.hpp"
 #endif // !defined(USE_NADIR_BASE)
 
 #if !defined(USE_NADIR_BASE)
@@ -60,6 +61,12 @@
 #define CORAL_LOG_MESSAGE_DEBUGF XOS_LOG_MESSAGE_DEBUGF
 #define CORAL_LOG_MESSAGE_TRACEF XOS_LOG_MESSAGE_TRACEF
 #else // !defined(USE_NADIR_BASE)
+#define CORAL_LOG_FATAL LOG_FATAL
+#define CORAL_LOG_ERROR LOG_ERROR
+#define CORAL_LOG_WARN LOG_WARN
+#define CORAL_LOG_INFO LOG_INFO
+#define CORAL_LOG_DEBUG LOG_DEBUG
+#define CORAL_LOG_TRACE LOG_TRACE
 #endif // !defined(USE_NADIR_BASE)
 
 namespace coral {

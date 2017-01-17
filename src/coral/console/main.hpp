@@ -32,6 +32,7 @@
 #include "xos/io/main/err/writer.hpp"
 #else // !defined(USE_NADIR_BASE)
 #include "nadir/console/getopt/main.hpp"
+#include "nadir/io/main.hpp"
 #endif // !defined(USE_NADIR_BASE)
 
 #if !defined(USE_NADIR_BASE)
@@ -267,8 +268,6 @@ namespace main {
 namespace argv {
 
 #if !defined(USE_NADIR_BASE)
-#else // !defined(USE_NADIR_BASE)
-#endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
@@ -283,9 +282,9 @@ using writert = typename xos::io::main::argv::writert
 <TChar, TWhat, TImplements, TExtends>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
-#if !defined(USE_NADIR_BASE)
 typedef xos::io::main::argv::writert<> writer;
 #else // !defined(USE_NADIR_BASE)
+typedef nadir::io::main::argv::writer writer;
 #endif // !defined(USE_NADIR_BASE)
 
 } // namespace argv
@@ -293,8 +292,6 @@ typedef xos::io::main::argv::writert<> writer;
 namespace in {
 
 #if !defined(USE_NADIR_BASE)
-#else // !defined(USE_NADIR_BASE)
-#endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// readert
 ///////////////////////////////////////////////////////////////////////
@@ -310,9 +307,9 @@ using readert = typename xos::io::main::in::readert
 <TWhat, TSized, TEnd, VEnd, TMain, TImplements, TExtends>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
-#if !defined(USE_NADIR_BASE)
 typedef xos::io::main::in::readert<> reader;
 #else // !defined(USE_NADIR_BASE)
+typedef nadir::io::main::in::reader reader;
 #endif // !defined(USE_NADIR_BASE)
 
 } // namespace in
@@ -320,8 +317,6 @@ typedef xos::io::main::in::readert<> reader;
 namespace out {
 
 #if !defined(USE_NADIR_BASE)
-#else // !defined(USE_NADIR_BASE)
-#endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
@@ -337,9 +332,9 @@ using writert = typename xos::io::main::out::writert
 <TWhat, TSized, TEnd, VEnd, TImplements, TExtends>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
-#if !defined(USE_NADIR_BASE)
 typedef xos::io::main::out::writert<> writer;
 #else // !defined(USE_NADIR_BASE)
+typedef nadir::io::main::out::writer writer;
 #endif // !defined(USE_NADIR_BASE)
 
 } // namespace out
@@ -347,8 +342,6 @@ typedef xos::io::main::out::writert<> writer;
 namespace err {
 
 #if !defined(USE_NADIR_BASE)
-#else // !defined(USE_NADIR_BASE)
-#endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
@@ -364,9 +357,9 @@ using writert = typename xos::io::main::err::writert
 <TWhat, TSized, TEnd, VEnd, TImplements, TExtends>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
-#if !defined(USE_NADIR_BASE)
 typedef xos::io::main::err::writert<> writer;
 #else // !defined(USE_NADIR_BASE)
+typedef nadir::io::main::err::writer writer;
 #endif // !defined(USE_NADIR_BASE)
 
 } // namespace err

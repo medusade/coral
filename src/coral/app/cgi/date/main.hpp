@@ -21,7 +21,7 @@
 #ifndef _CORAL_APP_CGI_DATE_MAIN_HPP
 #define _CORAL_APP_CGI_DATE_MAIN_HPP
 
-#include "coral/inet/cgi/main.hpp"
+#include "coral/app/cgi/main.hpp"
 
 namespace coral {
 namespace app {
@@ -48,11 +48,10 @@ public:
 protected:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual int console_run(int argc, char_t** argv, char_t** env) {
+    virtual int run_cgi(int argc, char_t** argv, char_t** env) {
         const char* chars = 0;
         size_t length = 0;
-        string_t date;
-
+        string_t date("1/1/1");
         if ((chars = date.has_chars(length))) {
             this->out(chars, length);
         }

@@ -19,7 +19,11 @@
 ///   Date: 12/15/2014
 ///////////////////////////////////////////////////////////////////////
 #include "coral/console/main_main.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/base/main_main.cpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/console/main_main.cpp"
+#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 namespace console {

@@ -187,6 +187,7 @@ protected:
             }
         } else {
             value_->set();
+            CORAL_LOG_DEBUG("...value = \"" << value_->chars() << "\"");
             on_read_ = &Derives::on_read_value_cr;
         }
         return true;

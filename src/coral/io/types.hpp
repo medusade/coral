@@ -25,6 +25,7 @@
 #if !defined(USE_NADIR_BASE)
 #include "xos/io/types.hpp"
 #else // !defined(USE_NADIR_BASE)
+#include "nadir/io/chars.hpp"
 #endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
@@ -34,6 +35,7 @@ namespace chars {
 #if !defined(USE_NADIR_BASE)
 typedef xos::io::chars::reader reader;
 #else // !defined(USE_NADIR_BASE)
+typedef nadir::io::chars::reader reader;
 #endif // !defined(USE_NADIR_BASE)
 } // namespace chars
 
