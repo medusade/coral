@@ -19,6 +19,8 @@
 #   Date: 1/13/2017
 ########################################################################
 
+datecgi_TARGET = coral-datecgi
+
 datecgi_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
 
@@ -28,9 +30,13 @@ USE_NADIR_BASE \
 
 ########################################################################
 datecgi_HEADERS += \
+$${NADIR_SRC}/nadir/console/getopt/main.hpp \
 $${NADIR_SRC}/nadir/console/getopt/main_opt.hpp \
+$${NADIR_SRC}/nadir/console/main.hpp \
 $${NADIR_SRC}/nadir/io/crt/file_stream.hpp \
 $${NADIR_SRC}/nadir/io/crt/file.hpp \
+$${NADIR_SRC}/nadir/io/main.hpp \
+$${NADIR_SRC}/nadir/io/chars.hpp \
 $${NADIR_SRC}/nadir/io/stream.hpp \
 $${NADIR_SRC}/nadir/io/writer.hpp \
 $${NADIR_SRC}/nadir/io/reader.hpp \
@@ -49,9 +55,14 @@ $${NADIR_SRC}/nadir/base/argv.cpp \
 
 ########################################################################
 datecgi_HEADERS += \
+$${CORAL_SRC}/coral/io/logger.hpp \
+$${CORAL_SRC}/coral/io/file.hpp \
+$${CORAL_SRC}/coral/io/types.hpp \
 $${CORAL_SRC}/coral/base/base.hpp \
 
 datecgi_SOURCES += \
+$${CORAL_SRC}/coral/io/file.cpp \
+$${CORAL_SRC}/coral/io/types.cpp \
 $${CORAL_SRC}/coral/base/base.cpp \
 
 ########################################################################
@@ -61,6 +72,13 @@ $${CORAL_SRC}/coral/console/main.hpp \
 $${CORAL_SRC}/coral/console/main_main.hpp \
 
 datecgi_SOURCES += \
-$${CORAL_SRC}/coral/app/cgi/date/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
+$${CORAL_SRC}/coral/app/cgi/date/main.cpp \
 
+########################################################################
+datecgi_LIBS += \
+$${coral_LIBS} \
+
+########################################################################
+# NO Qt
+QT -= gui core

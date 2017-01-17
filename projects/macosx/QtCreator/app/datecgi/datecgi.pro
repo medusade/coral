@@ -22,7 +22,7 @@ include(../../../../QtCreator/coral.pri)
 include(../../coral.pri)
 include(../../../../QtCreator/app/datecgi/datecgi.pri)
 
-TARGET = datecgi
+TARGET = $${datecgi_TARGET}
 
 INCLUDEPATH += \
 $${datecgi_INCLUDEPATH} \
@@ -39,6 +39,5 @@ $${datecgi_SOURCES} \
 
 ########################################################################
 LIBS += \
-$${coral_LIBS} \
-$${nadir_LIBS} \
+$${datecgi_LIBS} \
 
