@@ -13,45 +13,24 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main.hpp
+///   File: main.cpp
 ///
 /// Author: $author$
-///   Date: 1/13/2017
+///   Date: 1/17/2017
 ///////////////////////////////////////////////////////////////////////
-#ifndef _CORAL_APP_CGI_DATE_MAIN_HPP
-#define _CORAL_APP_CGI_DATE_MAIN_HPP
-
 #include "coral/app/cgi/time/main.hpp"
 
 namespace coral {
 namespace app {
 namespace cgi {
-namespace date {
+namespace time {
 
-typedef time::main_implements main_implements;
-typedef time::main main_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main
 ///////////////////////////////////////////////////////////////////////
-class _EXPORT_CLASS main: virtual public main_implements, public main_extends {
-public:
-    typedef main_implements Implements;
-    typedef main_extends Extends;
+static main the_main;
 
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    main(): Extends(true, false) {
-    }
-    virtual ~main() {
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-};
-
-} // namespace date 
+} // namespace time
 } // namespace cgi 
 } // namespace app 
 } // namespace coral 
-
-#endif // _CORAL_APP_CGI_DATE_MAIN_HPP 
