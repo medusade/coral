@@ -74,9 +74,13 @@
 
     <UserMacro
         Name="NADIR_DEFINES"
-        Value="WINSOCK_2"
+        Value="USE_NADIR_BASE;WINSOCK_2"
     />
-    <UserMacro
+  <UserMacro
+      Name="XOSNADIR_DEFINES"
+      Value="WINSOCK_2"
+    />
+  <UserMacro
         Name="NADIR_INCLUDE_DIRS"
         Value="$(NADIR_SOURCE_DIR);$(NADIR_SOURCE_DIR)/platform/windows/unix;$(NADIR_SOURCE_DIR)/thirdparty/gnu/getopt"
     />
@@ -88,8 +92,12 @@
         Name="NADIR_LIBS"
         Value="libnadir.lib Ws2_32.lib"
     />
+  <UserMacro
+      Name="XOSNADIR_LIBS"
+      Value="libxosnadir.lib Ws2_32.lib"
+    />
 
-    <!--===============================================-->
+  <!--===============================================-->
 
 </VisualStudioPropertySheet>
 

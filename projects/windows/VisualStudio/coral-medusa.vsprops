@@ -76,7 +76,11 @@
         Name="MEDUSA_DEFINES"
         Value=""
     />
-    <UserMacro
+  <UserMacro
+      Name="XOSMEDUSA_DEFINES"
+      Value=""
+    />
+  <UserMacro
         Name="MEDUSA_INCLUDE_DIRS"
         Value="$(MEDUSA_SOURCE_DIR)"
     />
@@ -88,7 +92,11 @@
         Name="MEDUSA_LIBS"
         Value="libmedusa.lib"
     />
+  <UserMacro
+      Name="XOSMEDUSA_LIBS"
+      Value="libxosmedusa.lib"
+    />
 
-    <!--===============================================-->
+  <!--===============================================-->
 
 </VisualStudioPropertySheet>

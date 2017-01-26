@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="cgicatcher"
-	ProjectGUID="{AF6F408C-6CF2-4E0E-864F-A1921794A252}"
-	RootNamespace="cgicatcher"
+	Name="libxoscoral"
+	ProjectGUID="{FD659437-36C8-458B-93E9-A611AB4FAB45}"
+	RootNamespace="libxoscoral"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -21,9 +21,9 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(CORAL_BIN)"
+			OutputDirectory="$(CORAL_LIB)"
 			IntermediateDirectory="$(CORAL_OBJ)"
-			ConfigurationType="1"
+			ConfigurationType="4"
 			InheritedPropertySheets="..\coral-vcversion.vsprops;..\..\coral-nadir.vsprops;..\..\coral-medusa.vsprops;..\..\coral.vsprops"
 			CharacterSet="1"
 			>
@@ -46,7 +46,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS)"
-				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;_DEBUG;_CONSOLE"
+				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;_DEBUG;_LIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
@@ -64,19 +64,10 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="$(XOSCORAL_LIBS)"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
-				GenerateDebugInformation="true"
-				SubSystem="1"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -88,7 +79,68 @@
 				Name="VCFxCopTool"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="$(CORAL_LIB)"
+			IntermediateDirectory="$(CORAL_OBJ)"
+			ConfigurationType="4"
+			InheritedPropertySheets="..\coral-vcversion.vsprops;..\..\coral-nadir.vsprops;..\..\coral-medusa.vsprops;..\..\coral.vsprops"
+			CharacterSet="1"
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS)"
+				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;NDEBUG;_LIB"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -96,9 +148,9 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|x64"
-			OutputDirectory="$(CORAL_BIN)"
+			OutputDirectory="$(CORAL_LIB)"
 			IntermediateDirectory="$(CORAL_OBJ)"
-			ConfigurationType="1"
+			ConfigurationType="4"
 			InheritedPropertySheets="..\coral-vcversion.vsprops;..\..\coral-nadir.vsprops;..\..\coral-medusa.vsprops;..\..\coral.vsprops"
 			CharacterSet="1"
 			>
@@ -122,7 +174,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS)"
-				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;_DEBUG;_CONSOLE"
+				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;_DEBUG;_LIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
@@ -140,19 +192,10 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="$(XOSCORAL_LIBS)"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
-				GenerateDebugInformation="true"
-				SubSystem="1"
-				TargetMachine="17"
+				Name="VCLibrarianTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -162,87 +205,6 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Release|Win32"
-			OutputDirectory="$(CORAL_BIN)"
-			IntermediateDirectory="$(CORAL_OBJ)"
-			ConfigurationType="1"
-			InheritedPropertySheets="..\coral-vcversion.vsprops;..\..\coral-nadir.vsprops;..\..\coral-medusa.vsprops;..\..\coral.vsprops"
-			CharacterSet="1"
-			WholeProgramOptimization="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS)"
-				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;NDEBUG;_CONSOLE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="$(XOSCORAL_LIBS)"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
-				GenerateDebugInformation="true"
-				SubSystem="1"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				TargetMachine="1"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -250,9 +212,9 @@
 		</Configuration>
 		<Configuration
 			Name="Release|x64"
-			OutputDirectory="$(CORAL_BIN)"
+			OutputDirectory="$(CORAL_LIB)"
 			IntermediateDirectory="$(CORAL_OBJ)"
-			ConfigurationType="1"
+			ConfigurationType="4"
 			InheritedPropertySheets="..\coral-vcversion.vsprops;..\..\coral-nadir.vsprops;..\..\coral-medusa.vsprops;..\..\coral.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
@@ -278,7 +240,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS)"
-				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;NDEBUG;_CONSOLE"
+				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
@@ -295,21 +257,10 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="$(XOSCORAL_LIBS)"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
-				GenerateDebugInformation="true"
-				SubSystem="1"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				TargetMachine="17"
+				Name="VCLibrarianTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -319,9 +270,6 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -337,11 +285,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\..\..\..\src\coral\app\cgi\catcher\main.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\..\src\coral\console\main_main.cpp"
+				RelativePath="..\..\..\..\..\src\coral\base\base.cpp"
 				>
 			</File>
 		</Filter>
@@ -351,7 +295,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\..\..\..\..\src\coral\app\cgi\catcher\main.hpp"
+				RelativePath="..\..\..\..\..\src\coral\base\base.hpp"
 				>
 			</File>
 		</Filter>

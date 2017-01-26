@@ -24,6 +24,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgicatcher", "cgicatcher\cg
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgithrower", "cgithrower\cgithrower.vcproj", "{EFB05133-0830-4611-A4F6-DCFF872B5BEE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libxoscoral", "libxoscoral\libxoscoral.vcproj", "{FD659437-36C8-458B-93E9-A611AB4FAB45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -58,6 +60,12 @@ Global
 		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Release|Win32.ActiveCfg = Release|Win32
 		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Release|Win32.Build.0 = Release|Win32
 		{EFB05133-0830-4611-A4F6-DCFF872B5BEE}.Release|x64.ActiveCfg = Release|Win32
+		{FD659437-36C8-458B-93E9-A611AB4FAB45}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FD659437-36C8-458B-93E9-A611AB4FAB45}.Debug|Win32.Build.0 = Debug|Win32
+		{FD659437-36C8-458B-93E9-A611AB4FAB45}.Debug|x64.ActiveCfg = Debug|Win32
+		{FD659437-36C8-458B-93E9-A611AB4FAB45}.Release|Win32.ActiveCfg = Release|Win32
+		{FD659437-36C8-458B-93E9-A611AB4FAB45}.Release|Win32.Build.0 = Release|Win32
+		{FD659437-36C8-458B-93E9-A611AB4FAB45}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,5 +75,6 @@ Global
 		{AF6F408C-6CF2-4E0E-864F-A1921794A252} = {4ACDE6A8-86C9-4FA3-87B5-885AF34EAE4C}
 		{EFB05133-0830-4611-A4F6-DCFF872B5BEE} = {4ACDE6A8-86C9-4FA3-87B5-885AF34EAE4C}
 		{7EE9045A-3676-4DAA-AED8-6196922B198D} = {88DF86FB-5863-4C17-87FE-8EE902E951E6}
+		{FD659437-36C8-458B-93E9-A611AB4FAB45} = {88DF86FB-5863-4C17-87FE-8EE902E951E6}
 	EndGlobalSection
 EndGlobal

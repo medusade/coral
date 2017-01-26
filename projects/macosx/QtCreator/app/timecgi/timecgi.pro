@@ -13,35 +13,31 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: datecgi.pri
+#   File: timecgi.pro
 #
 # Author: $author$
-#   Date: 1/13/2017
+#   Date: 1/17/2017
 ########################################################################
+include(../../../../QtCreator/coral.pri)
+include(../../coral.pri)
+include(../../../../QtCreator/app/timecgi/timecgi.pri)
 
-datecgi_TARGET = coral-datecgi
+TARGET = $${timecgi_TARGET}
 
-datecgi_INCLUDEPATH += \
-$${coral_INCLUDEPATH} \
+INCLUDEPATH += \
+$${timecgi_INCLUDEPATH} \
 
-datecgi_DEFINES += \
-$${coral_DEFINES} \
-USE_NADIR_BASE \
-
-########################################################################
-datecgi_HEADERS += \
-$${CORAL_SRC}/coral/app/cgi/date/main.hpp \
-$${CORAL_SRC}/coral/console/main.hpp \
-$${CORAL_SRC}/coral/console/main_main.hpp \
-
-datecgi_SOURCES += \
-$${CORAL_SRC}/coral/console/main_main.cpp \
-$${CORAL_SRC}/coral/app/cgi/date/main.cpp \
+DEFINES += \
+$${timecgi_DEFINES} \
 
 ########################################################################
-datecgi_LIBS += \
-$${coral_LIBS} \
+HEADERS += \
+$${timecgi_HEADERS} \
+
+SOURCES += \
+$${timecgi_SOURCES} \
 
 ########################################################################
-# NO Qt
-QT -= gui core
+LIBS += \
+$${timecgi_LIBS} \
+

@@ -74,7 +74,11 @@
         Name="CORAL_DEFINES"
         Value="$(NADIR_DEFINES)"
     />
-    <UserMacro
+  <UserMacro
+      Name="XOSCORAL_DEFINES"
+      Value="$(XOSNADIR_DEFINES)"
+    />
+  <UserMacro
         Name="CORAL_INCLUDE_DIRS"
         Value="$(CORAL_SOURCE_DIR);$(MEDUSA_INCLUDE_DIRS);$(NADIR_INCLUDE_DIRS)"
     />
@@ -86,7 +90,11 @@
         Name="CORAL_LIBS"
         Value="libcoral.lib $(NADIR_LIBS)"
     />
+  <UserMacro
+      Name="XOSCORAL_LIBS"
+      Value="libxoscoral.lib $(XOSNADIR_LIBS)"
+    />
 
-    <!--===============================================-->
+  <!--===============================================-->
 
 </VisualStudioPropertySheet>
