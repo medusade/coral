@@ -473,6 +473,20 @@ protected:
     virtual const char_t* content_type() const {
         return content_type_value_.chars();
     }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* content_type_text() const {
+        const char* chars = inet::http::content::type::name::of(inet::http::content::type::text);
+        return chars;
+    }
+    virtual const char_t* content_type_html() const {
+        const char* chars = inet::http::content::type::name::of(inet::http::content::type::html);
+        return chars;
+    }
+    virtual const char_t* content_type_xml() const {
+        const char* chars = inet::http::content::type::name::of(inet::http::content::type::xml);
+        return chars;
+    }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -534,7 +548,11 @@ protected:
 #if defined(__GNUC__)
             char_t chars[length + 3];
 #else // defined(__GNUC__)
+#if !defined(USE_NADIR_BASE)
             xos::base::arrayt<char_t> a(length + 3);
+#else // !defined(USE_NADIR_BASE)
+            nadir::arrayt<char_t> a(length + 3);
+#endif // !defined(USE_NADIR_BASE)
             char_t* chars = a.elements();
 #endif // defined(__GNUC__)
 
@@ -571,7 +589,11 @@ protected:
 #if defined(__GNUC__)
                 char_t chars[length+3];
 #else // defined(__GNUC__)
+#if !defined(USE_NADIR_BASE)
                 xos::base::arrayt<char_t> a(length + 3);
+#else // !defined(USE_NADIR_BASE)
+                nadir::arrayt<char_t> a(length + 3);
+#endif // !defined(USE_NADIR_BASE)
                 char_t* chars = a.elements();
 #endif // defined(__GNUC__)
 
