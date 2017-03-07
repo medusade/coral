@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2015 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,31 +13,33 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgithrower.pro
+#   File: odbccgi.pro
 #
 # Author: $author$
-#   Date: 2/15/2015
+#   Date: 2/27/2017
 ########################################################################
 include(../../../../QtCreator/coral.pri)
 include(../../coral.pri)
-include(../../../../QtCreator/app/cgithrower/cgithrower.pri)
+include(../../../../QtCreator/etiris.pri)
+include(../../etiris.pri)
+include(../../../../QtCreator/app/odbccgi/odbccgi.pri)
 
-TARGET = $${cgithrower_TARGET}
+TARGET = $${odbccgi_TARGET}
 
 INCLUDEPATH += \
-$${cgithrower_INCLUDEPATH} \
+$${odbccgi_INCLUDEPATH} \
 
 DEFINES += \
-$${cgithrower_DEFINES} \
+$${odbccgi_DEFINES} \
 
 ########################################################################
 HEADERS += \
-$${cgithrower_HEADERS} \
+$${odbccgi_HEADERS} \
 
 SOURCES += \
-$${cgithrower_SOURCES} \
+$${odbccgi_SOURCES} \
 
 ########################################################################
 LIBS += \
-$${cgithrower_LIBS} \
+$${odbccgi_LIBS} \
 

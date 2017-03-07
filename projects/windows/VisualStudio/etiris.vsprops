@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <!--========================================================================-->
-<!-- Copyright (c) 1988-2015 $organization$                                 -->
+<!-- Copyright (c) 1988-2017 $organization$                                 -->
 <!--                                                                        -->
 <!-- This software is provided by the author and contributors ``as is''     -->
 <!-- and any express or implied warranties, including, but not limited to,  -->
@@ -14,98 +14,86 @@
 <!-- or otherwise) arising in any way out of the use of this software,      -->
 <!-- even if advised of the possibility of such damage.                     -->
 <!--                                                                        -->
-<!--   File: coral-nadir.vsprops                                            -->
+<!--   File: etiris.vsprops                                                 -->
 <!--                                                                        -->
 <!-- Author: $author$                                                       -->
-<!--   Date: 4/9/2015                                                       -->
+<!--   Date: 2/24/2017                                                      -->
 <!--========================================================================-->
 <VisualStudioPropertySheet
     ProjectType="Visual C++"
     Version="8.00"
-    Name="coral-nadir">
+    Name="etiris">
 
     <!--===============================================-->
-  
+
     <UserMacro
-        Name="NADIR_GROUP"
+        Name="ETIRIS_GROUP"
         Value=""
     />
     <UserMacro
-        Name="NADIR_NAME"
-        Value="nadir"
+        Name="ETIRIS_NAME"
+        Value="etiris"
     />
     <UserMacro
-        Name="NADIR_VERSION"
+        Name="ETIRIS_VERSION"
         Value=""
     />
     <UserMacro
-        Name="NADIR_DIR"
-        Value="$(NADIR_GROUP)$(NADIR_NAME)$(NADIR_VERSION)"
+        Name="ETIRIS_DIR"
+        Value="$(ETIRIS_GROUP)$(ETIRIS_NAME)$(ETIRIS_VERSION)"
     />
     <UserMacro
-        Name="NADIR_SOURCE_DIR"
-        Value="$(SOURCE_ROOT_DIR)/$(NADIR_DIR)/src"
+        Name="ETIRIS_SOURCE_DIR"
+        Value="$(SOURCE_ROOT_DIR)/$(ETIRIS_DIR)/src"
     />
     <UserMacro
-        Name="NADIR_BUILD_DIR"
-        Value="$(SOURCE_BUILD_DIR)/$(NADIR_DIR)/build"
+        Name="ETIRIS_BUILD_DIR"
+        Value="$(SOURCE_BUILD_DIR)/$(ETIRIS_DIR)"
     />
 
     <!--===============================================-->
 
+
     <UserMacro
-        Name="NADIR_BUILD"
-        Value="$(NADIR_BUILD_DIR)/$(PlatformName)/$(VCVersion)/$(ConfigurationName)"
+        Name="ETIRIS_BUILD"
+        Value="$(ETIRIS_BUILD_DIR)/build/$(PlatformName)/$(VCVersion)/$(ConfigurationName)"
     />
     <UserMacro
-        Name="NADIR_OBJ"
-        Value="$(NADIR_BUILD)/obj/$(ProjectName)"
+        Name="ETIRIS_OBJ"
+        Value="$(ETIRIS_BUILD)/obj"
     />
     <UserMacro
-        Name="NADIR_LIB"
-        Value="$(NADIR_BUILD)/lib"
+        Name="ETIRIS_LIB"
+        Value="$(ETIRIS_BUILD)/lib"
     />
     <UserMacro
-        Name="NADIR_BIN"
-        Value="$(NADIR_BUILD)/bin"
+        Name="ETIRIS_BIN"
+        Value="$(ETIRIS_BUILD)/bin"
+    />
+
+  <UserMacro
+    Name="ETIRIS_DEBUG_DEFINES"
+    Value="$(NADIR_DEBUG_DEFINES)"
+    />
+  <UserMacro
+      Name="ETIRIS_RELEASE_DEFINES"
+      Value="$(NADIR_RELEASE_DEFINES)"
+    />
+
+  <UserMacro
+        Name="ETIRIS_INCLUDE_DIRS"
+        Value="$(ETIRIS_SOURCE_DIR);$(NADIR_INCLUDE_DIRS)"
+    />
+    <UserMacro
+        Name="ETIRIS_LIB_DIRS"
+        Value="$(ETIRIS_LIB);$(NADIR_LIB_DIRS)"
+    />
+    <UserMacro
+        Name="ETIRIS_LIBS"
+        Value="$(NADIR_LIBS)"
     />
 
     <!--===============================================-->
-
-    <UserMacro
-        Name="NADIR_DEFINES"
-        Value="USE_NADIR_BASE;WINSOCK_2"
-    />
-  <UserMacro
-      Name="NADIR_DEBUG_DEFINES"
-      Value="$(NADIR_DEFINES);DEBUG_BUILD"
-    />
-  <UserMacro
-      Name="NADIR_RELEASE_DEFINES"
-      Value="$(NADIR_DEFINES);RELEASE_BUILD"
-    />
-  <UserMacro
-      Name="XOSNADIR_DEFINES"
-      Value="WINSOCK_2"
-    />
-  <UserMacro
-        Name="NADIR_INCLUDE_DIRS"
-        Value="$(NADIR_SOURCE_DIR);$(NADIR_SOURCE_DIR)/platform/windows/unix;$(NADIR_SOURCE_DIR)/thirdparty/gnu/getopt"
-    />
-    <UserMacro
-        Name="NADIR_LIB_DIRS"
-        Value="$(NADIR_LIB)"
-    />
-    <UserMacro
-        Name="NADIR_LIBS"
-        Value="libnadir.lib Ws2_32.lib"
-    />
-  <UserMacro
-      Name="XOSNADIR_LIBS"
-      Value="libxosnadir.lib Ws2_32.lib"
-    />
-
-  <!--===============================================-->
 
 </VisualStudioPropertySheet>
 

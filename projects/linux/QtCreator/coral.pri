@@ -62,18 +62,45 @@ medusaxde_clibxslt_LIBS += \
 -lxml2 \
 
 ########################################################################
-# xos
-XOS_BLD = ../$${XOS_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
-XOS_LIB = $${XOS_BLD}/lib
+# nadir
+NADIR_BLD = ../$${NADIR_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
+NADIR_LIB = $${NADIR_BLD}/lib
+
+nadir_LIBS += \
+-L$${NADIR_LIB}/libnadir \
+-lnadir \
+-lpthread \
+-ldl \
+-lrt \
+
+xosnadir_LIBS += \
+-L$${NADIR_LIB}/libxosnadir \
+-lxosnadir \
+-lpthread \
+-ldl \
+-lrt \
+
+########################################################################
+# medusa
+MEDUSA_BLD = ../$${MEDUSA_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
+MEDUSA_LIB = $${MEDUSA_BLD}/lib
+
+medusa_LIBS += \
+-L$${MEDUSA_LIB}/libmedusa \
+-lmedusa \
+
+xosmedusa_LIBS += \
+-L$${MEDUSA_LIB}/libxosmedusa \
+-lxosmedusa \
 
 ########################################################################
 # coral
 coral_LIBS += \
 -L$${CORAL_LIB}/libcoral \
 -lcoral \
--L$${XOS_LIB}/libxosnadir \
--lxosnadir \
--lpthread \
--ldl \
--lrt \
+$${nadir_LIBS} \
 
+xoscoral_LIBS += \
+-L$${CORAL_LIB}/libxoscoral \
+-lxoscoral \
+$${xosnadir_LIBS} \

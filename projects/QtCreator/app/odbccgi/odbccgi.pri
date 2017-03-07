@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2015 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,31 +13,37 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgithrower.pro
+#   File: odbccgi.pri
 #
 # Author: $author$
-#   Date: 2/15/2015
+#   Date: 2/27/2017
 ########################################################################
-include(../../../../QtCreator/coral.pri)
-include(../../coral.pri)
-include(../../../../QtCreator/app/cgithrower/cgithrower.pri)
 
-TARGET = $${cgithrower_TARGET}
+odbccgi_TARGET = coral-odbccgi
 
-INCLUDEPATH += \
-$${cgithrower_INCLUDEPATH} \
+odbccgi_INCLUDEPATH += \
+$${coral_INCLUDEPATH} \
+$${etiris_INCLUDEPATH} \
 
-DEFINES += \
-$${cgithrower_DEFINES} \
-
-########################################################################
-HEADERS += \
-$${cgithrower_HEADERS} \
-
-SOURCES += \
-$${cgithrower_SOURCES} \
+odbccgi_DEFINES += \
+$${coral_DEFINES} \
+$${etiris_DEFINES} \
 
 ########################################################################
-LIBS += \
-$${cgithrower_LIBS} \
+odbccgi_HEADERS += \
+$${CORAL_SRC}/coral/app/cgi/odbc/main.hpp \
+$${CORAL_SRC}/coral/console/main.hpp \
+$${CORAL_SRC}/coral/console/main_main.hpp \
 
+odbccgi_SOURCES += \
+$${CORAL_SRC}/coral/console/main_main.cpp \
+$${CORAL_SRC}/coral/app/cgi/odbc/main.cpp \
+
+########################################################################
+odbccgi_LIBS += \
+$${coral_LIBS} \
+$${etiris_LIBS} \
+
+########################################################################
+# NO Qt
+QT -= gui core
