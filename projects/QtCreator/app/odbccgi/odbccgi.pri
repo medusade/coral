@@ -31,6 +31,12 @@ $${etiris_DEFINES} \
 
 ########################################################################
 odbccgi_HEADERS += \
+$${ETIRIS_SRC}/etiris/db/odbc/cgi/Main.hpp \
+
+odbccgi_SOURCES += \
+
+########################################################################
+odbccgi_HEADERS += \
 $${CORAL_SRC}/coral/app/cgi/odbc/main.hpp \
 $${CORAL_SRC}/coral/console/main.hpp \
 $${CORAL_SRC}/coral/console/main_main.hpp \
