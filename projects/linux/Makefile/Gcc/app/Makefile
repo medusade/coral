@@ -38,8 +38,9 @@ $(PKG)/$(PRJ)/app/coral \
 $(PKG)/$(PRJ)/app/cgi \
 $(PKG)/$(PRJ)/app/cgicatcher \
 $(PKG)/$(PRJ)/app/cgithrower \
+
+old_SRC_DIRS = \
 $(PKG)/$(PRJ)/app/libxsltcgi \
 $(PKG)/$(PRJ)/app/tcgi \
 
 include $(PKG)/$(PRJ)/Makedirs
-
