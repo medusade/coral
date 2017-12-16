@@ -25,7 +25,10 @@
 #include "coral/mt/os/process.hpp"
 #include "coral/mt/os/pipe.hpp"
 #include "coral/io/os/file.hpp"
-#include "coral/base/base.hpp"
+#include "coral/io/writer.hpp"
+#include "coral/io/reader.hpp"
+#include "coral/base/argv.hpp"
+#include "coral/base/created.hpp"
 
 namespace coral {
 namespace inet {

@@ -24,6 +24,7 @@
 #include "coral/inet/cgi/environment/variables/values.hpp"
 #include "coral/inet/cgi/environment/variable/name.hpp"
 #include "coral/inet/cgi/environment/variable/which.hpp"
+#include "coral/base/string.hpp"
 
 namespace coral {
 namespace inet {

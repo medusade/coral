@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2015 $organization$
+/// Copyright (c) 1988-2017 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,25 +13,15 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main.cpp
+///   File: time.cpp
 ///
 /// Author: $author$
-///   Date: 1/15/2015
+///   Date: 12/15/2017
 ///////////////////////////////////////////////////////////////////////
-#include "coral/app/cgi/libxslt/main.hpp"
+#include "coral/os/time.hpp"
 
 namespace coral {
-namespace app {
-namespace cgi {
-namespace libxslt {
+namespace os {
 
-///////////////////////////////////////////////////////////////////////
-///  Class: main
-///////////////////////////////////////////////////////////////////////
-static main the_main;
-
-} // namespace libxslt 
-} // namespace cgi 
-} // namespace app 
+} // namespace os 
 } // namespace coral 
-

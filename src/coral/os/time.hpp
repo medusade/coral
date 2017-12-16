@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2015 $organization$
+/// Copyright (c) 1988-2017 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,25 +13,43 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main.cpp
+///   File: time.hpp
 ///
 /// Author: $author$
-///   Date: 1/15/2015
+///   Date: 12/15/2017
 ///////////////////////////////////////////////////////////////////////
-#include "coral/app/cgi/libxslt/main.hpp"
+#ifndef _CORAL_OS_TIME_HPP
+#define _CORAL_OS_TIME_HPP
+
+#include "coral/os/os.hpp"
+
+#if !defined(USE_NADIR_BASE)
+#include "xos/os/time.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/os/time.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
-namespace app {
-namespace cgi {
-namespace libxslt {
 
-///////////////////////////////////////////////////////////////////////
-///  Class: main
-///////////////////////////////////////////////////////////////////////
-static main the_main;
+#if !defined(USE_NADIR_BASE)
+typedef xos::base::time_exception time_exception;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::time_exception time_exception;
+#endif // !defined(USE_NADIR_BASE)
 
-} // namespace libxslt 
-} // namespace cgi 
-} // namespace app 
+namespace os {
+
+typedef os::time time;
+
+namespace current {
+typedef os::current::time time;
+
+namespace gmt {
+typedef os::current::gmt::time time;
+} // namespace gmt 
+} // namespace current 
+
+} // namespace os 
 } // namespace coral 
 
+#endif // _CORAL_OS_TIME_HPP 

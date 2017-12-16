@@ -27,6 +27,8 @@
 #include "coral/inet/cgi/environment/variable/value.hpp"
 #include "coral/inet/cgi/environment/variable/name.hpp"
 #include "coral/inet/http/content.hpp"
+#include "coral/io/writer.hpp"
+#include "coral/io/logger.hpp"
 
 namespace coral {
 namespace app {

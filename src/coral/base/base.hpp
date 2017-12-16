@@ -45,20 +45,4 @@ typedef nadir::base base;
 
 } // namespace coral
 
-#include "coral/base/argv.hpp"
-#include "coral/base/array.hpp"
-#include "coral/base/string.hpp"
-#include "coral/base/types.hpp"
-#include "coral/base/wrapped.hpp"
-#include "coral/base/created.hpp"
-#include "coral/base/creator.hpp"
-#include "coral/base/attached.hpp"
-#include "coral/base/attacher.hpp"
-#include "coral/io/file.hpp"
-#include "coral/io/writer.hpp"
-#include "coral/io/reader.hpp"
-#include "coral/io/sequence.hpp"
-#include "coral/io/types.hpp"
-#include "coral/io/logger.hpp"
-
 #endif // _CORAL_BASE_BASE_HPP

@@ -22,7 +22,8 @@
 #define _CORAL_INET_CGI_ENVIRONMENT_VARIABLE_NAME_HPP
 
 #include "coral/inet/cgi/environment/variable/which.hpp"
-#include "coral/base/base.hpp"
+#include "coral/base/types.hpp"
+#include "coral/base/wrapped.hpp"
 
 namespace coral {
 namespace inet {

@@ -22,6 +22,7 @@
 #define _CORAL_INET_CGI_MAIN_HPP
 
 #include "coral/console/main.hpp"
+#include "coral/inet/cgi/main_opt.hpp"
 #include "coral/inet/cgi/environment/variables/reader.hpp"
 #include "coral/inet/cgi/environment/variables/writer.hpp"
 #include "coral/inet/cgi/environment/variables/values.hpp"
@@ -29,13 +30,9 @@
 #include "coral/inet/cgi/environment/variable/name.hpp"
 #include "coral/inet/http/content.hpp"
 #include "coral/inet/http/header.hpp"
-#include "coral/base/base.hpp"
-#include "coral/inet/cgi/main_opt.hpp"
-#if !defined(USE_NADIR_BASE)
-#include "xos/os/file/stream.hpp"
-#else // !defined(USE_NADIR_BASE)
-#include "nadir/io/crt/file_stream.hpp"
-#endif // !defined(USE_NADIR_BASE)
+#include "coral/io/file.hpp"
+#include "coral/io/types.hpp"
+#include "coral/io/logger.hpp"
 
 #define CORAL_INET_CGI_CATCH_ARGV_FILE_LABEL "arguments"
 #define CORAL_INET_CGI_CATCH_ENV_FILE_LABEL "environment"

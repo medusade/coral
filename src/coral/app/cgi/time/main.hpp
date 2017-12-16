@@ -22,7 +22,7 @@
 #define _CORAL_APP_CGI_TIME_MAIN_HPP
 
 #include "coral/app/cgi/main.hpp"
-#include "nadir/os/time.hpp"
+#include "coral/os/time.hpp"
 
 namespace coral {
 namespace app {
@@ -62,7 +62,7 @@ protected:
         set_is(is_12_, "is_12");
 
         try {
-            nadir::os::current::time t(is_gmt_, is_12_);
+            os::current::time t(is_gmt_, is_12_);
 
             if ((has_date_)) {
                 date.append_unsigned(t.month());
@@ -90,7 +90,7 @@ protected:
                     }
                 }
             }
-        } catch (const nadir::time_exception& e) {
+        } catch (const time_exception& e) {
             if ((has_date_)) {
                 date.append("**/**/**");
             }
@@ -135,5 +135,3 @@ protected:
 } // namespace coral 
 
 #endif // _CORAL_APP_CGI_TIME_MAIN_HPP 
-        
-

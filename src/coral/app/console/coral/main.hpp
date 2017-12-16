@@ -24,6 +24,7 @@
 #include "coral/app/console/coral/main_opt.hpp"
 #include "coral/console/main.hpp"
 #include "coral/inet/cgi/environment/variable/name.hpp"
+#include "coral/io/logger.hpp"
 
 namespace coral {
 namespace app {
