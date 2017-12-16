@@ -16,7 +16,7 @@
 #   File: datecgi.pri
 #
 # Author: $author$
-#   Date: 1/13/2017
+#   Date: 12/15/2017
 ########################################################################
 
 datecgi_TARGET = coral-datecgi
@@ -26,22 +26,23 @@ $${coral_INCLUDEPATH} \
 
 datecgi_DEFINES += \
 $${coral_DEFINES} \
-USE_NADIR_BASE \
 
 ########################################################################
 datecgi_HEADERS += \
 $${CORAL_SRC}/coral/app/cgi/date/main.hpp \
+$${CORAL_SRC}/coral/app/cgi/main.hpp \
 $${CORAL_SRC}/coral/console/main.hpp \
 $${CORAL_SRC}/coral/console/main_main.hpp \
 
 datecgi_SOURCES += \
-$${CORAL_SRC}/coral/console/main_main.cpp \
 $${CORAL_SRC}/coral/app/cgi/date/main.cpp \
+$${CORAL_SRC}/coral/console/main_main.cpp \
 
 ########################################################################
 datecgi_LIBS += \
-$${coral_LIBS} \
+$${xoscoral_LIBS} \
 
 ########################################################################
 # NO Qt
 QT -= gui core
+

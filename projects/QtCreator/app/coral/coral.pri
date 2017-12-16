@@ -19,15 +19,11 @@
 #   Date: 12/15/2014
 ########################################################################
 
-########################################################################
-coral_HEADERS += \
-$${CORAL_SRC}/coral/app/console/coral/main.hpp \
-$${CORAL_SRC}/coral/console/main.hpp \
-$${CORAL_SRC}/coral/console/main_main.hpp \
+coral_TARGET = coral
 
-coral_SOURCES += \
-$${CORAL_SRC}/coral/app/console/coral/main.cpp \
-$${CORAL_SRC}/coral/console/main_main.cpp \
+coral_INCLUDEPATH += \
+
+coral_DEFINES += \
 
 ########################################################################
 coral_HEADERS += \
@@ -37,4 +33,14 @@ $${CORAL_SRC}/coral/inet/cgi/environment/variable/which.hpp \
 coral_SOURCES += \
 $${CORAL_SRC}/coral/inet/cgi/environment/variable/name.cpp \
 $${CORAL_SRC}/coral/inet/cgi/environment/variable/which.cpp \
+
+########################################################################
+coral_HEADERS += \
+$${CORAL_SRC}/coral/app/console/coral/main.hpp \
+$${CORAL_SRC}/coral/console/main.hpp \
+$${CORAL_SRC}/coral/console/main_main.hpp \
+
+coral_SOURCES += \
+$${CORAL_SRC}/coral/app/console/coral/main.cpp \
+$${CORAL_SRC}/coral/console/main_main.cpp \
 

@@ -29,30 +29,8 @@ $${coral_DEFINES} \
 
 ########################################################################
 cgicatcher_HEADERS += \
-$${CORAL_SRC}/coral/base/base.hpp \
-
-cgicatcher_SOURCES += \
-$${CORAL_SRC}/coral/base/base.cpp \
-
-########################################################################
-cgicatcher_HEADERS += \
-$${CORAL_SRC}/coral/inet/cgi/main.hpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variables/writer.hpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variables/values.hpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/value.hpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.hpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.hpp \
-
-cgicatcher_SOURCES += \
-$${CORAL_SRC}/coral/inet/cgi/environment/variables/writer.cpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variables/values.cpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/value.cpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.cpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.cpp \
-
-########################################################################
-cgicatcher_HEADERS += \
 $${CORAL_SRC}/coral/app/cgi/catcher/main.hpp \
+$${CORAL_SRC}/coral/app/cgi/main.hpp \
 $${CORAL_SRC}/coral/console/main.hpp \
 $${CORAL_SRC}/coral/console/main_main.hpp \
 

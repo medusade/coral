@@ -16,7 +16,7 @@
 #   File: timecgi.pro
 #
 # Author: $author$
-#   Date: 1/17/2017
+#   Date: 12/15/2017
 ########################################################################
 include(../../../../QtCreator/coral.pri)
 include(../../coral.pri)

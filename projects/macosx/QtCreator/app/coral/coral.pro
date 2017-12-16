@@ -22,7 +22,7 @@ include(../../../../QtCreator/coral.pri)
 include(../../coral.pri)
 include(../../../../QtCreator/app/coral/coral.pri)
 
-TARGET = coral
+TARGET = $${coral_TARGET}
 
 INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
