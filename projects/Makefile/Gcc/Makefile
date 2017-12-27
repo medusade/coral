@@ -96,8 +96,6 @@ medusaxde_clibxslt_USRLIBDIRS += \
 -L${HOME}/build/libxslt/lib \
 -L${HOME}/build/libxml2/lib \
 
-#-L${HOME}/build/zlib/lib \
-
 medusaxde_cbase_LIBS += \
 -lcos \
 -lcbase \
@@ -109,8 +107,6 @@ medusaxde_clibxslt_LIBS += \
 -lxslt \
 -lexslt \
 -lxml2 \
-
-#-lz \
 
 ########################################################################
 # xos
@@ -138,7 +134,8 @@ coral_USRINCLUDES += \
 -I${XOS_SRC} \
 
 coral_USRCXXFLAGS += \
--std=c++0x
+
+#-std=c++0x
 
 coral_USRLIBDIRS += \
 -L${XOS_LIB} \

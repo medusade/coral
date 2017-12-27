@@ -42,6 +42,6 @@ $${CORAL_SRC}/coral/console/main_main.cpp \
 
 ########################################################################
 libxsltcgi_LIBS += \
-$${xoscoral_LIBS} \
+$${coral_LIBS} \
 $${medusaxde_clibxslt_LIBS} \
 $${medusaxde_cbase_LIBS} \

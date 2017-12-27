@@ -33,15 +33,6 @@ $${coral_DEFINES} \
 $${xde_DEFINES} \
 
 ########################################################################
-_tcgi_HEADERS += \
-$${XDE_SRC}/clib/cbase/cattachedinterface.hxx \
-$${XDE_SRC}/clib/cbase/cattached.hxx \
-
-_tcgi_SOURCES += \
-$${XDE_SRC}/clib/cbase/cattachedinterface.cxx \
-$${XDE_SRC}/clib/cbase/cattached.cxx \
-
-########################################################################
 tcgi_HEADERS += \
 $${CORAL_SRC}/coral/app/cgi/t/main.hpp \
 $${CORAL_SRC}/coral/console/main.hpp \
@@ -63,7 +54,6 @@ $${XDE_SRC}/clib/ct/ctdatefunctions.cxx \
 
 ########################################################################
 tcgi_LIBS += \
-$${xoscoral_LIBS} \
+$${coral_LIBS} \
 $${xde_ct_LIBS} \
 $${xde_cbase_LIBS} \
-$${xos_LIBS} \

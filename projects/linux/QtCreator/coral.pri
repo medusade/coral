@@ -67,13 +67,6 @@ NADIR_BLD = ../$${NADIR_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
 NADIR_LIB = $${NADIR_BLD}/lib
 
 nadir_LIBS += \
--L$${NADIR_LIB}/libnadir \
--lnadir \
--lpthread \
--ldl \
--lrt \
-
-xosnadir_LIBS += \
 -L$${NADIR_LIB}/libxosnadir \
 -lxosnadir \
 -lpthread \
@@ -86,10 +79,6 @@ MEDUSA_BLD = ../$${MEDUSA_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
 MEDUSA_LIB = $${MEDUSA_BLD}/lib
 
 medusa_LIBS += \
--L$${MEDUSA_LIB}/libmedusa \
--lmedusa \
-
-xosmedusa_LIBS += \
 -L$${MEDUSA_LIB}/libxosmedusa \
 -lxosmedusa \
 
@@ -98,9 +87,4 @@ xosmedusa_LIBS += \
 coral_LIBS += \
 -L$${CORAL_LIB}/libcoral \
 -lcoral \
-$${nadir_LIBS} \
-
-xoscoral_LIBS += \
--L$${CORAL_LIB}/libxoscoral \
--lxoscoral \
 $${xosnadir_LIBS} \

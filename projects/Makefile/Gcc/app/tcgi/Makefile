@@ -55,6 +55,8 @@ ${libcoral_USRCXXFLAGS} \
 #
 tcgi_EXE_CXX_SOURCES += \
 ${XDE_SRC}/clib/ct/ctfunctions.cxx \
+${XDE_SRC}/clib/ct/ctconditionalfunctions.cxx \
+${XDE_SRC}/clib/ct/ctstringfunctions.cxx \
 ${XDE_SRC}/clib/ct/ctfilefunctions.cxx \
 ${XDE_SRC}/clib/ct/ctdatefunctions.cxx \
 

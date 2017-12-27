@@ -23,36 +23,27 @@ TEMPLATE = lib
 CONFIG += staticlib
 
 ########################################################################
-# libxoscoral
-libxoscoral_TARGET = xoscoral
-
-libxoscoral_INCLUDEPATH += \
-$${coral_INCLUDEPATH} \
-
-libxoscoral_DEFINES += \
-$${coral_DEFINES} \
-
-########################################################################
-libxoscoral_HEADERS += \
-$${CORAL_SRC}/coral/base/base.hpp \
-
-libxoscoral_SOURCES += \
-$${CORAL_SRC}/coral/base/base.cpp \
-
-########################################################################
 # libcoral
 libcoral_TARGET = coral
 
 libcoral_INCLUDEPATH += \
-$${libxoscoral_INCLUDEPATH} \
+$${coral_INCLUDEPATH} \
 
 libcoral_DEFINES += \
-$${libxoscoral_DEFINES} \
-USE_NADIR_BASE \
+$${coral_DEFINES} \
 
 ########################################################################
 libcoral_HEADERS += \
-$${libxoscoral_HEADERS} \
+$${CORAL_SRC}/coral/io/stream.hpp \
+$${CORAL_SRC}/coral/io/writer.hpp \
+$${CORAL_SRC}/coral/io/reader.hpp \
+$${CORAL_SRC}/coral/io/sequence.hpp \
+$${CORAL_SRC}/coral/base/base.hpp \
 
 libcoral_SOURCES += \
-$${libxoscoral_SOURCES} \
+$${CORAL_SRC}/coral/io/stream.cpp \
+$${CORAL_SRC}/coral/io/writer.cpp \
+$${CORAL_SRC}/coral/io/reader.cpp \
+$${CORAL_SRC}/coral/io/sequence.cpp \
+$${CORAL_SRC}/coral/base/base.cpp \
+

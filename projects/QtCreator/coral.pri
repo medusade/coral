@@ -110,6 +110,5 @@ $${medusa_INCLUDEPATH} \
 $${nadir_INCLUDEPATH} \
 
 coral_DEFINES += \
-$${medusa_DEFINES} \
 $${nadir_DEFINES} \
 

@@ -25,10 +25,6 @@
 # Executable C++ .cpp sources
 #
 coral_EXE_CPP_SOURCES += \
-${CORAL_SRC}/coral/inet/cgi/environment/variable/name.cpp \
-${CORAL_SRC}/coral/inet/cgi/environment/variable/which.cpp \
-
-coral_EXE_CPP_SOURCES += \
 ${CORAL_SRC}/coral/app/console/coral/main.cpp \
 ${CORAL_SRC}/coral/console/main_main.cpp \
 
