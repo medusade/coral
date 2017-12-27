@@ -22,15 +22,10 @@
 #define _CORAL_BASE_WRAPPED_HPP
 
 #include "coral/base/base.hpp"
-#if !defined(USE_NADIR_BASE)
 #include "xos/base/wrapped.hpp"
-#else // !defined(USE_NADIR_BASE)
-#include "nadir/base/wrapped.hpp"
-#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 
-#if !defined(USE_NADIR_BASE)
 typedef xos::base::wrapped_initalized_t wrapped_initalized_t;
 enum { wrapped_initalized = xos::base::wrapped_initalized, };
 typedef xos::base::wrapped_extends wrapped_extends;
@@ -50,12 +45,6 @@ using wrappedt = typename xos::base::wrappedt
 <TWrapped, TInitialized, VInitialized, TExtends, TImplements>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
-#else // !defined(USE_NADIR_BASE)
-typedef nadir::wrapped_initalized_t wrapped_initalized_t;
-enum { wrapped_initalized = nadir::wrapped_initalized, };
-typedef nadir::wrappedt_extends wrapped_extends;
-typedef nadir::wrappedt_implements wrapped_implements;
-#endif // !defined(USE_NADIR_BASE)
 
 } // namespace coral
 

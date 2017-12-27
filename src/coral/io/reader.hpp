@@ -22,15 +22,11 @@
 #define _CORAL_IO_READER_HPP
 
 #include "coral/io/sequence.hpp"
-#if !defined(USE_NADIR_BASE)
 #include "xos/io/reader.hpp"
-#else // !defined(USE_NADIR_BASE)
-#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 namespace io {
 
-#if !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 ///  Class: readert
 ///////////////////////////////////////////////////////////////////////
@@ -49,8 +45,6 @@ typedef xos::io::reader reader;
 typedef xos::io::char_reader char_reader;
 typedef xos::io::wchar_reader wchar_reader;
 typedef xos::io::tchar_reader tchar_reader;
-#else // !defined(USE_NADIR_BASE)
-#endif // !defined(USE_NADIR_BASE)
 
 } // namespace io
 } // namespace coral 

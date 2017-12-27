@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2015 $organization$
+/// Copyright (c) 1988-2017 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,62 +13,55 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: writer.hpp
+///   File: stream.hpp
 ///
 /// Author: $author$
-///   Date: 4/8/2015
+///   Date: 12/25/2017
 ///////////////////////////////////////////////////////////////////////
-#ifndef _CORAL_IO_WRITER_HPP
-#define _CORAL_IO_WRITER_HPP
+#ifndef _CORAL_IO_STREAM_HPP
+#define _CORAL_IO_STREAM_HPP
 
-#include "xos/io/echoed/writer.hpp"
-#include "xos/io/writer.hpp"
-#include "xos/io/sequence.hpp"
+#include "xos/io/stream.hpp"
+#include "coral/io/writer.hpp"
+#include "coral/io/reader.hpp"
+#include "coral/io/sequence.hpp"
 
 namespace coral {
 namespace io {
 
 ///////////////////////////////////////////////////////////////////////
-///  Class: writert
+///  Class: streamt
 ///////////////////////////////////////////////////////////////////////
 #if defined(USE_CPP_11)
 template
-<typename TWhat = void, typename TSized = char_t,
+<typename TWhat = void, typename TSized = char,
  typename TEnd = int, TEnd VEnd = 0,
- class TImplements = xos::io::sequencet<TSized, TEnd, VEnd> >
+ class TSequence = ::xos::io::sequencet<TWhat, TEnd, VEnd>,
+ class TReader = ::xos::io::readert<TWhat, TSized, TEnd, VEnd, TSequence>, 
+ class TWriter = ::xos::io::writert<TWhat, TSized, TEnd, VEnd, TSequence>,
+ class TReaderImplements = TReader, class TWriterImplements = TWriter>
 
-using writert = typename xos::io::writert
-<TWhat, TSized, TEnd, VEnd, TImplements>;
+using streamt = typename xos::io::streamt
+<TWhat, TSized, TEnd, VEnd, TSequence, TReader, TWriter>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
 
-typedef xos::io::writer writer;
-typedef xos::io::char_writer char_writer;
-typedef xos::io::wchar_writer wchar_writer;
-typedef xos::io::tchar_writer tchar_writer;
-
-namespace echoed {
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+typedef ::xos::io::stream stream;
 
 ///////////////////////////////////////////////////////////////////////
-///  Class: writert
 ///////////////////////////////////////////////////////////////////////
-#if defined(USE_CPP_11)
-template
-<typename TWhat = void, typename TSized = char_t,
- typename TEnd = int, TEnd VEnd = 0,
- class TWriter = xos::io::writert<TWhat, TSized, TEnd, VEnd>,
- class TImplements = TWriter, class TExtends = xos::io::echoed::writer_extends>
+typedef ::xos::io::char_stream char_stream;
+typedef ::xos::io::tchar_stream tchar_stream;
+typedef ::xos::io::wchar_stream wchar_stream;
 
-using writert = typename xos::io::echoed::writert
-<TWhat, TSized, TEnd, VEnd, TWriter, TImplements, TExtends>;
-#else // defined(USE_CPP_11)
-#endif // defined(USE_CPP_11)
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+typedef ::xos::io::byte_stream byte_stream;
+typedef ::xos::io::word_stream word_stream;
 
-typedef xos::io::echoed::writer writer;
-
-} // namespace echoed
-
-} // namespace io
+} // namespace io 
 } // namespace coral 
 
-#endif // _CORAL_IO_WRITER_HPP 
+#endif // _CORAL_IO_STREAM_HPP 

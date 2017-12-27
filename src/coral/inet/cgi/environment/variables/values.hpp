@@ -49,11 +49,7 @@ template
  TSize VSize = variable::count,
  class TName = variable::namet<TChar, TWhich>,
  class TValue = variable::valuet<TChar, TWhich>,
- #if !defined(USE_NADIR_BASE)
  class TExtends = xos::base::arrayt<TValue, TSize, VSize>,
- #else // !defined(USE_NADIR_BASE)
- class TExtends = nadir::arrayt<TValue, TSize, VSize>,
- #endif // !defined(USE_NADIR_BASE)
  class TImplements = values_implements>
 
 class _EXPORT_CLASS valuest: virtual public TImplements, public TExtends {

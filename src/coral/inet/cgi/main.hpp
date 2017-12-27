@@ -23,11 +23,9 @@
 
 #include "coral/console/main.hpp"
 #include "coral/inet/cgi/main_opt.hpp"
-#include "coral/inet/cgi/environment/variables/reader.hpp"
 #include "coral/inet/cgi/environment/variables/writer.hpp"
+#include "coral/inet/cgi/environment/variables/reader.hpp"
 #include "coral/inet/cgi/environment/variables/values.hpp"
-#include "coral/inet/cgi/environment/variable/value.hpp"
-#include "coral/inet/cgi/environment/variable/name.hpp"
 #include "coral/inet/http/content.hpp"
 #include "coral/inet/http/header.hpp"
 #include "coral/io/file.hpp"
@@ -545,11 +543,7 @@ protected:
 #if defined(__GNUC__)
             char_t chars[length + 3];
 #else // defined(__GNUC__)
-#if !defined(USE_NADIR_BASE)
             xos::base::arrayt<char_t> a(length + 3);
-#else // !defined(USE_NADIR_BASE)
-            nadir::arrayt<char_t> a(length + 3);
-#endif // !defined(USE_NADIR_BASE)
             char_t* chars = a.elements();
 #endif // defined(__GNUC__)
 
@@ -586,11 +580,7 @@ protected:
 #if defined(__GNUC__)
                 char_t chars[length+3];
 #else // defined(__GNUC__)
-#if !defined(USE_NADIR_BASE)
                 xos::base::arrayt<char_t> a(length + 3);
-#else // !defined(USE_NADIR_BASE)
-                nadir::arrayt<char_t> a(length + 3);
-#endif // !defined(USE_NADIR_BASE)
                 char_t* chars = a.elements();
 #endif // defined(__GNUC__)
 

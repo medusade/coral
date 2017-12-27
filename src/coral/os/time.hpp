@@ -22,20 +22,11 @@
 #define _CORAL_OS_TIME_HPP
 
 #include "coral/os/os.hpp"
-
-#if !defined(USE_NADIR_BASE)
 #include "xos/os/time.hpp"
-#else // !defined(USE_NADIR_BASE)
-#include "nadir/os/time.hpp"
-#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 
-#if !defined(USE_NADIR_BASE)
 typedef xos::base::time_exception time_exception;
-#else // !defined(USE_NADIR_BASE)
-typedef nadir::time_exception time_exception;
-#endif // !defined(USE_NADIR_BASE)
 
 namespace os {
 

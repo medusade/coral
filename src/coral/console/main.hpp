@@ -22,7 +22,6 @@
 #define _CORAL_CONSOLE_MAIN_HPP
 
 #include "coral/base/base.hpp"
-#if !defined(USE_NADIR_BASE)
 #include "xos/base/main.hpp"
 #include "xos/base/getopt/main.hpp"
 #include "xos/base/getopt/main_opt.hpp"
@@ -30,12 +29,7 @@
 #include "xos/io/main/in/reader.hpp"
 #include "xos/io/main/out/writer.hpp"
 #include "xos/io/main/err/writer.hpp"
-#else // !defined(USE_NADIR_BASE)
-#include "nadir/console/getopt/main.hpp"
-#include "nadir/io/main.hpp"
-#endif // !defined(USE_NADIR_BASE)
 
-#if !defined(USE_NADIR_BASE)
 #define CORAL_MAIN_LOGGING_OPTVAL_C XOS_MAIN_LOGGING_OPTVAL_C
 #define CORAL_MAIN_LOGGING_OPTARG XOS_MAIN_LOGGING_OPTARG
 #define CORAL_MAIN_LOGGING_OPTUSE XOS_MAIN_LOGGING_OPTUSE
@@ -49,21 +43,6 @@ enum {
     CORAL_MAIN_OPT_ARGUMENT_REQUIRED = XOS_MAIN_OPT_ARGUMENT_REQUIRED,
     CORAL_MAIN_OPT_ARGUMENT_OPTIONAL = XOS_MAIN_OPT_ARGUMENT_OPTIONAL
 };
-#else // !defined(USE_NADIR_BASE)
-#define CORAL_MAIN_LOGGING_OPTVAL_C NADIR_CONSOLE_GETOPT_MAIN_LOGGING_OPTVAL_C
-#define CORAL_MAIN_LOGGING_OPTARG NADIR_CONSOLE_GETOPT_MAIN_LOGGING_OPTARG
-#define CORAL_MAIN_LOGGING_OPTUSE NADIR_CONSOLE_GETOPT_MAIN_LOGGING_OPTUSE
-
-#define CORAL_MAIN_HELP_OPTVAL_C NADIR_CONSOLE_GETOPT_MAIN_HELP_OPTVAL_C
-#define CORAL_MAIN_HELP_OPTARG NADIR_CONSOLE_GETOPT_MAIN_HELP_OPTARG
-#define CORAL_MAIN_HELP_OPTUSE NADIR_CONSOLE_GETOPT_MAIN_HELP_OPTUSE
-
-enum {
-    CORAL_MAIN_OPT_ARGUMENT_NONE     = NADIR_CONSOLE_GETOPT_MAIN_OPT_ARGUMENT_NONE,
-    CORAL_MAIN_OPT_ARGUMENT_REQUIRED = NADIR_CONSOLE_GETOPT_MAIN_OPT_ARGUMENT_REQUIRED,
-    CORAL_MAIN_OPT_ARGUMENT_OPTIONAL = NADIR_CONSOLE_GETOPT_MAIN_OPT_ARGUMENT_OPTIONAL
-};
-#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 namespace console {
@@ -159,13 +138,8 @@ enum {
 namespace coral {
 namespace console {
 
-#if !defined(USE_NADIR_BASE)
 typedef xos::base::getopt::main_implement main_implements;
 typedef xos::base::getopt::main main_extends;
-#else // !defined(USE_NADIR_BASE)
-typedef nadir::console::maint_implements main_implements;
-typedef nadir::console::getopt::main main_extends;
-#endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main
 ///////////////////////////////////////////////////////////////////////
@@ -267,7 +241,6 @@ namespace main {
 
 namespace argv {
 
-#if !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
@@ -283,15 +256,11 @@ using writert = typename xos::io::main::argv::writert
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
 typedef xos::io::main::argv::writert<> writer;
-#else // !defined(USE_NADIR_BASE)
-typedef nadir::io::main::argv::writer writer;
-#endif // !defined(USE_NADIR_BASE)
 
 } // namespace argv
 
 namespace in {
 
-#if !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// readert
 ///////////////////////////////////////////////////////////////////////
@@ -308,15 +277,11 @@ using readert = typename xos::io::main::in::readert
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
 typedef xos::io::main::in::readert<> reader;
-#else // !defined(USE_NADIR_BASE)
-typedef nadir::io::main::in::reader reader;
-#endif // !defined(USE_NADIR_BASE)
 
 } // namespace in
 
 namespace out {
 
-#if !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
@@ -333,15 +298,11 @@ using writert = typename xos::io::main::out::writert
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
 typedef xos::io::main::out::writert<> writer;
-#else // !defined(USE_NADIR_BASE)
-typedef nadir::io::main::out::writer writer;
-#endif // !defined(USE_NADIR_BASE)
 
 } // namespace out
 
 namespace err {
 
-#if !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 /// writert
 ///////////////////////////////////////////////////////////////////////
@@ -358,9 +319,6 @@ using writert = typename xos::io::main::err::writert
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
 typedef xos::io::main::err::writert<> writer;
-#else // !defined(USE_NADIR_BASE)
-typedef nadir::io::main::err::writer writer;
-#endif // !defined(USE_NADIR_BASE)
 
 } // namespace err
 } // namespace main

@@ -38,13 +38,8 @@ typedef implement_base name_implements;
 template
 <typename TChar = char_t,
  typename TWhich = which_t,
- #if !defined(USE_NADIR_BASE)
  typename TChars = xos::base::typest<TChar>,
  class TExtends = xos::base::wrappedt<const TChar*>,
- #else // !defined(USE_NADIR_BASE)
- typename TChars = nadir::charst<TChar>,
- class TExtends = nadir::wrappedt<const TChar*>,
- #endif // !defined(USE_NADIR_BASE)
  class TImplements = name_implements>
 
 class _EXPORT_CLASS namet: virtual public TImplements, public TExtends {

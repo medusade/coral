@@ -22,14 +22,10 @@
 #define _CORAL_BASE_ATTACHER_HPP
 
 #include "coral/base/base.hpp"
-#if !defined(USE_NADIR_BASE)
 #include "xos/base/attacher.hpp"
-#else // !defined(USE_NADIR_BASE)
-#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 
-#if !defined(USE_NADIR_BASE)
 typedef xos::base::implement_base attacher_implements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: attachert
@@ -43,8 +39,6 @@ using attachert = typename xos::base::attachert
 <TAttached, TUnattached, VUnattached, TImplements>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
-#else // !defined(USE_NADIR_BASE)
-#endif // !defined(USE_NADIR_BASE)
 
 } // namespace coral
 

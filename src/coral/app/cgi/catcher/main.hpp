@@ -22,13 +22,6 @@
 #define _CORAL_APP_CGI_CATCHER_MAIN_HPP
 
 #include "coral/inet/cgi/main.hpp"
-#include "coral/inet/cgi/environment/variables/writer.hpp"
-#include "coral/inet/cgi/environment/variables/values.hpp"
-#include "coral/inet/cgi/environment/variable/value.hpp"
-#include "coral/inet/cgi/environment/variable/name.hpp"
-#include "coral/inet/http/content.hpp"
-#include "coral/io/writer.hpp"
-#include "coral/io/logger.hpp"
 
 namespace coral {
 namespace app {

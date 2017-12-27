@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2015 $organization$
+/// Copyright (c) 1988-2017 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,25 +13,19 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: types.hpp
+///   File: stream.cpp
 ///
 /// Author: $author$
-///   Date: 4/8/2015
+///   Date: 12/25/2017
 ///////////////////////////////////////////////////////////////////////
-#ifndef _CORAL_IO_TYPES_HPP
-#define _CORAL_IO_TYPES_HPP
-
-#include "coral/base/base.hpp"
-#include "xos/io/types.hpp"
+#include "coral/io/stream.hpp"
 
 namespace coral {
 namespace io {
 
-namespace chars {
-typedef xos::io::chars::reader reader;
-} // namespace chars
+///////////////////////////////////////////////////////////////////////
+///  Class: streamt
+///////////////////////////////////////////////////////////////////////
 
-} // namespace io
+} // namespace io 
 } // namespace coral 
-
-#endif // _CORAL_IO_TYPES_HPP 

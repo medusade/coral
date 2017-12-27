@@ -22,10 +22,7 @@
 #define _CORAL_INET_CGI_ENVIRONMENT_VARIABLES_READER_HPP
 
 #include "coral/inet/cgi/environment/variables/values.hpp"
-#include "coral/inet/cgi/environment/variable/value.hpp"
-#include "coral/inet/cgi/environment/variable/name.hpp"
-#include "coral/inet/cgi/environment/variable/which.hpp"
-#include "coral/base/base.hpp"
+#include "coral/io/reader.hpp"
 
 namespace coral {
 namespace inet {
@@ -41,13 +38,8 @@ typedef base reader_extends;
 template
 <typename TChar = char_t,
  typename TWhat = void,
- #if !defined(USE_NADIR_BASE)
  class TString = xos::base::stringt<TChar>,
  class TReader = xos::io::readert<TWhat, TChar>,
- #else // !defined(USE_NADIR_BASE)
- class TString = nadir::char_stringt<TChar>,
- class TReader = nadir::io::readert<TWhat, TChar>,
- #endif // !defined(USE_NADIR_BASE)
  typename TWhich = variable::which_t,
  TWhich VFirst = variable::first, TWhich VLast = variable::last,
  class TName = variable::namet<TChar, TWhich>,

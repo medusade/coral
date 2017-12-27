@@ -21,20 +21,12 @@
 #ifndef _CORAL_OS_OS_HPP
 #define _CORAL_OS_OS_HPP
 
-#if !defined(USE_NADIR_BASE)
 #include "xos/os/os.hpp"
-#else // !defined(USE_NADIR_BASE)
-#include "nadir/os/os.hpp"
-#endif // !defined(USE_NADIR_BASE)
 
 namespace coral {
 namespace os {
 
-#if !defined(USE_NADIR_BASE)
 namespace os = ::xos::os::os;
-#else // !defined(USE_NADIR_BASE)
-namespace os = ::nadir::os::os;
-#endif // !defined(USE_NADIR_BASE)
 
 } // namespace os 
 } // namespace coral 
