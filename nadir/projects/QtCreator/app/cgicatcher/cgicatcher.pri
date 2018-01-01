@@ -13,33 +13,33 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgithrower.pri
+#   File: cgicatcher.pri
 #
 # Author: $author$
-#   Date: 1/30/2015
+#   Date: 12/30/2014
 ########################################################################
 
-cgithrower_TARGET = coral-cgithrower
+cgicatcher_TARGET = coral-cgicatcher
 
-cgithrower_INCLUDEPATH += \
+cgicatcher_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
 
-cgithrower_DEFINES += \
+cgicatcher_DEFINES += \
 $${coral_DEFINES} \
 
 ########################################################################
-cgithrower_HEADERS += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.hpp \
+cgicatcher_HEADERS += \
+$${CORAL_SRC}/coral/app/cgi/catcher/main.hpp \
 $${CORAL_SRC}/coral/app/cgi/main.hpp \
 $${CORAL_SRC}/coral/console/main.hpp \
 $${CORAL_SRC}/coral/console/main_main.hpp \
 
-cgithrower_SOURCES += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.cpp \
+cgicatcher_SOURCES += \
+$${CORAL_SRC}/coral/app/cgi/catcher/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
 
 ########################################################################
-cgithrower_LIBS += \
+cgicatcher_LIBS += \
 $${coral_LIBS} \
 
 ########################################################################

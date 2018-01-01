@@ -13,35 +13,34 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgithrower.pri
+#   File: coral.pri
 #
 # Author: $author$
-#   Date: 1/30/2015
+#   Date: 12/15/2014
 ########################################################################
 
-cgithrower_TARGET = coral-cgithrower
+coral_TARGET = coral
 
-cgithrower_INCLUDEPATH += \
-$${coral_INCLUDEPATH} \
+coral_INCLUDEPATH += \
 
-cgithrower_DEFINES += \
-$${coral_DEFINES} \
+coral_DEFINES += \
 
 ########################################################################
-cgithrower_HEADERS += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.hpp \
-$${CORAL_SRC}/coral/app/cgi/main.hpp \
+coral_HEADERS += \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.hpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.hpp \
+
+coral_SOURCES += \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.cpp \
+$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.cpp \
+
+########################################################################
+coral_HEADERS += \
+$${CORAL_SRC}/coral/app/console/coral/main.hpp \
 $${CORAL_SRC}/coral/console/main.hpp \
 $${CORAL_SRC}/coral/console/main_main.hpp \
 
-cgithrower_SOURCES += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.cpp \
+coral_SOURCES += \
+$${CORAL_SRC}/coral/app/console/coral/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
 
-########################################################################
-cgithrower_LIBS += \
-$${coral_LIBS} \
-
-########################################################################
-# NO Qt
-QT -= gui core

@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,35 +13,36 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgithrower.pri
+#   File: timecgi.pri
 #
 # Author: $author$
-#   Date: 1/30/2015
+#   Date: 12/15/2017
 ########################################################################
 
-cgithrower_TARGET = coral-cgithrower
+timecgi_TARGET = coral-timecgi
 
-cgithrower_INCLUDEPATH += \
+timecgi_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
 
-cgithrower_DEFINES += \
+timecgi_DEFINES += \
 $${coral_DEFINES} \
 
 ########################################################################
-cgithrower_HEADERS += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.hpp \
+timecgi_HEADERS += \
+$${CORAL_SRC}/coral/app/cgi/timecgi/main.hpp \
 $${CORAL_SRC}/coral/app/cgi/main.hpp \
 $${CORAL_SRC}/coral/console/main.hpp \
 $${CORAL_SRC}/coral/console/main_main.hpp \
 
-cgithrower_SOURCES += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.cpp \
+timecgi_SOURCES += \
+$${CORAL_SRC}/coral/app/cgi/time/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
 
 ########################################################################
-cgithrower_LIBS += \
+timecgi_LIBS += \
 $${coral_LIBS} \
 
 ########################################################################
 # NO Qt
 QT -= gui core
+

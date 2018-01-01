@@ -39,7 +39,7 @@ $${CORAL_SRC}/coral/app/cgi/thrower/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
 
 ########################################################################
-cgithrower_LIBS += \
+LIBS += \
 $${coral_LIBS} \
 
 ########################################################################

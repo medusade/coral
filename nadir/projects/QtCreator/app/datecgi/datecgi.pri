@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,35 +13,36 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgithrower.pri
+#   File: datecgi.pri
 #
 # Author: $author$
-#   Date: 1/30/2015
+#   Date: 12/15/2017
 ########################################################################
 
-cgithrower_TARGET = coral-cgithrower
+datecgi_TARGET = coral-datecgi
 
-cgithrower_INCLUDEPATH += \
+datecgi_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
 
-cgithrower_DEFINES += \
+datecgi_DEFINES += \
 $${coral_DEFINES} \
 
 ########################################################################
-cgithrower_HEADERS += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.hpp \
+datecgi_HEADERS += \
+$${CORAL_SRC}/coral/app/cgi/date/main.hpp \
 $${CORAL_SRC}/coral/app/cgi/main.hpp \
 $${CORAL_SRC}/coral/console/main.hpp \
 $${CORAL_SRC}/coral/console/main_main.hpp \
 
-cgithrower_SOURCES += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.cpp \
+datecgi_SOURCES += \
+$${CORAL_SRC}/coral/app/cgi/date/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
 
 ########################################################################
-cgithrower_LIBS += \
+datecgi_LIBS += \
 $${coral_LIBS} \
 
 ########################################################################
 # NO Qt
 QT -= gui core
+

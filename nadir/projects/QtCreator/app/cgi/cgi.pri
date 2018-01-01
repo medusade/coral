@@ -13,35 +13,35 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgithrower.pri
+#   File: cgi.pri
 #
 # Author: $author$
-#   Date: 1/30/2015
+#   Date: 1/16/2015
 ########################################################################
 
-cgithrower_TARGET = coral-cgithrower
+cgi_TARGET = coral-cgi
 
-cgithrower_INCLUDEPATH += \
+cgi_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
 
-cgithrower_DEFINES += \
+cgi_DEFINES += \
 $${coral_DEFINES} \
 
 ########################################################################
-cgithrower_HEADERS += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.hpp \
+cgi_HEADERS += \
 $${CORAL_SRC}/coral/app/cgi/main.hpp \
 $${CORAL_SRC}/coral/console/main.hpp \
 $${CORAL_SRC}/coral/console/main_main.hpp \
 
-cgithrower_SOURCES += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.cpp \
+cgi_SOURCES += \
+$${CORAL_SRC}/coral/app/cgi/main.cpp \
 $${CORAL_SRC}/coral/console/main_main.cpp \
 
 ########################################################################
-cgithrower_LIBS += \
+cgi_LIBS += \
 $${coral_LIBS} \
 
 ########################################################################
 # NO Qt
 QT -= gui core
+

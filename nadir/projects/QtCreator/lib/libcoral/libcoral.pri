@@ -13,35 +13,53 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgithrower.pri
+#   File: libcoral.pri
 #
 # Author: $author$
-#   Date: 1/30/2015
+#   Date: 12/15/2014
 ########################################################################
 
-cgithrower_TARGET = coral-cgithrower
+TEMPLATE = lib
+CONFIG += staticlib
 
-cgithrower_INCLUDEPATH += \
+########################################################################
+# libcoral
+libcoral_TARGET = coral
+
+libcoral_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
 
-cgithrower_DEFINES += \
+libcoral_DEFINES += \
 $${coral_DEFINES} \
 
 ########################################################################
-cgithrower_HEADERS += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.hpp \
-$${CORAL_SRC}/coral/app/cgi/main.hpp \
-$${CORAL_SRC}/coral/console/main.hpp \
-$${CORAL_SRC}/coral/console/main_main.hpp \
+libcoral_HEADERS += \
+$${CORAL_SRC}/coral/base/base.hpp \
 
-cgithrower_SOURCES += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.cpp \
-$${CORAL_SRC}/coral/console/main_main.cpp \
+libcoral_SOURCES += \
+$${CORAL_SRC}/coral/base/base.cpp \
 
 ########################################################################
-cgithrower_LIBS += \
-$${coral_LIBS} \
+libcoral_HEADERS += \
+$${CORAL_SRC}/coral/io/logger.hpp \
+$${CORAL_SRC}/coral/io/stream.hpp \
+$${CORAL_SRC}/coral/io/writer.hpp \
+$${CORAL_SRC}/coral/io/reader.hpp \
+$${CORAL_SRC}/coral/io/sequence.hpp \
+
+libcoral_SOURCES += \
+$${CORAL_SRC}/coral/io/logger.cpp \
+$${CORAL_SRC}/coral/io/stream.cpp \
+$${CORAL_SRC}/coral/io/writer.cpp \
+$${CORAL_SRC}/coral/io/reader.cpp \
+$${CORAL_SRC}/coral/io/sequence.cpp \
 
 ########################################################################
-# NO Qt
-QT -= gui core
+libcoral_HEADERS += \
+$${CORAL_SRC}/coral/mt/os/process.hpp \
+$${CORAL_SRC}/coral/mt/os/pipe.hpp \
+
+libcoral_SOURCES += \
+$${CORAL_SRC}/coral/mt/os/process.cpp \
+$${CORAL_SRC}/coral/mt/os/pipe.cpp \
+

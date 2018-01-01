@@ -26,9 +26,7 @@
 #include "coral/inet/cgi/environment/variables/array.hpp"
 #include "coral/app/cgi/thrower/main_opt.hpp"
 
-#define CORAL_APP_CGI_THROWER_MAIN_PATH_TRANSLATED ""
-#define CORAL_APP_CGI_THROWER_MAIN_SCRIPT_NAME ""
-#define CORAL_APP_CGI_THROWER_MAIN_EXEC_NAME "./cgi"
+#define CORAL_CGI_THROWER_EXEC_NAME "./cgi"
 
 namespace coral {
 namespace app {
@@ -47,10 +45,7 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    main()
-    : path_translated_(CORAL_APP_CGI_THROWER_MAIN_PATH_TRANSLATED),
-      script_name_(CORAL_APP_CGI_THROWER_MAIN_SCRIPT_NAME),
-      exec_name_(CORAL_APP_CGI_THROWER_MAIN_EXEC_NAME) {
+    main(): exec_name_(CORAL_CGI_THROWER_EXEC_NAME) {
     }
     virtual ~main() {
     }
@@ -139,7 +134,7 @@ protected:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 protected:
-    string_t path_translated_, script_name_, exec_name_;
+    string_t exec_name_, path_translated_, script_name_;
 };
 
 } // namespace thrower 

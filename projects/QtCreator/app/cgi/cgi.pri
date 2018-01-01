@@ -29,6 +29,15 @@ $${coral_DEFINES} \
 
 ########################################################################
 cgi_HEADERS += \
+$${NADIR_SRC}/xos/io/console/logger.hpp \
+$${NADIR_SRC}/xos/io/console/io.hpp \
+
+cgi_SOURCES += \
+$${NADIR_SRC}/xos/io/console/logger.cpp \
+$${NADIR_SRC}/xos/io/console/io.cpp \
+
+########################################################################
+cgi_HEADERS += \
 $${CORAL_SRC}/coral/app/cgi/main.hpp \
 $${CORAL_SRC}/coral/console/main.hpp \
 $${CORAL_SRC}/coral/console/main_main.hpp \
@@ -44,4 +53,3 @@ $${coral_LIBS} \
 ########################################################################
 # NO Qt
 QT -= gui core
-

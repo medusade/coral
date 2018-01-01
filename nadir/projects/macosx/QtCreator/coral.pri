@@ -16,10 +16,10 @@
 #   File: coral.pri
 #
 # Author: $author$
-#   Date: 2/14/2015
+#   Date: 12/15/2014
 ########################################################################
 
-BUILD_OS = linux
+BUILD_OS = macosx
 #QMAKE_CXXFLAGS += -std=c++11
 
 ########################################################################
@@ -67,11 +67,10 @@ NADIR_BLD = ../$${NADIR_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
 NADIR_LIB = $${NADIR_BLD}/lib
 
 nadir_LIBS += \
--L$${NADIR_LIB}/libxosnadir \
--lxosnadir \
+-L$${NADIR_LIB}/libnadir \
+-lnadir \
 -lpthread \
 -ldl \
--lrt \
 
 ########################################################################
 # medusa
