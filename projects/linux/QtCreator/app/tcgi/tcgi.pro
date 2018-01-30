@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2017 $organization$
+# Copyright (c) 1988-2015 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,33 +13,30 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: odbccgi.pro
+#   File: tcgi.pro
 #
 # Author: $author$
-#   Date: 2/27/2017
+#   Date: 1/22/2015
 ########################################################################
 include(../../../../QtCreator/coral.pri)
 include(../../coral.pri)
-include(../../../../QtCreator/etiris.pri)
-include(../../etiris.pri)
-include(../../../../QtCreator/app/odbccgi/odbccgi.pri)
+include(../../../../QtCreator/app/tcgi/tcgi.pri)
 
-TARGET = $${odbccgi_TARGET}
+TARGET = $${tcgi_TARGET}
 
 INCLUDEPATH += \
-$${odbccgi_INCLUDEPATH} \
+$${tcgi_INCLUDEPATH} \
 
 DEFINES += \
-$${odbccgi_DEFINES} \
+$${tcgi_DEFINES} \
 
 ########################################################################
 HEADERS += \
-$${odbccgi_HEADERS} \
+$${tcgi_HEADERS} \
 
 SOURCES += \
-$${odbccgi_SOURCES} \
+$${tcgi_SOURCES} \
 
 ########################################################################
 LIBS += \
-$${odbccgi_LIBS} \
-
+$${tcgi_LIBS} \

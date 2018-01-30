@@ -34,16 +34,27 @@ $${coral_DEFINES} \
 
 ########################################################################
 libcoral_HEADERS += \
+$${CORAL_SRC}/coral/base/string.hpp \
+$${CORAL_SRC}/coral/base/array.hpp \
+$${CORAL_SRC}/coral/base/types.hpp \
+$${CORAL_SRC}/coral/base/base.hpp \
+
+libcoral_SOURCES += \
+$${CORAL_SRC}/coral/base/string.cpp \
+$${CORAL_SRC}/coral/base/array.cpp \
+$${CORAL_SRC}/coral/base/types.cpp \
+$${CORAL_SRC}/coral/base/base.cpp \
+
+########################################################################
+libcoral_HEADERS += \
 $${CORAL_SRC}/coral/io/stream.hpp \
 $${CORAL_SRC}/coral/io/writer.hpp \
 $${CORAL_SRC}/coral/io/reader.hpp \
 $${CORAL_SRC}/coral/io/sequence.hpp \
-$${CORAL_SRC}/coral/base/base.hpp \
 
 libcoral_SOURCES += \
 $${CORAL_SRC}/coral/io/stream.cpp \
 $${CORAL_SRC}/coral/io/writer.cpp \
 $${CORAL_SRC}/coral/io/reader.cpp \
 $${CORAL_SRC}/coral/io/sequence.cpp \
-$${CORAL_SRC}/coral/base/base.cpp \
 
