@@ -38,12 +38,24 @@ template
 using typest = typename xos::base::typest
 <TWhat, TEndWhat, VEndWhat, TInt, TUInt, TSize, TLength, VUndefinedLength>;
 #else // defined(USE_CPP_11)
+template
+<class TWhat = char, class TEndWhat = TWhat, TEndWhat VEndWhat = 0,
+ class TInt = int, class TUInt = unsigned, class TSize = size_t,
+ class TLength = ssize_t, TLength VUndefinedLength = -1,
+ class TExtends = xos::base::typest
+ <TWhat, TEndWhat, VEndWhat, TInt, TUInt, TSize, TLength, VUndefinedLength> >
+
+class XOS_TYPES_EXPORT_CLASS typest: virtual public TExtends {
+public:
+};
 #endif // defined(USE_CPP_11)
 
 typedef xos::base::chars_t chars_t;
 typedef xos::base::tchars_t tchars_t;
 typedef xos::base::wchars_t wchars_t;
+
 typedef xos::base::bytes_t bytes_t;
+typedef xos::base::words_t words_t;
 
 } // namespace coral
 

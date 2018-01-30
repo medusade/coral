@@ -34,21 +34,44 @@ typedef xos::base::array_extends array_extends;
 ///////////////////////////////////////////////////////////////////////
 #if defined(USE_CPP_11)
 template
-<typename TWhat = char_t, typename TSize = size_t, TSize VSize = CORAL_ARRAY_DEFAULT_SIZE,
- class TExtends = xos::base::arrayt<TWhat, TSize, VSize>, class TImplements = array_implements>
+<typename TWhat = char_t, 
+ typename TSize = size_t, TSize VSize = CORAL_ARRAY_DEFAULT_SIZE,
+ class TExtends = array_extends, class TImplements = array_implements>
 
-using arrayt = typename xos::base::arrayt
+using arrayt = xos::base::arrayt
 <TWhat, TSize, VSize, TExtends, TImplements>;
 #else // defined(USE_CPP_11)
+template
+<typename TWhat = char, 
+ typename TSize = size_t, TSize VSize = CORAL_ARRAY_DEFAULT_SIZE,
+ class TExtend = array_extends, class TImplements = array_implements,
+ class TExtends = xos::base::arrayt<TWhat, TSize, VSize, TExtend, TImplements> >
+
+class _EXPORT_CLASS arrayt: virtual public TImplements, public TExtends {
+public:
+    typedef TImplements Implements;
+    typedef TExtends Extends;
+    typedef TWhat what_t;
+    typedef TSize size_t;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    arrayt(ssize_t length): Extends(length) {
+    }
+    arrayt(const arrayt& copy): Extends(copy) {
+    }
+    arrayt() {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+};
 #endif // defined(USE_CPP_11)
 
-typedef xos::base::arrayt<> array;
 typedef xos::base::arrayt<char_t> char_array;
 typedef xos::base::arrayt<wchar_t> wchar_array;
 typedef xos::base::arrayt<tchar_t> tchar_array;
+
 typedef xos::base::arrayt<byte_t> byte_array;
 typedef xos::base::arrayt<word_t> word_array;
-
 } // namespace coral
 
 #endif // _CORAL_BASE_ARRAY_HPP 

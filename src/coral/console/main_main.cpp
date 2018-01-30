@@ -19,24 +19,22 @@
 ///   Date: 12/15/2014
 ///////////////////////////////////////////////////////////////////////
 #include "coral/console/main_main.hpp"
-#include "xos/io/console/logger.hpp"
-#include "xos/console/io.hpp"
+#include "xos/base/main_main.cpp"
 
 namespace coral {
 namespace console {
 
 } // namespace console
 } // namespace coral
-
+/*
 ///////////////////////////////////////////////////////////////////////
 /// Function: main
 ///////////////////////////////////////////////////////////////////////
 int main(int argc, char** argv, char** env) {
     int err = 0;
-    xos::console::char_io io;
-    xos::io::console::logger logger(io);
-    XOS_LOG_DEBUG("xos::base::main::the_main(argc, argv, env)...");
+    XOS_ERR_LOG_DEBUG("xos::base::main::the_main(argc, argv, env)...");
     err = xos::base::main::the_main(argc, argv, env);
-    XOS_LOG_DEBUG("..." << err << " = xos::base::main::the_main(argc, argv, env)");
+    XOS_ERR_LOG_DEBUG("..." << err << " = xos::base::main::the_main(argc, argv, env)");
     return err;
 }
+*/

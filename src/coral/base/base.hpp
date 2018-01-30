@@ -24,9 +24,11 @@
 #include "xos/base/base.hpp"
 
 #if defined(CPP_11)
+#if !defined(NO_USE_CPP_11)
 #if !defined(USE_CPP_11)
-//#define USE_CPP_11
+#define USE_CPP_11
 #endif // !defined(USE_CPP_11)
+#endif // !defined(NO_USE_CPP_11)
 #endif // defined(CPP_11)
 
 namespace coral {
