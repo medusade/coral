@@ -21,10 +21,10 @@
 #ifndef _CORAL_APP_CONSOLE_CORAL_MAIN_HPP
 #define _CORAL_APP_CONSOLE_CORAL_MAIN_HPP
 
-#include "coral/app/console/coral/main_opt.hpp"
-#include "coral/console/main.hpp"
-#include "coral/inet/cgi/environment/variable/name.hpp"
 #include "coral/io/logger.hpp"
+#include "coral/inet/cgi/environment/variable/name.hpp"
+#include "coral/console/main.hpp"
+#include "coral/app/console/coral/main_opt.hpp"
 
 namespace coral {
 namespace app {
@@ -66,42 +66,36 @@ protected:
         }
         return to;
     }
-    ///////////////////////////////////////////////////////////////////////
     virtual const char_t* set_env(const char_t* to) {
         if ((to) && (to[0])) {
             CORAL_LOG_MESSAGE_DEBUG("set env = \"" << to << "\"...");
         }
         return to;
     }
-    ///////////////////////////////////////////////////////////////////////
     virtual const char_t* set_input(const char_t* to) {
         if ((to) && (to[0])) {
             CORAL_LOG_MESSAGE_DEBUG("set input = \"" << to << "\"...");
         }
         return to;
     }
-    ///////////////////////////////////////////////////////////////////////
     virtual const char_t* set_output(const char_t* to) {
         if ((to) && (to[0])) {
             CORAL_LOG_MESSAGE_DEBUG("set output = \"" << to << "\"...");
         }
         return to;
     }
-    ///////////////////////////////////////////////////////////////////////
     virtual const char_t* set_stdin(const char_t* to) {
         if ((to) && (to[0])) {
             CORAL_LOG_MESSAGE_DEBUG("set stdin = \"" << to << "\"...");
         }
         return to;
     }
-    ///////////////////////////////////////////////////////////////////////
     virtual const char_t* set_stdout(const char_t* to) {
         if ((to) && (to[0])) {
             CORAL_LOG_MESSAGE_DEBUG("set stdout = \"" << to << "\"...");
         }
         return to;
     }
-    ///////////////////////////////////////////////////////////////////////
     virtual const char_t* set_stderr(const char_t* to) {
         if ((to) && (to[0])) {
             CORAL_LOG_MESSAGE_DEBUG("set stderr = \"" << to << "\"...");

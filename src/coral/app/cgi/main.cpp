@@ -19,6 +19,7 @@
 ///   Date: 1/26/2015
 ///////////////////////////////////////////////////////////////////////
 #include "coral/app/cgi/main.hpp"
+#include "coral/console/main_main.cpp"
 
 namespace coral {
 namespace app {

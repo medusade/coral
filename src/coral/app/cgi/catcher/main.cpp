@@ -19,6 +19,7 @@
 ///   Date: 12/30/2014
 ///////////////////////////////////////////////////////////////////////
 #include "coral/app/cgi/catcher/main.hpp"
+#include "coral/console/main_main.cpp"
 
 namespace coral {
 namespace app {
