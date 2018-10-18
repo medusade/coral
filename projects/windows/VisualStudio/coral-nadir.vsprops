@@ -86,7 +86,15 @@
     />
   <UserMacro
       Name="XOSNADIR_DEFINES"
-      Value="WINSOCK_2"
+      Value="NO_USE_NADIR_BASE;NO_USE_XOS_LOGGER_INTERFACE;WINSOCK_2"
+    />
+  <UserMacro
+      Name="XOSNADIR_DEBUG_DEFINES"
+      Value="$(XOSNADIR_DEFINES);DEBUG_BUILD"
+    />
+  <UserMacro
+      Name="XOSNADIR_RELEASE_DEFINES"
+      Value="$(XOSNADIR_DEFINES);RELEASE_BUILD"
     />
   <UserMacro
         Name="NADIR_INCLUDE_DIRS"

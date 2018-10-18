@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2018 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,45 +16,69 @@
 #   File: libcoral.pri
 #
 # Author: $author$
-#   Date: 12/15/2014
+#   Date: 9/3/2018
+#
+# QtCreator .pri file for coral library libcoral
 ########################################################################
-
-TEMPLATE = lib
-CONFIG += staticlib
 
 ########################################################################
 # libcoral
-libcoral_TARGET = coral
 
+# libcoral TARGET
+#
+libcoral_TARGET = coral
+libcoral_TEMPLATE = lib
+libcoral_CONFIG += staticlib
+
+# libcoral INCLUDEPATH
+#
 libcoral_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
 
+# libcoral DEFINES
+#
 libcoral_DEFINES += \
 $${coral_DEFINES} \
 
 ########################################################################
+# libcoral OBJECTIVE_HEADERS
+#
+#libcoral_OBJECTIVE_HEADERS += \
+#$${CORAL_SRC}/coral/base/Base.hh \
+
+# libcoral OBJECTIVE_SOURCES
+#
+#libcoral_OBJECTIVE_SOURCES += \
+#$${CORAL_SRC}/coral/base/Base.mm \
+
+########################################################################
+# libcoral HEADERS
+#
 libcoral_HEADERS += \
 $${CORAL_SRC}/coral/base/string.hpp \
 $${CORAL_SRC}/coral/base/array.hpp \
 $${CORAL_SRC}/coral/base/types.hpp \
 $${CORAL_SRC}/coral/base/base.hpp \
-
-libcoral_SOURCES += \
-$${CORAL_SRC}/coral/base/string.cpp \
-$${CORAL_SRC}/coral/base/array.cpp \
-$${CORAL_SRC}/coral/base/types.cpp \
-$${CORAL_SRC}/coral/base/base.cpp \
-
-########################################################################
-libcoral_HEADERS += \
+\
 $${CORAL_SRC}/coral/io/stream.hpp \
 $${CORAL_SRC}/coral/io/writer.hpp \
 $${CORAL_SRC}/coral/io/reader.hpp \
 $${CORAL_SRC}/coral/io/sequence.hpp \
 
+# libcoral SOURCES
+#
 libcoral_SOURCES += \
+$${CORAL_SRC}/coral/base/string.cpp \
+$${CORAL_SRC}/coral/base/array.cpp \
+$${CORAL_SRC}/coral/base/types.cpp \
+$${CORAL_SRC}/coral/base/base.cpp \
+\
 $${CORAL_SRC}/coral/io/stream.cpp \
 $${CORAL_SRC}/coral/io/writer.cpp \
 $${CORAL_SRC}/coral/io/reader.cpp \
 $${CORAL_SRC}/coral/io/sequence.cpp \
+
+########################################################################
+
+
 

@@ -21,9 +21,6 @@
     <ClCompile Include="..\..\..\..\..\src\coral\console\main_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\coral\console\main_opt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\src\coral\app\cgi\catcher\main.hpp">

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!--========================================================================-->
+<!-- Copyright (c) 1988-2018 $organization$                                 -->
+<!--                                                                        -->
+<!-- This software is provided by the author and contributors ``as is''     -->
+<!-- and any express or implied warranties, including, but not limited to,  -->
+<!-- the implied warranties of merchantability and fitness for a particular -->
+<!-- purpose are disclaimed. In no event shall the author or contributors   -->
+<!-- be liable for any direct, indirect, incidental, special, exemplary,    -->
+<!-- or consequential damages (including, but not limited to, procurement   -->
+<!-- of substitute goods or services; loss of use, data, or profits; or     -->
+<!-- business interruption) however caused and on any theory of liability,  -->
+<!-- whether in contract, strict liability, or tort (including negligence   -->
+<!-- or otherwise) arising in any way out of the use of this software,      -->
+<!-- even if advised of the possibility of such damage.                     -->
+<!--                                                                        -->
+<!--   File: medusa.props                                                   -->
+<!--                                                                        -->
+<!-- Author: $author$                                                       -->
+<!--   Date: 10/11/2018                                                     -->
+<!--========================================================================-->
+<Project
+  ToolsVersion="4.0"
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ImportGroup Label="PropertySheets" />
+
+  <PropertyGroup Label="UserMacros">
+      <MEDUSA_GROUP></MEDUSA_GROUP>
+      <MEDUSA_NAME>medusa</MEDUSA_NAME>
+      <MEDUSA_VERSION></MEDUSA_VERSION>
+      <MEDUSA_DIR>$(MEDUSA_GROUP)$(MEDUSA_NAME)$(MEDUSA_VERSION)</MEDUSA_DIR>
+      <MEDUSA_SOURCE_DIR>$(SOURCE_ROOT_DIR)/$(MEDUSA_DIR)/src</MEDUSA_SOURCE_DIR>
+      <MEDUSA_BUILD_DIR>$(SOURCE_BUILD_DIR)/$(MEDUSA_DIR)/build</MEDUSA_BUILD_DIR>
+      <MEDUSA_BUILD>$(MEDUSA_BUILD_DIR)/$(PlatformName)/$(VCVersion)/$(Configuration)</MEDUSA_BUILD>
+      <MEDUSA_OBJ>$(MEDUSA_BUILD)/obj/$(ProjectName)</MEDUSA_OBJ>
+      <MEDUSA_LIB>$(MEDUSA_BUILD)/lib</MEDUSA_LIB>
+      <MEDUSA_BIN>$(MEDUSA_BUILD)/bin</MEDUSA_BIN>
+      <MEDUSA_DEFINES></MEDUSA_DEFINES>
+      <MEDUSA_DEBUG_DEFINES>$(XOS_NADIR_DEBUG_DEFINES);$(MEDUSA_DEFINES)</MEDUSA_DEBUG_DEFINES>
+      <MEDUSA_RELEASE_DEFINES>$(XOS_NADIR_RELEASE_DEFINES);$(MEDUSA_DEFINES)</MEDUSA_RELEASE_DEFINES>
+      <MEDUSA_INCLUDE_DIRS>$(MEDUSA_SOURCE_DIR);$(CORAL_INCLUDE_DIRS)</MEDUSA_INCLUDE_DIRS>
+      <VC10_MEDUSA_INCLUDE_DIRS>$(MEDUSA_INCLUDE_DIRS);$(VC10_CORAL_INCLUDE_DIRS)</VC10_MEDUSA_INCLUDE_DIRS>
+      <VC14_MEDUSA_INCLUDE_DIRS>$(MEDUSA_INCLUDE_DIRS);$(VC14_CORAL_INCLUDE_DIRS)</VC14_MEDUSA_INCLUDE_DIRS>
+      <MEDUSA_LIB_DIRS>$(MEDUSA_LIB);$(CORAL_LIB_DIRS)</MEDUSA_LIB_DIRS>
+      <MEDUSA_LIBS>libmedusa.lib;$(CORAL_LIBS)</MEDUSA_LIBS>
+  </PropertyGroup>
+
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+
+  <ItemGroup>
+      <BuildMacro Include="SOURCE_ROOT_DIR">
+          <Value>$(SOURCE_ROOT_DIR)</Value>
+      </BuildMacro>
+      <BuildMacro Include="SOURCE_BUILD_DIR">
+          <Value>$(SOURCE_BUILD_DIR)</Value>
+      </BuildMacro>
+      <BuildMacro Include="SOURCE_BUILD">
+          <Value>$(SOURCE_BUILD)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_GROUP">
+          <Value>$(MEDUSA_GROUP)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_NAME">
+          <Value>$(MEDUSA_NAME)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_VERSION">
+          <Value>$(MEDUSA_VERSION)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_DIR">
+          <Value>$(MEDUSA_DIR)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_SOURCE_DIR">
+          <Value>$(MEDUSA_SOURCE_DIR)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_BUILD_DIR">
+          <Value>$(MEDUSA_BUILD_DIR)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_BUILD">
+          <Value>$(MEDUSA_BUILD)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_OBJ">
+          <Value>$(MEDUSA_OBJ)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_LIB">
+          <Value>$(MEDUSA_LIB)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_BIN">
+          <Value>$(MEDUSA_BIN)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_DEFINES">
+          <Value>$(MEDUSA_DEFINES)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_DEBUG_DEFINES">
+          <Value>$(MEDUSA_DEBUG_DEFINES)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_RELEASE_DEFINES">
+          <Value>$(MEDUSA_RELEASE_DEFINES)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_INCLUDE_DIRS">
+          <Value>$(MEDUSA_INCLUDE_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="VC10_MEDUSA_INCLUDE_DIRS">
+          <Value>$(VC10_MEDUSA_INCLUDE_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="VC14_MEDUSA_INCLUDE_DIRS">
+          <Value>$(VC14_MEDUSA_INCLUDE_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_LIB_DIRS">
+          <Value>$(MEDUSA_LIB_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="MEDUSA_LIBS">
+          <Value>$(MEDUSA_LIBS)</Value>
+      </BuildMacro>
+  </ItemGroup>
+</Project>
+

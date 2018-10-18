@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2018 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,32 +16,59 @@
 #   File: cgithrower.pri
 #
 # Author: $author$
-#   Date: 1/30/2015
+#   Date: 9/3/2018
+#
+# QtCreator .pri file for coral executable cgithrower
 ########################################################################
 
+########################################################################
+# cgithrower
+
+# cgithrower TARGET
+#
 cgithrower_TARGET = coral-cgithrower
 
+# cgithrower INCLUDEPATH
+#
 cgithrower_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
 
+# cgithrower DEFINES
+#
 cgithrower_DEFINES += \
 $${coral_DEFINES} \
 
 ########################################################################
-cgithrower_HEADERS += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.hpp \
-$${CORAL_SRC}/coral/app/cgi/main.hpp \
-$${CORAL_SRC}/coral/console/main.hpp \
-$${CORAL_SRC}/coral/console/main_main.hpp \
+# cgithrower OBJECTIVE_HEADERS
+#
+#cgithrower_OBJECTIVE_HEADERS += \
+#$${CORAL_SRC}/coral/base/Base.hh \
 
-cgithrower_SOURCES += \
-$${CORAL_SRC}/coral/app/cgi/thrower/main.cpp \
-$${CORAL_SRC}/coral/console/main_main.cpp \
+# cgithrower OBJECTIVE_SOURCES
+#
+#cgithrower_OBJECTIVE_SOURCES += \
+#$${CORAL_SRC}/coral/base/Base.mm \
 
 ########################################################################
+# cgithrower HEADERS
+#
+cgithrower_HEADERS += \
+$${CORAL_SRC}/coral/app/cgi/thrower/main.hpp \
+
+# cgithrower SOURCES
+#
+cgithrower_SOURCES += \
+$${CORAL_SRC}/coral/app/cgi/thrower/main.cpp \
+
+########################################################################
+# cgithrower FRAMEWORKS
+#
+cgithrower_FRAMEWORKS += \
+$${coral_FRAMEWORKS} \
+
+# cgithrower LIBS
+#
 cgithrower_LIBS += \
 $${coral_LIBS} \
 
-########################################################################
-# NO Qt
-QT -= gui core
+

@@ -24,7 +24,7 @@
 			OutputDirectory="$(CORAL_BIN)"
 			IntermediateDirectory="$(CORAL_OBJ)"
 			ConfigurationType="1"
-			InheritedPropertySheets="..\coral-vcversion.vsprops;..\..\coral-nadir.vsprops;..\..\coral-medusa.vsprops;..\..\coral.vsprops"
+			InheritedPropertySheets="..\..\coral.vsprops;..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\nadir.vsprops;..\..\medusa.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -46,7 +46,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS)"
-				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;_DEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;$(CORAL_DEBUG_DEFINES)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
@@ -65,7 +65,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(XOSCORAL_LIBS)"
+				AdditionalDependencies="$(CORAL_LIBS)"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -99,7 +99,7 @@
 			OutputDirectory="$(CORAL_BIN)"
 			IntermediateDirectory="$(CORAL_OBJ)"
 			ConfigurationType="1"
-			InheritedPropertySheets="..\coral-vcversion.vsprops;..\..\coral-nadir.vsprops;..\..\coral-medusa.vsprops;..\..\coral.vsprops"
+			InheritedPropertySheets="..\..\coral.vsprops;..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\nadir.vsprops;..\..\medusa.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -122,7 +122,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS)"
-				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;_DEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;$(CORAL_DEBUG_DEFINES)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
@@ -141,7 +141,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(XOSCORAL_LIBS)"
+				AdditionalDependencies="$(CORAL_LIBS)"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -175,7 +175,7 @@
 			OutputDirectory="$(CORAL_BIN)"
 			IntermediateDirectory="$(CORAL_OBJ)"
 			ConfigurationType="1"
-			InheritedPropertySheets="..\coral-vcversion.vsprops;..\..\coral-nadir.vsprops;..\..\coral-medusa.vsprops;..\..\coral.vsprops"
+			InheritedPropertySheets="..\..\coral.vsprops;..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\nadir.vsprops;..\..\medusa.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -199,7 +199,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS)"
-				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;NDEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;$(CORAL_RELEASE_DEFINES)"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
@@ -217,7 +217,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(XOSCORAL_LIBS)"
+				AdditionalDependencies="$(CORAL_LIBS)"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -253,7 +253,7 @@
 			OutputDirectory="$(CORAL_BIN)"
 			IntermediateDirectory="$(CORAL_OBJ)"
 			ConfigurationType="1"
-			InheritedPropertySheets="..\coral-vcversion.vsprops;..\..\coral-nadir.vsprops;..\..\coral-medusa.vsprops;..\..\coral.vsprops"
+			InheritedPropertySheets="..\..\coral.vsprops;..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\nadir.vsprops;..\..\medusa.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -278,7 +278,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS)"
-				PreprocessorDefinitions="$(XOSCORAL_DEFINES);WIN32;NDEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;$(CORAL_RELEASE_DEFINES)"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
@@ -296,7 +296,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(XOSCORAL_LIBS)"
+				AdditionalDependencies="$(CORAL_LIBS)"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"

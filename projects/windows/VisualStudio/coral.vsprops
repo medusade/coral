@@ -70,15 +70,24 @@
         Value="$(CORAL_BUILD)/bin"
     />
 
+  <!--===============================================-->
+
     <UserMacro
         Name="CORAL_DEFINES"
-        Value="$(NADIR_DEFINES)"
+        Value=""
     />
-  <UserMacro
-      Name="XOSCORAL_DEFINES"
-      Value="$(XOSNADIR_DEFINES)"
+    <UserMacro
+        Name="CORAL_DEBUG_DEFINES"
+        Value="$(CORAL_DEFINES);$(XOSNADIR_DEBUG_DEFINES)"
     />
-  <UserMacro
+    <UserMacro
+        Name="CORAL_RELEASE_DEFINES"
+        Value="$(CORAL_DEFINES);$(XOSNADIR_RELEASE_DEFINES)"
+    />
+
+    <!--===============================================-->
+  
+    <UserMacro
         Name="CORAL_INCLUDE_DIRS"
         Value="$(CORAL_SOURCE_DIR);$(MEDUSA_INCLUDE_DIRS);$(NADIR_INCLUDE_DIRS)"
     />
@@ -88,11 +97,7 @@
     />
     <UserMacro
         Name="CORAL_LIBS"
-        Value="libcoral.lib $(NADIR_LIBS)"
-    />
-  <UserMacro
-      Name="XOSCORAL_LIBS"
-      Value="libxoscoral.lib $(XOSNADIR_LIBS)"
+        Value="libcoral.lib $(XOSNADIR_LIBS)"
     />
 
   <!--===============================================-->

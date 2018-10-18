@@ -36,10 +36,14 @@
       <CORAL_OBJ>$(CORAL_BUILD)/obj/$(ProjectName)</CORAL_OBJ>
       <CORAL_LIB>$(CORAL_BUILD)/lib</CORAL_LIB>
       <CORAL_BIN>$(CORAL_BUILD)/bin</CORAL_BIN>
-      <CORAL_DEFINES>$(NADIR_DEFINES)</CORAL_DEFINES>
-      <CORAL_INCLUDE_DIRS>$(CORAL_SOURCE_DIR);$(NADIR_INCLUDE_DIRS)</CORAL_INCLUDE_DIRS>
+      <CORAL_DEFINES></CORAL_DEFINES>
+      <CORAL_DEBUG_DEFINES>$(CORAL_DEFINES);$(XOS_NADIR_DEBUG_DEFINES)</CORAL_DEBUG_DEFINES>
+      <CORAL_RELEASE_DEFINES>$(CORAL_DEFINES);$(XOS_NADIR_RELEASE_DEFINES)</CORAL_RELEASE_DEFINES>
+      <CORAL_INCLUDE_DIRS>$(CORAL_SOURCE_DIR);$(MEDUSA_INCLUDE_DIRS)</CORAL_INCLUDE_DIRS>
+      <VC10_CORAL_INCLUDE_DIRS>$(CORAL_INCLUDE_DIRS);$(VC10_NADIR_INCLUDE_DIRS)</VC10_CORAL_INCLUDE_DIRS>
+      <VC14_CORAL_INCLUDE_DIRS>$(CORAL_INCLUDE_DIRS);$(VC14_NADIR_INCLUDE_DIRS)</VC14_CORAL_INCLUDE_DIRS>
       <CORAL_LIB_DIRS>$(CORAL_LIB);$(NADIR_LIB_DIRS)</CORAL_LIB_DIRS>
-      <CORAL_LIBS>libcoral.lib;$(NADIR_LIBS)</CORAL_LIBS>
+      <CORAL_LIBS>libcoral.lib;$(XOS_NADIR_LIBS)</CORAL_LIBS>
   </PropertyGroup>
 
   <PropertyGroup />
@@ -79,8 +83,20 @@
       <BuildMacro Include="CORAL_DEFINES">
           <Value>$(CORAL_DEFINES)</Value>
       </BuildMacro>
+      <BuildMacro Include="CORAL_DEBUG_DEFINES">
+          <Value>$(CORAL_DEBUG_DEFINES)</Value>
+      </BuildMacro>
+      <BuildMacro Include="CORAL_RELEASE_DEFINES">
+          <Value>$(CORAL_RELEASE_DEFINES)</Value>
+      </BuildMacro>
       <BuildMacro Include="CORAL_INCLUDE_DIRS">
           <Value>$(CORAL_INCLUDE_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="VC10_CORAL_INCLUDE_DIRS">
+          <Value>$(VC10_CORAL_INCLUDE_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="VC14_CORAL_INCLUDE_DIRS">
+          <Value>$(VC14_CORAL_INCLUDE_DIRS)</Value>
       </BuildMacro>
       <BuildMacro Include="CORAL_LIB_DIRS">
           <Value>$(CORAL_LIB_DIRS)</Value>

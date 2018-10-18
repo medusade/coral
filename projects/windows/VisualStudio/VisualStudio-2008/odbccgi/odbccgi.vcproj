@@ -62,7 +62,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(CORAL_LIBS)"
+				AdditionalDependencies="$(XOSCORAL_LIBS)"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -138,7 +138,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(CORAL_LIBS)"
+				AdditionalDependencies="$(XOSCORAL_LIBS)"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"

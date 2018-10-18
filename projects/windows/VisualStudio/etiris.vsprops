@@ -73,11 +73,11 @@
 
   <UserMacro
     Name="ETIRIS_DEBUG_DEFINES"
-    Value="$(NADIR_DEBUG_DEFINES)"
+    Value="$(XOSNADIR_DEBUG_DEFINES)"
     />
   <UserMacro
       Name="ETIRIS_RELEASE_DEFINES"
-      Value="$(NADIR_RELEASE_DEFINES)"
+      Value="$(XOSNADIR_RELEASE_DEFINES)"
     />
 
   <UserMacro
@@ -90,7 +90,7 @@
     />
     <UserMacro
         Name="ETIRIS_LIBS"
-        Value="$(NADIR_LIBS)"
+        Value="$(XOSNADIR_LIBS)"
     />
 
     <!--===============================================-->

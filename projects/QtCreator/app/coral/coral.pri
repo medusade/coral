@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2018 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,31 +16,59 @@
 #   File: coral.pri
 #
 # Author: $author$
-#   Date: 12/15/2014
+#   Date: 10/18/2018
+#
+# QtCreator .pri file for coral executable coral
 ########################################################################
 
-coral_TARGET = coral
+########################################################################
+# coral
 
-coral_INCLUDEPATH += \
+# coral_exe TARGET
+#
+coral_exe_TARGET = coral
 
-coral_DEFINES += \
+# coral_exe INCLUDEPATH
+#
+coral_exe_INCLUDEPATH += \
+$${coral_INCLUDEPATH} \
+
+# coral_exe DEFINES
+#
+coral_exe_DEFINES += \
+$${coral_DEFINES} \
 
 ########################################################################
-coral_HEADERS += \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.hpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.hpp \
+# coral_exe OBJECTIVE_HEADERS
+#
+#coral_exe_OBJECTIVE_HEADERS += \
+#$${CORAL_SRC}/coral/base/Base.hh \
 
-coral_SOURCES += \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/name.cpp \
-$${CORAL_SRC}/coral/inet/cgi/environment/variable/which.cpp \
+# coral_exe OBJECTIVE_SOURCES
+#
+#coral_exe_OBJECTIVE_SOURCES += \
+#$${CORAL_SRC}/coral/base/Base.mm \
 
 ########################################################################
-coral_HEADERS += \
+# coral_exe HEADERS
+#
+coral_exe_HEADERS += \
 $${CORAL_SRC}/coral/app/console/coral/main.hpp \
-$${CORAL_SRC}/coral/console/main.hpp \
-$${CORAL_SRC}/coral/console/main_main.hpp \
 
-coral_SOURCES += \
+# coral_exe SOURCES
+#
+coral_exe_SOURCES += \
 $${CORAL_SRC}/coral/app/console/coral/main.cpp \
-$${CORAL_SRC}/coral/console/main_main.cpp \
+
+########################################################################
+# coral_exe FRAMEWORKS
+#
+coral_exe_FRAMEWORKS += \
+$${coral_FRAMEWORKS} \
+
+# coral_exe LIBS
+#
+coral_exe_LIBS += \
+$${coral_LIBS} \
+
 
