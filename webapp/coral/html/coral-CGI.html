@@ -1,0 +1,93 @@
+<!--========================================================================-->
+<!-- Copyright (c) 1988-2018 $organization$                                 -->
+<!--                                                                        -->
+<!-- This software is provided by the author and contributors ``as is''     -->
+<!-- and any express or implied warranties, including, but not limited to,  -->
+<!-- the implied warranties of merchantability and fitness for a particular -->
+<!-- purpose are disclaimed. In no event shall the author or contributors   -->
+<!-- be liable for any direct, indirect, incidental, special, exemplary,    -->
+<!-- or consequential damages (including, but not limited to, procurement   -->
+<!-- of substitute goods or services; loss of use, data, or profits; or     -->
+<!-- business interruption) however caused and on any theory of liability,  -->
+<!-- whether in contract, strict liability, or tort (including negligence   -->
+<!-- or otherwise) arising in any way out of the use of this software,      -->
+<!-- even if advised of the possibility of such damage.                     -->
+<!--                                                                        -->
+<!--   File: coral-CGI.html                                                 -->
+<!--                                                                        -->
+<!-- Author: $author$                                                       -->
+<!--   Date: 10/16/2018                                                     -->
+<!--========================================================================-->
+<html>
+    <!--========================================================================-->
+    <!-- head                                                                   -->
+    <!--========================================================================-->
+    <head>
+        <title>Coral CGI</title>
+
+        <!--========================================================================-->
+        <!-- style                                                                  -->
+        <!--========================================================================-->
+        <link rel="stylesheet" type="text/css" href="../css/html-form.css"></link>
+        <style type="text/css">
+        </style>
+
+        <!--========================================================================-->
+        <!-- script                                                                 -->
+        <!--========================================================================-->
+        <script type="text/javascript" src="../js/html-form.js"></script>
+        <script type="text/javascript">
+        </script>
+    </head>
+
+    <!--========================================================================-->
+    <!-- body                                                                   -->
+    <!--========================================================================-->
+    <body>
+        <a href="coral-CGI.html"><h3>Coral CGI</h3></a>
+
+        <!--========================================================================-->
+        <!-- form                                                                   -->
+        <!--========================================================================-->
+        <form
+         Action="/coral-cgi/cgi"
+         Method="POST"
+         Name="Form"
+         onSubmit="return setFormSubmit(getFormValue('FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
+            <div class="form"><hr/>
+
+            Content-Type: <select name="Content-Type">
+            <option value="text/html">html</option>
+            <option value="text/xml">xml</option>
+            <option value="text/plain">text</option>
+            <option value=""></option>
+            </select><br/>
+            Action: <select name="FormAction">
+            <option value="/coral-cgi/hellocgi">/coral-cgi/hellocgi</option>
+            <option value="/coral-cgi/cgicatcher">/coral-cgi/cgicatcher</option>
+            <option value="/coral-cgi/cgithrower">/coral-cgi/cgithrower</option>
+            <option value="/coral-cgi/cgi">/coral-cgi/cgi</option>
+            <option value="/xde-cgi/cgi">/xde-cgi/cgi</option>
+            <option value=""></option>
+            </select><br/>
+            Method: <select name="FormMethod">
+            <option value="POST">POST</option>
+            <option value="GET">GET</option>
+            <option value=""></option>
+            </select><br/>
+            <hr/></div>
+
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                <td><input type="submit" name="submit" value="submit"/></td>
+                <td><table cellpadding="0" cellspacing="10" border="0">
+                    <tr>
+                    <td><a href="../t/html/form-html.html">Create HTML Form</a></td>
+                    <td><a href="../t/t/t-t.html">Create T File</a></td>
+                    </tr>
+                </table></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
