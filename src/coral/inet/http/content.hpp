@@ -50,6 +50,8 @@ enum {
     octet_stream = medusa::inet::http::content::type::octet_stream,
     urlencoded_form_data = medusa::inet::http::content::type::urlencoded_form_data,
     multipart_form_data = medusa::inet::http::content::type::multipart_form_data,
+    json = medusa::inet::http::content::type::json,
+    javascript = medusa::inet::http::content::type::javascript,
 
     next = medusa::inet::http::content::type::next,
     first = medusa::inet::http::content::type::first,

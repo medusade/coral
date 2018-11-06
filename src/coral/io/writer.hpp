@@ -47,6 +47,11 @@ typedef xos::io::char_writer char_writer;
 typedef xos::io::wchar_writer wchar_writer;
 typedef xos::io::tchar_writer tchar_writer;
 
+typedef xos::io::writer::Implements writer_implements;
+typedef xos::io::char_writer::Implements char_writer_implements;
+typedef xos::io::wchar_writer::Implements wchar_writer_implements;
+typedef xos::io::tchar_writer::Implements tchar_writer_implements;
+
 namespace echoed {
 
 ///////////////////////////////////////////////////////////////////////

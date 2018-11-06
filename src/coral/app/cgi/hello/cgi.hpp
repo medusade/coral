@@ -70,18 +70,33 @@ protected:
                         if (!(value.compare(this->content_type_xml()))) {
                             this->set_content_type(_content_type = this->content_type_xml());
                         } else {
-                            _content_type = this->set_content_type(value);
+                            if (!(value.compare(this->content_type_json()))) {
+                                this->set_content_type(_content_type = this->content_type_json());
+                            } else {
+                                if (!(value.compare(this->content_type_javascript()))) {
+                                    this->set_content_type(_content_type = this->content_type_javascript());
+                                } else {
+                                    _content_type = this->set_content_type(value);
+                                }
+                            }
                         }
                     }
                 }
-                _message_string.assignl(_message, " ", name, " = \"", _content_type, "\"", NULL);
+                _message_string.assignl(_message, " ", name, " = \\\"", _content_type, "\\\"", NULL);
                 _message = _message_string.chars();
             }
         }
-                
+
         if ((_content_type != this->content_type_xml())) {
             if ((_content_type != this->content_type_html())) {
-                this->outln(_message);
+                if ((_content_type != this->content_type_json())) {
+                    this->outln(_message);
+                } else {
+                    this->outlln
+                    ("{\n", 
+                     "\"message\":\"", _message, "\"\n", 
+                     "}\n", NULL);
+                }
             } else {
                 this->outlln
                 ("<html><body>\n", 

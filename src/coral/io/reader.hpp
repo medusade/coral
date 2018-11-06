@@ -46,6 +46,11 @@ typedef xos::io::char_reader char_reader;
 typedef xos::io::wchar_reader wchar_reader;
 typedef xos::io::tchar_reader tchar_reader;
 
+typedef xos::io::reader::Implements reader_implements;
+typedef xos::io::char_reader::Implements char_reader_implements;
+typedef xos::io::wchar_reader::Implements wchar_reader_implements;
+typedef xos::io::tchar_reader::Implements tchar_reader_implements;
+
 } // namespace io
 } // namespace coral 
 

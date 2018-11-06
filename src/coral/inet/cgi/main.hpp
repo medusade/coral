@@ -23,19 +23,24 @@
 
 #include "coral/console/main.hpp"
 #include "coral/inet/cgi/main_opt.hpp"
+#include "coral/inet/cgi/config/variables/reader.hpp"
 #include "coral/inet/cgi/environment/variables/writer.hpp"
 #include "coral/inet/cgi/environment/variables/reader.hpp"
 #include "coral/inet/cgi/environment/variables/values.hpp"
 #include "coral/inet/http/content.hpp"
 #include "coral/inet/http/header.hpp"
+#include "coral/inet/http/url.hpp"
 #include "coral/io/file.hpp"
+#include "coral/io/string.hpp"
 #include "coral/io/types.hpp"
 #include "coral/io/logger.hpp"
 
+#define CORAL_INET_CGI_CATCH_CONF_FILE_LABEL "config"
 #define CORAL_INET_CGI_CATCH_ARGV_FILE_LABEL "arguments"
 #define CORAL_INET_CGI_CATCH_ENV_FILE_LABEL "environment"
 #define CORAL_INET_CGI_CATCH_STDIN_FILE_LABEL "stdin"
 
+#define CORAL_INET_CGI_CATCH_CONF_FILE_NAME "cgicatch-conf.txt"
 #define CORAL_INET_CGI_CATCH_ARGV_FILE_NAME "cgicatch-argv.txt"
 #define CORAL_INET_CGI_CATCH_ENV_FILE_NAME "cgicatch-env.txt"
 #define CORAL_INET_CGI_CATCH_STDIN_FILE_NAME "cgicatch-stdin.txt"
@@ -50,7 +55,8 @@ typedef console::main main_extends;
 ///////////////////////////////////////////////////////////////////////
 class _EXPORT_CLASS main_implements
 : virtual public console::main_implements,
-  virtual public http::content::read::observer {
+  virtual public http::content::read::observer,
+  virtual public config::variables::reader_events {
 };
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main
@@ -64,15 +70,18 @@ public:
     ///////////////////////////////////////////////////////////////////////
     main()
     : cr_((char_t)'\r'), lf_((char_t)'\n'),
+      catch_conf_file_label_(CORAL_INET_CGI_CATCH_CONF_FILE_LABEL),
       catch_argv_file_label_(CORAL_INET_CGI_CATCH_ARGV_FILE_LABEL),
       catch_env_file_label_(CORAL_INET_CGI_CATCH_ENV_FILE_LABEL),
       catch_stdin_file_label_(CORAL_INET_CGI_CATCH_STDIN_FILE_LABEL),
+      catch_conf_file_name_(CORAL_INET_CGI_CATCH_CONF_FILE_NAME),
       catch_argv_file_name_(CORAL_INET_CGI_CATCH_ARGV_FILE_NAME),
       catch_env_file_name_(CORAL_INET_CGI_CATCH_ENV_FILE_NAME),
       catch_stdin_file_name_(CORAL_INET_CGI_CATCH_STDIN_FILE_NAME),
       content_type_name_(http::message::header::name::of(http::message::header::content_type)),
       content_type_value_(http::content::type::name::of(http::content::type::text)),
-      is_cgi_run_(false), out_content_type_(0), content_length_(0) {
+      is_cgi_run_(false), out_headers_(false), 
+      out_content_type_(0), content_length_(0) {
     }
     virtual ~main() {
     }
@@ -316,6 +325,28 @@ protected:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual int read_cgi_config(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        coral::io::read::file f;
+
+        if ((open_file(f, catch_conf_file_label_, catch_conf_file_name_, true))) {
+            inet::cgi::config::variables::reader e(*this);
+            e.read(f);
+            f.close();
+        }
+        return err;
+    }
+    virtual int before_read_cgi_config(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int after_read_cgi_config(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
     virtual int cgi_main(int argc, char_t** argv, char_t** env) {
         int err = 0, err2 = 0;
         if (!(err = before_get_cgi_form(argc, argv, env))) {
@@ -357,20 +388,26 @@ protected:
     ///////////////////////////////////////////////////////////////////////
     virtual int cgi_run(int argc, char_t** argv, char_t** env) {
         int err = 0, err2 = 0;
-        if (!(err = before_get_cgi_environment(argc, argv, env))) {
-            if (!(err = get_cgi_environment(argc, argv, env))) {
-                if (!(err = before_get_cgi_content(argc, argv, env))) {
-                    if (!(err = get_cgi_content(argc, argv, env))) {
-                        if (!(err = cgi_main(argc, argv, env))) {
+        if (!(err = before_read_cgi_config(argc, argv, env))) {
+            if (!(err = read_cgi_config(argc, argv, env))) {
+                if (!(err = after_read_cgi_config(argc, argv, env))) {
+                    if (!(err = before_get_cgi_environment(argc, argv, env))) {
+                        if (!(err = get_cgi_environment(argc, argv, env))) {
+                            if (!(err = before_get_cgi_content(argc, argv, env))) {
+                                if (!(err = get_cgi_content(argc, argv, env))) {
+                                    if (!(err = cgi_main(argc, argv, env))) {
+                                    }
+                                }
+                                if ((err2 = after_get_cgi_content(argc, argv, env)) && (!err)) {
+                                    err = err2;
+                                }
+                            }
+                        }
+                        if ((err2 = after_get_cgi_environment(argc, argv, env)) && (!err)) {
+                            err = err2;
                         }
                     }
-                    if ((err2 = after_get_cgi_content(argc, argv, env)) && (!err)) {
-                        err = err2;
-                    }
                 }
-            }
-            if ((err2 = after_get_cgi_environment(argc, argv, env)) && (!err)) {
-                err = err2;
             }
         }
         return err;
@@ -390,23 +427,29 @@ protected:
     ///////////////////////////////////////////////////////////////////////
     virtual int console_run(int argc, char_t** argv, char_t** env) {
         int err = 0, err2 = 0;
-        if (!(err = before_read_cgi_environment(argc, argv, env))) {
-            if (!(err = read_cgi_environment(argc, argv, env))) {
-                if (!(err = before_read_cgi_content(argc, argv, env))) {
-                    if (!(err = begin_read_cgi_content(argc, argv, env))) {
-                        if (!(err = console_main(argc, argv, env))) {
+        if (!(err = before_read_cgi_config(argc, argv, env))) {
+            if (!(err = read_cgi_config(argc, argv, env))) {
+                if (!(err = after_read_cgi_config(argc, argv, env))) {
+                    if (!(err = before_read_cgi_environment(argc, argv, env))) {
+                        if (!(err = read_cgi_environment(argc, argv, env))) {
+                            if (!(err = before_read_cgi_content(argc, argv, env))) {
+                                if (!(err = begin_read_cgi_content(argc, argv, env))) {
+                                    if (!(err = console_main(argc, argv, env))) {
+                                    }
+                                    if ((err2 = end_read_cgi_content(argc, argv, env)) && (!err)) {
+                                        err = err2;
+                                    }
+                                }
+                                if ((err2 = after_read_cgi_content(argc, argv, env)) && (!err)) {
+                                    err = err2;
+                                }
+                            }
                         }
-                        if ((err2 = end_read_cgi_content(argc, argv, env)) && (!err)) {
+                        if ((err2 = after_read_cgi_environment(argc, argv, env)) && (!err)) {
                             err = err2;
                         }
                     }
-                    if ((err2 = after_read_cgi_content(argc, argv, env)) && (!err)) {
-                        err = err2;
-                    }
                 }
-            }
-            if ((err2 = after_read_cgi_environment(argc, argv, env)) && (!err)) {
-                err = err2;
             }
         }
         return err;
@@ -482,6 +525,14 @@ protected:
         const char* chars = inet::http::content::type::name::of(inet::http::content::type::xml);
         return chars;
     }
+    virtual const char_t* content_type_json() const {
+        const char* chars = inet::http::content::type::name::of(inet::http::content::type::json);
+        return chars;
+    }
+    virtual const char_t* content_type_javascript() const {
+        const char* chars = inet::http::content::type::name::of(inet::http::content::type::javascript);
+        return chars;
+    }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -495,19 +546,56 @@ protected:
         }
         return chars;
     }
-
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     virtual ssize_t out_content_type() {
         if (!(out_content_type_)) {
             ssize_t count = 0, amount = 0;
             out_content_type_ = set_content_type();
+            out_headers();
             if (0 < (count = this->outln(out_content_type_))) {
                 if (0 < (amount = this->outln())) {
                     count += amount;
                 }
             }
             return count;
+        }
+        return 0;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual void add_header(const char_t* name, const char_t* value) {
+        const string_t n(name), v(value);
+        add_header(n, v);
+    }
+    virtual void add_header(const string_t& name, const string_t& value) {
+        const http::message::header::name n(name);
+        const http::message::header::value v(value);
+        const http::message::header::field f(n, v);
+        headers_.push_back(f);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual ssize_t out_headers() {
+        if (!(out_headers_)) {
+            http::message::header::fields::const_iterator 
+                i = headers_.begin(), end = headers_.end();
+            out_headers_ = true;
+            if ((i != end)) {
+                const char_t* chars = 0;
+                size_t length = 0;
+                ssize_t count = 0, amount = 0;
+                do {
+                    const http::message::header::field& f = *i;
+                    if ((chars = f.has_chars(length))) {
+                        if ((0 < (amount = this->out(chars, length)))) {
+                            count += amount;
+                        }
+                    }
+                } while (++i != end);
+                return count;
+            }
         }
         return 0;
     }
@@ -549,10 +637,18 @@ protected:
 
             if ((file.open(name.chars(), (mode_is_binary)
                 ?(file.mode_read_binary()):(file.mode_read())))) {
-                if (!((length + 2) != (file.read(chars, length + 2)))) {
+                if (!((length + 1) != (file.read(chars, length + 1)))) {
                     if (!(line.compare(chars, length))) {
-                        if (!((cr_ != chars[length]) || (lf_ != chars[length+1]))) {
+                        if (!(lf_ != chars[length])) {
                             return true;
+                        } else {
+                            if (!(cr_ != chars[length])) {
+                                if (!(1 != file.read(chars + length + 1, 1))) {
+                                    if (!(lf_ != chars[length+1])) {
+                                        return true;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -644,6 +740,14 @@ public:
 protected:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual bool on_config_variable
+    (const config::variables::string_t& name, const config::variables::string_t& value) {
+        return true;
+    }
+
+protected:
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
     virtual const char_t* set_argv_file_name(const char_t* to) {
         //if ((to) && (to[0])) {
         //    CORAL_LOG_MESSAGE_DEBUG("set argv_file_name = \"" << to << "\"...");
@@ -670,9 +774,11 @@ protected:
     ///////////////////////////////////////////////////////////////////////
 protected:
     const char_t cr_, lf_;
-    string_t catch_argv_file_label_,
+    string_t catch_conf_file_label_,
+             catch_argv_file_label_,
              catch_env_file_label_,
              catch_stdin_file_label_,
+             catch_conf_file_name_,
              catch_argv_file_name_,
              catch_env_file_name_,
              catch_stdin_file_name_,
@@ -680,9 +786,11 @@ protected:
              content_type_value_,
              content_type_;
     bool is_cgi_run_;
+    bool out_headers_;
     const char_t* out_content_type_;
     size_t content_length_;
     environment::variables::values environment_;
+    http::message::header::fields headers_;
     http::form::fields form_;
     io::read::file content_;
 };

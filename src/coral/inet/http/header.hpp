@@ -22,7 +22,7 @@
 #define _CORAL_INET_HTTP_HEADER_HPP
 
 #include "medusa/inet/http/message/header.hpp"
-#include "coral/base/base.hpp"
+#include "coral/base/string.hpp"
 
 #define CORAL_INET_HTTP_MESSAGE_HEADER_NAME_CONTENT_ENCODING \
     MEDUSA_INET_HTTP_MESSAGE_HEADER_NAME_CONTENT_ENCODING
@@ -55,10 +55,10 @@ enum {
     last = medusa::inet::http::message::header::last,
 };
 
-///////////////////////////////////////////////////////////////////////
-/// Class: name
-///////////////////////////////////////////////////////////////////////
 typedef medusa::inet::http::message::header::name name;
+typedef medusa::inet::http::message::header::value value;
+typedef medusa::inet::http::message::header::field field;
+typedef medusa::inet::http::message::header::fields fields;
 
 } // namespace header
 } // namespace message
