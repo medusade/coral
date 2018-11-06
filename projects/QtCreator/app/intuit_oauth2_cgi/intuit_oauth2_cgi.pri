@@ -13,46 +13,46 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: hellocgi.pri
+#   File: intuit_oauth2_cgi.pri
 #
 # Author: $author$
-#   Date: 10/15/2018
+#   Date: 11/1/2018
 #
-# QtCreator .pri file for coral executable hellocgi
+# QtCreator .pri file for coral executable intuit_oauth2_cgi
 ########################################################################
 
 ########################################################################
-# hellocgi
+# intuit_oauth2_cgi
 
-# hellocgi TARGET
+# intuit_oauth2_cgi TARGET
 #
-hellocgi_TARGET = hellocgi
+intuit_oauth2_cgi_TARGET = intuit-oauth2-cgi
 
-# hellocgi INCLUDEPATH
+# intuit_oauth2_cgi INCLUDEPATH
 #
-hellocgi_INCLUDEPATH += \
+intuit_oauth2_cgi_INCLUDEPATH += \
 $${coral_INCLUDEPATH} \
 
-# hellocgi DEFINES
+# intuit_oauth2_cgi DEFINES
 #
-hellocgi_DEFINES += \
+intuit_oauth2_cgi_DEFINES += \
 $${coral_DEFINES} \
 
 ########################################################################
-# hellocgi OBJECTIVE_HEADERS
+# intuit_oauth2_cgi OBJECTIVE_HEADERS
 #
-#hellocgi_OBJECTIVE_HEADERS += \
+#intuit_oauth2_cgi_OBJECTIVE_HEADERS += \
 #$${CORAL_SRC}/coral/base/Base.hh \
 
-# hellocgi OBJECTIVE_SOURCES
+# intuit_oauth2_cgi OBJECTIVE_SOURCES
 #
-#hellocgi_OBJECTIVE_SOURCES += \
+#intuit_oauth2_cgi_OBJECTIVE_SOURCES += \
 #$${CORAL_SRC}/coral/base/Base.mm \
 
 ########################################################################
-# hellocgi HEADERS
+# intuit_oauth2_cgi HEADERS
 #
-hellocgi_HEADERS += \
+intuit_oauth2_cgi_HEADERS += \
 $${MEDUSA_SRC}/medusa/io/reader.hpp \
 $${MEDUSA_SRC}/medusa/io/writer.hpp \
 $${MEDUSA_SRC}/medusa/inet/http/form/reader.hpp \
@@ -68,13 +68,13 @@ $${MEDUSA_SRC}/medusa/inet/http/url/path.hpp \
 $${MEDUSA_SRC}/medusa/inet/http/url/query.hpp \
 $${MEDUSA_SRC}/medusa/inet/http/url/fragment.hpp \
 $${MEDUSA_SRC}/medusa/inet/http/url/location.hpp \
-$${CORAL_SRC}/coral/io/string.hpp \
+\
 $${CORAL_SRC}/coral/inet/http/url.hpp \
-$${CORAL_SRC}/coral/app/cgi/hello/cgi.hpp \
+$${CORAL_SRC}/coral/app/cgi/intuit/oauth2/cgi.hpp \
 
-# hellocgi SOURCES
+# intuit_oauth2_cgi SOURCES
 #
-hellocgi_SOURCES += \
+intuit_oauth2_cgi_SOURCES += \
 $${MEDUSA_SRC}/medusa/inet/http/form/reader.cpp \
 $${MEDUSA_SRC}/medusa/inet/http/form/writer.cpp \
 $${MEDUSA_SRC}/medusa/inet/http/url/encoded/form/fields.cpp \
@@ -86,18 +86,19 @@ $${MEDUSA_SRC}/medusa/inet/http/url/path.cpp \
 $${MEDUSA_SRC}/medusa/inet/http/url/query.cpp \
 $${MEDUSA_SRC}/medusa/inet/http/url/fragment.cpp \
 $${MEDUSA_SRC}/medusa/inet/http/url/location.cpp \
+\
 $${CORAL_SRC}/coral/inet/http/url.cpp \
-$${CORAL_SRC}/coral/app/cgi/hello/cgi.cpp \
+$${CORAL_SRC}/coral/app/cgi/intuit/oauth2/cgi.cpp \
 
 ########################################################################
-# hellocgi FRAMEWORKS
+# intuit_oauth2_cgi FRAMEWORKS
 #
-hellocgi_FRAMEWORKS += \
+intuit_oauth2_cgi_FRAMEWORKS += \
 $${coral_FRAMEWORKS} \
 
-# hellocgi LIBS
+# intuit_oauth2_cgi LIBS
 #
-hellocgi_LIBS += \
+intuit_oauth2_cgi_LIBS += \
 $${coral_LIBS} \
 
 

@@ -37,6 +37,10 @@ include $(PKG)/$(MAK)/Makedefines
 #
 SRC_DIRS = \
 $(PKG)/$(PRJ)/lib/libcoral \
+$(PKG)/$(PRJ)/app/coral \
+$(PKG)/$(PRJ)/app/cgi \
+$(PKG)/$(PRJ)/app/cgicatcher \
+$(PKG)/$(PRJ)/app/cgithrower \
 $(PKG)/$(PRJ)/app/hellocgi \
 
 include $(PKG)/$(MAK)/Makedirs

@@ -13,65 +13,64 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cgi.pri
+#   File: intuit_oauth2_cgi.pro
 #
 # Author: $author$
-#   Date: 9/3/2018
+#   Date: 11/1/2018
 #
-# QtCreator .pri file for coral executable cgi
+# QtCreator .pro file for coral executable intuit_oauth2_cgi
 ########################################################################
+include(../../../../../build/QtCreator/coral.pri)
+include(../../../../QtCreator/coral.pri)
+include(../../coral.pri)
+include(../../../../QtCreator/app/intuit_oauth2_cgi/intuit_oauth2_cgi.pri)
 
-########################################################################
-# cgi
-
-# cgi TARGET
-#
-cgi_TARGET = coral-cgi
-
-# cgi INCLUDEPATH
-#
-cgi_INCLUDEPATH += \
-$${coral_INCLUDEPATH} \
-
-# cgi DEFINES
-#
-cgi_DEFINES += \
-$${coral_DEFINES} \
+TARGET = $${intuit_oauth2_cgi_TARGET}
 
 ########################################################################
-# cgi OBJECTIVE_HEADERS
+# INCLUDEPATH
 #
-#cgi_OBJECTIVE_HEADERS += \
-#$${CORAL_SRC}/coral/base/Base.hh \
+INCLUDEPATH += \
+$${intuit_oauth2_cgi_INCLUDEPATH} \
 
-# cgi OBJECTIVE_SOURCES
-#
-#cgi_OBJECTIVE_SOURCES += \
-#$${CORAL_SRC}/coral/base/Base.mm \
-
-########################################################################
-# cgi HEADERS
-#
-cgi_HEADERS += \
-$${CORAL_SRC}/coral/inet/cgi/config/variables/reader.hpp \
-$${CORAL_SRC}/coral/inet/cgi/main.hpp \
-$${CORAL_SRC}/coral/app/cgi/main.hpp \
-
-# cgi SOURCES
-#
-cgi_SOURCES += \
-$${CORAL_SRC}/coral/inet/cgi/config/variables/reader.cpp \
-$${CORAL_SRC}/coral/app/cgi/main.cpp \
+# DEFINES
+# 
+DEFINES += \
+$${intuit_oauth2_cgi_DEFINES} \
 
 ########################################################################
-# cgi FRAMEWORKS
+# OBJECTIVE_HEADERS
 #
-cgi_FRAMEWORKS += \
-$${coral_FRAMEWORKS} \
+OBJECTIVE_HEADERS += \
+$${intuit_oauth2_cgi_OBJECTIVE_HEADERS} \
 
-# cgi LIBS
+# OBJECTIVE_SOURCES
 #
-cgi_LIBS += \
-$${coral_LIBS} \
+OBJECTIVE_SOURCES += \
+$${intuit_oauth2_cgi_OBJECTIVE_SOURCES} \
+
+########################################################################
+# HEADERS
+#
+HEADERS += \
+$${intuit_oauth2_cgi_HEADERS} \
+$${OBJECTIVE_HEADERS} \
+
+# SOURCES
+#
+SOURCES += \
+$${intuit_oauth2_cgi_SOURCES} \
+
+########################################################################
+# FRAMEWORKS
+#
+FRAMEWORKS += \
+$${intuit_oauth2_cgi_FRAMEWORKS} \
+
+# LIBS
+#
+LIBS += \
+$${intuit_oauth2_cgi_LIBS} \
+$${FRAMEWORKS} \
 
 
