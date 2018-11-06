@@ -13,17 +13,17 @@
 <!-- or otherwise) arising in any way out of the use of this software,      -->
 <!-- even if advised of the possibility of such damage.                     -->
 <!--                                                                        -->
-<!--   File: coral-CGI.html                                                 -->
+<!--   File: intuit-quickbooks-oauth2.html                                  -->
 <!--                                                                        -->
 <!-- Author: $author$                                                       -->
-<!--   Date: 10/16/2018                                                     -->
+<!--   Date: 10/31/2018                                                     -->
 <!--========================================================================-->
 <html>
     <!--========================================================================-->
     <!-- head                                                                   -->
     <!--========================================================================-->
     <head>
-        <title>Coral CGI</title>
+        <title>Intuit QuickBooks OAuth2</title>
 
         <!--========================================================================-->
         <!-- style                                                                  -->
@@ -44,37 +44,43 @@
     <!-- body                                                                   -->
     <!--========================================================================-->
     <body>
-        <a href="coral-CGI.html"><h3>Coral CGI</h3></a>
+        <a href="intuit-quickbooks-oauth2.html"><h3>Intuit QuickBooks OAuth2</h3></a>
 
         <!--========================================================================-->
         <!-- form                                                                   -->
         <!--========================================================================-->
         <form
-         Action="/coral-cgi/cgi"
+         Action="https://appcenter.intuit.com/connect/oauth2"
          Method="POST"
          Name="Form"
          onSubmit="return setFormSubmit(getFormValue('FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
             <div class="form"><hr/>
 
-            Content-Type: <select name="Content-Type">
-            <option value="text/html">html</option>
-            <option value="text/xml">xml</option>
-            <option value="text/plain">text</option>
-            <option value="application/json">json</option>
-            <option value="application/javascript">javascript</option>
+            client_id: <input name="client_id" value="Q0retFR96TWblJ9NK38jNqIlFKXHV6kWn6UjD552knsQSF1itW"></input><br/>
+            scope: <input name="scope" value="com.intuit.quickbooks.accounting"></input><br/>
+            response_type: <input name="response_type" value="code"></input><br/>
+            redirect_uri: <select name="redirect_uri">
+            <option value="http://localhost/coral-cgi/intuit-oauth2-cgi">http://localhost/coral-cgi/intuit-oauth2-cgi</option>
+            <option value="http://localhost/xde-cgi/cgi">http://localhost/xde-cgi/cgi</option>
             <option value=""></option>
             </select><br/>
+            state: <select name="state">
+            <option value="authorization-request">authorization-request</option>
+            <option value="authorization-response">authorization-response</option>
+            <option value=""></option>
+            </select><br/>
+            <br/>
+            
             Action: <select name="FormAction">
-            <option value="/coral-cgi/hellocgi">/coral-cgi/hellocgi</option>
+            <option value="/coral-cgi/intuit-oauth2-cgi">/coral-cgi/intuit-oauth2-cgi</option>
+            <option value="https://appcenter.intuit.com/connect/oauth2">https://appcenter.intuit.com/connect/oauth2</option>
             <option value="/coral-cgi/cgicatcher">/coral-cgi/cgicatcher</option>
-            <option value="/coral-cgi/cgithrower">/coral-cgi/cgithrower</option>
             <option value="/coral-cgi/cgi">/coral-cgi/cgi</option>
-            <option value="/xde-cgi/cgi">/xde-cgi/cgi</option>
             <option value=""></option>
             </select><br/>
             Method: <select name="FormMethod">
-            <option value="POST">POST</option>
             <option value="GET">GET</option>
+            <option value="POST">POST</option>
             <option value=""></option>
             </select><br/>
             <hr/></div>
@@ -84,8 +90,8 @@
                 <td><input type="submit" name="submit" value="submit"/></td>
                 <td><table cellpadding="0" cellspacing="10" border="0">
                     <tr>
-                    <td><a href="../t/html/form-html.html">Create HTML Form</a></td>
-                    <td><a href="../t/t/t-t.html">Create T File</a></td>
+                    <td><a href="../html/form-html.html">Create HTML Form</a></td>
+                    <td><a href="../t/t-t.html">Create T File</a></td>
                     </tr>
                 </table></td>
                 </tr>
@@ -93,3 +99,11 @@
         </form>
     </body>
 </html>
+<!--
+https://appcenter.intuit.com/connect/oauth2
+?client_id=Q0retFR96TWblJ9NK38jNqIlFKXHV6kWn6UjD552knsQSF1itW
+&scope=com.intuit.quickbooks.accounting
+&redirect_uri=https://developer.intuit.com/v2/OAuth2Playground/RedirectUrl
+&response_type=code
+&state=PlaygroundAuth#/Authorize/123146090825439
+-->

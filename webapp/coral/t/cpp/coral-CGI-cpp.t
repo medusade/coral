@@ -13,17 +13,13 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: coral-CGI-hpp-cpp.t
+%#   File: coral-CGI-cpp.t
 %#
 %# Author: $author$
-%#   Date: 10/14/2018
+%#   Date: 10/27/2018
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
-%prefix,%(%else-then(%prefix%,%(CGI-)%)%)%,%
-%Prefix,%(%else-then(%Prefix%,%(%prefix%)%)%)%,%
-%PREFIX,%(%else-then(%PREFIX%,%(%toupper(%Prefix%)%)%)%)%,%
-%prefix,%(%else-then(%_Prefix%,%(%tolower(%Prefix%)%)%)%)%,%
 %%(%
-%%include(%include_path%/coral-hpp-cpp.t)%%
+%%include(%include_path%/%Vendor%coral-%Prefix%%Extension%-%Extension%.t)%%
 %)%)%

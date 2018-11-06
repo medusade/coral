@@ -13,17 +13,37 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: coral-CGI-hpp-cpp.t
+%#   File: coral-hpp-hpp.t
 %#
 %# Author: $author$
-%#   Date: 10/14/2018
+%#   Date: 10/27/2018
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
-%prefix,%(%else-then(%prefix%,%(CGI-)%)%)%,%
-%Prefix,%(%else-then(%Prefix%,%(%prefix%)%)%)%,%
-%PREFIX,%(%else-then(%PREFIX%,%(%toupper(%Prefix%)%)%)%)%,%
-%prefix,%(%else-then(%_Prefix%,%(%tolower(%Prefix%)%)%)%)%,%
 %%(%
-%%include(%include_path%/coral-hpp-cpp.t)%%
+%%Include%%
+%%SysInclude%%
+%%then-if(%Namespace_begin%,
+)%%
+%%if(%Class%,%(
+%if(%Implements%,%(typedef %Implements% %ClassT%_implements;
+)%)%%if(%Extends%,%(typedef %Extends% %ClassT%_extends;
+)%)%///////////////////////////////////////////////////////////////////////
+///  Class: %ClassT%
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS %ClassT%: virtual public %ClassTImplements%%if(%Extends%,%(, public %ClassTExtends%)%)% {
+public:
+    typedef %ClassTImplements% Implements;
+    %if(%Extends%,%(typedef %ClassTExtends% Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    %ClassT%(const %ClassT%& copy) {}
+    %ClassT%() {}
+    virtual ~%ClassT%() {}
+    )%)%///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+}; /// class _EXPORT_CLASS %ClassT%
+)%)%%
+%%then-if(%Namespace_end%,
+)%%
 %)%)%

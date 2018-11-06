@@ -20,7 +20,14 @@
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
+%main_main,%(%else-then(%main_main%,%(coral/console/main_main.cpp)%)%)%,%
+%Main_main,%(%else-then(%Main_main%,%(%main_main%)%)%)%,%
+%MAIN_MAIN,%(%else-then(%MAIN_MAIN%,%(%toupper(%Main_main%)%)%)%)%,%
+%main_main,%(%else-then(%_Main_main%,%(%tolower(%Main_main%)%)%)%)%,%
 %%(%
+%#include "%Header%"
+%if(%Main_main%,%(#include "%Main_main%"
+)%)%%
 %%then-if(%Namespace_begin%,
 )%%
 %
