@@ -60,20 +60,22 @@
             scope: <input name="scope" value="com.intuit.quickbooks.accounting"></input><br/>
             response_type: <input name="response_type" value="code"></input><br/>
             redirect_uri: <select name="redirect_uri">
+            <option value="https://developer.intuit.com/v2/OAuth2Playground/RedirectUrl">https://developer.intuit.com/v2/OAuth2Playground/RedirectUrl</option>
             <option value="http://localhost/coral-cgi/intuit-oauth2-cgi">http://localhost/coral-cgi/intuit-oauth2-cgi</option>
-            <option value="http://localhost/xde-cgi/cgi">http://localhost/xde-cgi/cgi</option>
+            <option value="http://localhost/coral-cgi/cgicatcher">http://localhost/coral-cgi/cgicatcher</option>
+            <option value="http://localhost/coral-cgi/cgi">http://localhost/coral-cgi/cgi</option>
             <option value=""></option>
             </select><br/>
             state: <select name="state">
-            <option value="authorization-request">authorization-request</option>
             <option value="authorization-response">authorization-response</option>
+            <option value="authorization-request">authorization-request</option>
             <option value=""></option>
             </select><br/>
             <br/>
             
             Action: <select name="FormAction">
-            <option value="/coral-cgi/intuit-oauth2-cgi">/coral-cgi/intuit-oauth2-cgi</option>
             <option value="https://appcenter.intuit.com/connect/oauth2">https://appcenter.intuit.com/connect/oauth2</option>
+            <option value="/coral-cgi/intuit-oauth2-cgi">/coral-cgi/intuit-oauth2-cgi</option>
             <option value="/coral-cgi/cgicatcher">/coral-cgi/cgicatcher</option>
             <option value="/coral-cgi/cgi">/coral-cgi/cgi</option>
             <option value=""></option>
@@ -87,11 +89,14 @@
 
             <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                <td><input type="submit" name="submit" value="submit"/></td>
+                <td><input type="submit" name="submit" value="submit"></input></td>
                 <td><table cellpadding="0" cellspacing="10" border="0">
                     <tr>
-                    <td><a href="../html/form-html.html">Create HTML Form</a></td>
-                    <td><a href="../t/t-t.html">Create T File</a></td>
+                    <td><a href="../t/html/intuit-quickbooks-oauth2-response-html.t?content_type=text/html">Intuit QuickBooks OAuth2 Response</a></td>
+                    <td><a href="../html/coral-CGI.html">Coral CGI</a></td>
+                    <td><a href="../t/html/form-html.html">Create HTML Form</a></td>
+                    <td><a href="../t/t/t-t.html">Create T File</a></td>
+                    <td><a href="../t/cpp/coral-CGI-hpp-cpp.html">Create Coral C++ CGI</a></td>
                     </tr>
                 </table></td>
                 </tr>
@@ -99,11 +104,3 @@
         </form>
     </body>
 </html>
-<!--
-https://appcenter.intuit.com/connect/oauth2
-?client_id=Q0retFR96TWblJ9NK38jNqIlFKXHV6kWn6UjD552knsQSF1itW
-&scope=com.intuit.quickbooks.accounting
-&redirect_uri=https://developer.intuit.com/v2/OAuth2Playground/RedirectUrl
-&response_type=code
-&state=PlaygroundAuth#/Authorize/123146090825439
--->
