@@ -35,12 +35,13 @@
 #include "coral/io/types.hpp"
 #include "coral/io/logger.hpp"
 
-#define CORAL_INET_CGI_CATCH_CONF_FILE_LABEL "config"
+#define CORAL_INET_CGI_CONF_FILE_LABEL "config"
+#define CORAL_INET_CGI_CONF_FILE_NAME "cgi-conf.txt"
+
 #define CORAL_INET_CGI_CATCH_ARGV_FILE_LABEL "arguments"
 #define CORAL_INET_CGI_CATCH_ENV_FILE_LABEL "environment"
 #define CORAL_INET_CGI_CATCH_STDIN_FILE_LABEL "stdin"
 
-#define CORAL_INET_CGI_CATCH_CONF_FILE_NAME "cgicatch-conf.txt"
 #define CORAL_INET_CGI_CATCH_ARGV_FILE_NAME "cgicatch-argv.txt"
 #define CORAL_INET_CGI_CATCH_ENV_FILE_NAME "cgicatch-env.txt"
 #define CORAL_INET_CGI_CATCH_STDIN_FILE_NAME "cgicatch-stdin.txt"
@@ -70,11 +71,11 @@ public:
     ///////////////////////////////////////////////////////////////////////
     main()
     : cr_((char_t)'\r'), lf_((char_t)'\n'),
-      catch_conf_file_label_(CORAL_INET_CGI_CATCH_CONF_FILE_LABEL),
+      conf_file_label_(CORAL_INET_CGI_CONF_FILE_LABEL),
       catch_argv_file_label_(CORAL_INET_CGI_CATCH_ARGV_FILE_LABEL),
       catch_env_file_label_(CORAL_INET_CGI_CATCH_ENV_FILE_LABEL),
       catch_stdin_file_label_(CORAL_INET_CGI_CATCH_STDIN_FILE_LABEL),
-      catch_conf_file_name_(CORAL_INET_CGI_CATCH_CONF_FILE_NAME),
+      conf_file_name_(CORAL_INET_CGI_CONF_FILE_NAME),
       catch_argv_file_name_(CORAL_INET_CGI_CATCH_ARGV_FILE_NAME),
       catch_env_file_name_(CORAL_INET_CGI_CATCH_ENV_FILE_NAME),
       catch_stdin_file_name_(CORAL_INET_CGI_CATCH_STDIN_FILE_NAME),
@@ -329,7 +330,7 @@ protected:
         int err = 0;
         coral::io::read::file f;
 
-        if ((open_file(f, catch_conf_file_label_, catch_conf_file_name_, true))) {
+        if ((open_file(f, conf_file_label_, conf_file_name_, true))) {
             inet::cgi::config::variables::reader e(*this);
             e.read(f);
             f.close();
@@ -510,6 +511,20 @@ protected:
     }
     virtual const char_t* content_type() const {
         return content_type_value_.chars();
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_content_type_text() {
+        return set_content_type(content_type_text());
+    }
+    virtual const char_t* set_content_type_html() {
+        return set_content_type(content_type_html());
+    }
+    virtual const char_t* set_content_type_xml() {
+        return set_content_type(content_type_xml());
+    }
+    virtual const char_t* set_content_type_json() {
+        return set_content_type(content_type_json());
     }
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -748,37 +763,44 @@ protected:
 protected:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* set_conf_file_name(const char_t* to) {
+        if ((to) && (to[0])) {
+            conf_file_name_.assign(to);
+        }
+        return to;
+    }
+    ///////////////////////////////////////////////////////////////////////
     virtual const char_t* set_argv_file_name(const char_t* to) {
-        //if ((to) && (to[0])) {
-        //    CORAL_LOG_MESSAGE_DEBUG("set argv_file_name = \"" << to << "\"...");
-        //}
+        if ((to) && (to[0])) {
+            catch_argv_file_name_.assign(to);
+        }
         return to;
     }
     ///////////////////////////////////////////////////////////////////////
     virtual const char_t* set_env_file_name(const char_t* to) {
-        //if ((to) && (to[0])) {
-        //    CORAL_LOG_MESSAGE_DEBUG("set env_file_name = \"" << to << "\"...");
-        //}
+        if ((to) && (to[0])) {
+            catch_env_file_name_.assign(to);
+        }
         return to;
     }
     ///////////////////////////////////////////////////////////////////////
     virtual const char_t* set_stdin_file_name(const char_t* to) {
-        //if ((to) && (to[0])) {
-        //    CORAL_LOG_MESSAGE_DEBUG("set stdin_file_name = \"" << to << "\"...");
-        //}
+        if ((to) && (to[0])) {
+            catch_stdin_file_name_.assign(to);
+        }
         return to;
     }
-
 #include "coral/inet/cgi/main_opt.cpp"
+
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 protected:
     const char_t cr_, lf_;
-    string_t catch_conf_file_label_,
+    string_t conf_file_label_,
              catch_argv_file_label_,
              catch_env_file_label_,
              catch_stdin_file_label_,
-             catch_conf_file_name_,
+             conf_file_name_,
              catch_argv_file_name_,
              catch_env_file_name_,
              catch_stdin_file_name_,

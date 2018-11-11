@@ -18,7 +18,13 @@
 /// Author: $author$
 ///   Date: 11/1/2018
 ///////////////////////////////////////////////////////////////////////
+#ifndef _CORAL_APP_CGI_INTUIT_OAUTH2_CGI_HPP
+#define _CORAL_APP_CGI_INTUIT_OAUTH2_CGI_HPP
+
 #include "coral/inet/cgi/main.hpp"
+
+#define CORAL_APP_CGI_INTUIT_OAUTH2_CGI_CONF_FILE_NAME \
+    "intuit-oauth2-cgi-conf.txt"
 
 namespace coral {
 namespace app {
@@ -41,10 +47,17 @@ public:
     ///////////////////////////////////////////////////////////////////////
     cgi()
     : run_cgi_(0),
+
       intuit_openid_connect_uri_scheme_("https"),
       intuit_openid_connect_uri_authority_("appcenter.intuit.com"),
       intuit_openid_connect_uri_path_("connect/oauth2"),
 
+      intuit_openid_authorization_uri_scheme_("https"),
+      intuit_openid_authorization_uri_authority_("oauth.platform.intuit.com"),
+      intuit_openid_authorization_uri_path_("oauth2/v1/tokens/bearer"),
+
+      application_grant_type_name_("grant_type"), 
+      application_grant_type_authorization_code_("authorization_code"),
       application_response_type_name_("response_type"), 
       application_response_type_code_("code"),
       application_client_id_name_("client_id"), 
@@ -57,13 +70,22 @@ public:
       application_state_authorization_request_("authorization-request"),
       application_state_authorization_response_("authorization-response"),
 
+      application_authorization_response_uri_scheme_("http"),
+      application_authorization_response_uri_authority_("localhost"),
+      application_authorization_response_uri_path_("source/medusade/coral/webapp/coral/t/html/intuit-quickbooks-oauth2-response-html.t"),
+      application_authorization_response_content_type_name_("content_type"),
+      application_authorization_response_content_type_("text/html"),
+      application_authorization_response_action_name_("action"),
+
+      application_authorization_response_code_(""),
+      application_authorization_response_(""),
       application_response_type_(""),
       application_client_id_(""),
       application_client_secret_(""),
       application_scope_(""),
       application_redirect_uri_(""),
-      application_state_("")
-    {
+      application_state_("") {
+        this->set_conf_file_name(CORAL_APP_CGI_INTUIT_OAUTH2_CGI_CONF_FILE_NAME);
     }
     virtual ~cgi() {
     }
@@ -97,7 +119,33 @@ protected:
     }
     virtual int run_cgi_authorization_response(int argc, char_t** argv, char_t** env) {
         int err = 0;
-        err = run_cgi_default(argc, argv, env);
+        inet::http::url::encoded::form::fields form;
+        inet::http::url::query query;
+        inet::http::url::location url;
+
+        get_client_info(argc, argv, env);
+        
+        url.set_scheme(intuit_openid_authorization_uri_scheme_);
+        url.set_authority(intuit_openid_authorization_uri_authority_);
+        url.set_path(intuit_openid_authorization_uri_path_);
+
+        form.add(application_authorization_response_content_type_name_, application_authorization_response_content_type_);
+        form.add(application_authorization_response_action_name_, url);
+        form.add(application_grant_type_name_, application_grant_type_authorization_code_);
+        form.add(application_response_type_code_, application_authorization_response_code_);
+        form.add(application_redirect_uri_name_, application_redirect_uri_);
+        form.add(application_client_id_name_, application_client_id_);
+        form.add(application_client_secret_name_, application_client_secret_);
+        form.write(query.writer());
+
+        url.set_scheme(application_authorization_response_uri_scheme_);
+        url.set_authority(application_authorization_response_uri_authority_);
+        url.set_path(application_authorization_response_uri_path_);
+        url.set_query(query);
+
+        this->set_content_type_html();
+        this->add_header("Location", url.chars());
+        this->out_content_type();
         return err;
     }
     virtual int run_cgi_default(int argc, char_t** argv, char_t** env) {
@@ -130,6 +178,7 @@ protected:
         int err = 0;
         const char_t* chars = 0;
         inet::http::form::field* f = 0;
+
         if ((f = this->form().find(application_state_name_.chars()))) {
             if ((chars = f->value().has_chars())) {
                 if (!(application_state_authorization_request_.compare(chars))) {
@@ -147,6 +196,7 @@ protected:
     virtual int get_client_info(int argc, char_t** argv, char_t** env) {
         int err = 0;
         const char_t* chars = 0;
+        inet::http::form::field* f = 0;
 
         set_default_value(application_client_id_, application_client_id_name_);
         set_default_value(application_client_secret_, application_client_secret_name_);
@@ -163,6 +213,9 @@ protected:
                 } else {
                 }
             }
+        }
+        if ((f = this->form().find(application_response_type_code_.chars()))) {
+            application_authorization_response_code_.assign(f->value().chars());
         }
         return err;
     }
@@ -223,6 +276,13 @@ protected:
     string_t intuit_openid_connect_uri_scheme_,
              intuit_openid_connect_uri_authority_,
              intuit_openid_connect_uri_path_,
+    
+             intuit_openid_authorization_uri_scheme_,
+             intuit_openid_authorization_uri_authority_,
+             intuit_openid_authorization_uri_path_,
+    
+             application_grant_type_name_, 
+             application_grant_type_authorization_code_, 
              application_response_type_name_, 
              application_response_type_code_, 
              application_client_id_name_, 
@@ -234,6 +294,16 @@ protected:
              application_state_name_,
              application_state_authorization_request_,
              application_state_authorization_response_,
+    
+             application_authorization_response_uri_scheme_,
+             application_authorization_response_uri_authority_,
+             application_authorization_response_uri_path_,
+             application_authorization_response_content_type_name_,
+             application_authorization_response_content_type_,
+             application_authorization_response_action_name_,
+
+             application_authorization_response_code_,
+             application_authorization_response_,
              application_response_type_,
              application_client_id_,
              application_client_secret_,
@@ -247,3 +317,5 @@ protected:
 } /// namespace cgi
 } /// namespace app
 } /// namespace coral
+
+#endif ///ndef _CORAL_APP_CGI_INTUIT_OAUTH2_CGI_HPP
