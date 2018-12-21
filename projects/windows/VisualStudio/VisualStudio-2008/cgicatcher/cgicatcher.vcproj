@@ -66,6 +66,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="$(CORAL_LIBS)"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -142,6 +143,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="$(CORAL_LIBS)"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -218,6 +220,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="$(CORAL_LIBS)"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -297,6 +300,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="$(CORAL_LIBS)"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -338,10 +342,6 @@
 			>
 			<File
 				RelativePath="..\..\..\..\..\src\coral\app\cgi\catcher\main.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\..\src\coral\console\main_main.cpp"
 				>
 			</File>
 		</Filter>

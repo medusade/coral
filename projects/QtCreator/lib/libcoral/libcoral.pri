@@ -64,6 +64,11 @@ $${CORAL_SRC}/coral/io/stream.hpp \
 $${CORAL_SRC}/coral/io/writer.hpp \
 $${CORAL_SRC}/coral/io/reader.hpp \
 $${CORAL_SRC}/coral/io/sequence.hpp \
+\
+$${CORAL_SRC}/coral/nadir/lib/version.hpp \
+$${CORAL_SRC}/coral/xos/lib/version.hpp \
+$${CORAL_SRC}/coral/lib/version.hpp \
+$${CORAL_SRC}/coral/lib/coral/version.hpp \
 
 # libcoral SOURCES
 #
@@ -77,6 +82,8 @@ $${CORAL_SRC}/coral/io/stream.cpp \
 $${CORAL_SRC}/coral/io/writer.cpp \
 $${CORAL_SRC}/coral/io/reader.cpp \
 $${CORAL_SRC}/coral/io/sequence.cpp \
+\
+$${CORAL_SRC}/coral/lib/coral/version.cpp \
 
 ########################################################################
 

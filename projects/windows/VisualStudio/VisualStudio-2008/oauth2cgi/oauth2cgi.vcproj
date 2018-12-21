@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="cgithrower"
-	ProjectGUID="{EFB05133-0830-4611-A4F6-DCFF872B5BEE}"
-	RootNamespace="cgithrower"
+	Name="oauth2cgi"
+	ProjectGUID="{E077C654-90CF-47C2-9930-BE6073668161}"
+	RootNamespace="oauth2cgi"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -66,11 +66,88 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="$(CORAL_LIBS)"
-				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
 				SubSystem="1"
+				TargetMachine="1"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="$(CORAL_BIN)"
+			IntermediateDirectory="$(CORAL_OBJ)"
+			ConfigurationType="1"
+			InheritedPropertySheets="..\..\coral.vsprops;..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\nadir.vsprops;..\..\medusa.vsprops"
+			CharacterSet="1"
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS)"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;$(CORAL_RELEASE_DEFINES)"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="$(CORAL_LIBS)"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
+				GenerateDebugInformation="true"
+				SubSystem="1"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -143,91 +220,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="$(CORAL_LIBS)"
-				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="17"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Release|Win32"
-			OutputDirectory="$(CORAL_BIN)"
-			IntermediateDirectory="$(CORAL_OBJ)"
-			ConfigurationType="1"
-			InheritedPropertySheets="..\..\coral.vsprops;..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\nadir.vsprops;..\..\medusa.vsprops"
-			CharacterSet="1"
-			WholeProgramOptimization="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS)"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;$(CORAL_RELEASE_DEFINES)"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="$(CORAL_LIBS)"
-				OutputFile="$(OutDir)\$(ProjectName).exe"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
-				GenerateDebugInformation="true"
-				SubSystem="1"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -300,7 +297,6 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="$(CORAL_LIBS)"
-				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -341,7 +337,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\..\..\..\src\coral\app\cgi\thrower\main.cpp"
+				RelativePath="..\..\..\..\..\src\coral\app\cgi\intuit\oauth2\cgi.cpp"
 				>
 			</File>
 		</Filter>
@@ -351,7 +347,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\..\..\..\..\src\coral\app\cgi\thrower\main.hpp"
+				RelativePath="..\..\..\..\..\src\coral\app\cgi\intuit\oauth2\cgi.hpp"
 				>
 			</File>
 		</Filter>

@@ -32,6 +32,28 @@ CORAL_OS = linux
 #CONFIG += c++0x
 
 ########################################################################
+# rostra
+ROSTRA_THIRDPARTY_PKG_MAKE_BLD = $${ROSTRA_THIRDPARTY_PKG}/build/$${CORAL_OS}/$${BUILD_CONFIG}
+ROSTRA_THIRDPARTY_PRJ_MAKE_BLD = $${ROSTRA_THIRDPARTY_PRJ}/build/$${CORAL_OS}/$${BUILD_CONFIG}
+ROSTRA_THIRDPARTY_PKG_BLD = $${ROSTRA_THIRDPARTY_PKG}/build/$${CORAL_OS}/QtCreator/$${BUILD_CONFIG}
+ROSTRA_THIRDPARTY_PRJ_BLD = $${ROSTRA_THIRDPARTY_PRJ}/build/$${CORAL_OS}/QtCreator/$${BUILD_CONFIG}
+ROSTRA_PKG_BLD = $${OTHER_BLD}/$${ROSTRA_PKG}/build/$${CORAL_OS}/QtCreator/$${BUILD_CONFIG}
+ROSTRA_PRJ_BLD = $${OTHER_BLD}/$${ROSTRA_PRJ}/build/$${CORAL_OS}/QtCreator/$${BUILD_CONFIG}
+#ROSTRA_LIB = $${ROSTRA_THIRDPARTY_PKG_MAKE_BLD}/lib
+#ROSTRA_LIB = $${ROSTRA_THIRDPARTY_PRJ_MAKE_BLD}/lib
+#ROSTRA_LIB = $${ROSTRA_THIRDPARTY_PKG_BLD}/lib
+#ROSTRA_LIB = $${ROSTRA_THIRDPARTY_PRJ_BLD}/lib
+#ROSTRA_LIB = $${ROSTRA_PKG_BLD}/lib
+ROSTRA_LIB = $${ROSTRA_PRJ_BLD}/lib
+#ROSTRA_LIB = $${CORAL_LIB}
+
+# rostra LIBS
+#
+rostra_LIBS += \
+-L$${ROSTRA_LIB}/lib$${ROSTRA_NAME} \
+-l$${ROSTRA_NAME} \
+
+########################################################################
 # nadir
 NADIR_THIRDPARTY_PKG_MAKE_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${CORAL_OS}/$${BUILD_CONFIG}
 NADIR_THIRDPARTY_PRJ_MAKE_BLD = $${NADIR_THIRDPARTY_PRJ}/build/$${CORAL_OS}/$${BUILD_CONFIG}
@@ -81,6 +103,12 @@ medusa_LIBS += \
 -L$${MEDUSA_LIB}/lib$${MEDUSA_NAME} \
 -l$${MEDUSA_NAME} \
 
+# nmedusa LIBS
+#
+nmedusa_LIBS += \
+-L$${MEDUSA_LIB}/libn$${MEDUSA_NAME} \
+-ln$${MEDUSA_NAME} \
+
 ########################################################################
 # coral
 
@@ -107,3 +135,29 @@ coral_LIBS += \
 } else {
 }
 
+########################################################################
+# ncoral
+
+# ncoral INCLUDEPATH
+#
+ncoral_INCLUDEPATH += \
+
+# ncoral DEFINES
+#
+ncoral_DEFINES += \
+
+# ncoral LIBS
+#
+ncoral_LIBS += \
+$${nmedusa_LIBS} \
+$${nadir_LIBS} \
+$${rostra_LIBS} \
+$${build_ncoral_LIBS} \
+-lpthread \
+-ldl \
+
+contains(CORAL_OS,linux) {
+ncoral_LIBS += \
+-lrt
+} else {
+}

@@ -166,6 +166,18 @@ $${MEDUSA_SRC} \
 medusa_DEFINES += \
 
 ########################################################################
+# nmedusa
+
+# nmedusa INCLUDEPATH
+#
+nmedusa_INCLUDEPATH += \
+$${MEDUSA_SRC} \
+
+# nmedusa DEFINES
+#
+nmedusa_DEFINES += \
+
+########################################################################
 # coral
 FRAMEWORK_NAME = coral
 FRAMEWORK_SOURCE = src
@@ -208,3 +220,37 @@ $${build_coral_DEFINES} \
 coral_LIBS += \
 -L$${CORAL_LIB}/lib$${FRAMEWORK_NAME} \
 -l$${FRAMEWORK_NAME} \
+
+########################################################################
+# ncoral
+
+# ncoral BUILD_CONFIG
+#
+CONFIG(debug, debug|release) {
+ncoral_DEFINES += DEBUG_BUILD
+} else {
+ncoral_DEFINES += RELEASE_BUILD
+}
+
+# ncoral INCLUDEPATH
+#
+ncoral_INCLUDEPATH += \
+$${CORAL_SRC} \
+$${rostra_INCLUDEPATH} \
+$${nmedusa_INCLUDEPATH} \
+$${nadir_INCLUDEPATH} \
+$${build_ncoral_INCLUDEPATH} \
+
+# ncoral DEFINES
+#
+ncoral_DEFINES += \
+$${rostra_DEFINES} \
+$${nadir_DEFINES} \
+$${nmedusa_DEFINES} \
+$${build_ncoral_DEFINES} \
+
+# ncoral LIBS
+#
+ncoral_LIBS += \
+-L$${CORAL_LIB}/libn$${FRAMEWORK_NAME} \
+-ln$${FRAMEWORK_NAME} \
