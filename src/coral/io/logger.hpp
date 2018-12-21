@@ -21,6 +21,9 @@
 #ifndef _CORAL_IO_LOGGER_HPP
 #define _CORAL_IO_LOGGER_HPP
 
+#if !defined(NO_USE_NADIR_BASE)
+#include "coral/nadir/io/logger.hpp"
+#else /// !defined(NO_USE_NADIR_BASE)
 #include "coral/base/base.hpp"
 #include "xos/io/logger.hpp"
 
@@ -63,3 +66,4 @@ namespace io {
 } // namespace coral 
 
 #endif // _CORAL_IO_LOGGER_HPP 
+#endif /// !defined(NO_USE_NADIR_BASE)

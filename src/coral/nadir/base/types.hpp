@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is''
 /// and any express or implied warranties, including, but not limited to,
@@ -13,24 +13,39 @@
 /// or otherwise) arising in any way out of the use of this software,
 /// even if advised of the possibility of such damage.
 ///
-///   File: main_main.hpp
+///   File: types.hpp
 ///
 /// Author: $author$
-///   Date: 12/15/2014
+///   Date: 12/20/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _CORAL_CONSOLE_MAIN_MAIN_HPP
-#define _CORAL_CONSOLE_MAIN_MAIN_HPP
+#ifndef _CORAL_NADIR_BASE_TYPES_HPP
+#define _CORAL_NADIR_BASE_TYPES_HPP
 
-#if !defined(NO_USE_NADIR_BASE)
-#include "coral/nadir/console/main.hpp"
-#else /// !defined(NO_USE_NADIR_BASE)
-#include "coral/console/main.hpp"
+#include "coral/nadir/base/base.hpp"
+#include "nadir/base/chars.hpp"
 
 namespace coral {
-namespace console {
 
-} // namespace console
-} // namespace coral
+///////////////////////////////////////////////////////////////////////
+///  Class: typest
+///////////////////////////////////////////////////////////////////////
+template
+<class TWhat = char, class TEndWhat = TWhat, TEndWhat VEndWhat = 0,
+ class TInt = int, class TUInt = unsigned, class TSize = size_t,
+ class TLength = ssize_t, TLength VUndefinedLength = -1,
+ class TExtends = ::nadir::charst<TWhat, TEndWhat, VEndWhat> >
 
-#endif // _CORAL_CONSOLE_MAIN_MAIN_HPP
-#endif /// !defined(NO_USE_NADIR_BASE)
+class _EXPORT_CLASS typest: virtual public TExtends {
+public:
+};
+
+typedef ::nadir::chars_t chars_t;
+typedef ::nadir::tchars_t tchars_t;
+typedef ::nadir::wchars_t wchars_t;
+
+typedef ::nadir::bytes_t bytes_t;
+typedef ::nadir::words_t words_t;
+
+} /// namespace coral
+
+#endif /// ndef _CORAL_NADIR_BASE_TYPES_HPP

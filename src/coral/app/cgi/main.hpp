@@ -32,7 +32,7 @@ typedef inet::cgi::main main_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main
 ///////////////////////////////////////////////////////////////////////
-class _EXPORT_CLASS main: virtual public main_implements,public main_extends {
+class _EXPORT_CLASS main: virtual public main_implements, public main_extends {
 public:
     typedef main_implements Implements;
     typedef main_extends Extends;

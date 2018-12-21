@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is''
 /// and any express or implied warranties, including, but not limited to,
@@ -13,24 +13,30 @@
 /// or otherwise) arising in any way out of the use of this software,
 /// even if advised of the possibility of such damage.
 ///
-///   File: main_main.hpp
+///   File: stream.hpp
 ///
 /// Author: $author$
-///   Date: 12/15/2014
+///   Date: 12/21/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _CORAL_CONSOLE_MAIN_MAIN_HPP
-#define _CORAL_CONSOLE_MAIN_MAIN_HPP
+#ifndef _CORAL_NADIR_IO_STREAM_HPP
+#define _CORAL_NADIR_IO_STREAM_HPP
 
-#if !defined(NO_USE_NADIR_BASE)
-#include "coral/nadir/console/main.hpp"
-#else /// !defined(NO_USE_NADIR_BASE)
-#include "coral/console/main.hpp"
+#include "coral/nadir/io/sequence.hpp"
+#include "coral/nadir/io/reader.hpp"
+#include "coral/nadir/io/writer.hpp"
+#include "nadir/io/stream.hpp"
 
 namespace coral {
-namespace console {
+namespace io {
 
-} // namespace console
-} // namespace coral
+typedef ::nadir::io::stream stream;
+typedef ::nadir::io::char_stream char_stream;
+typedef ::nadir::io::tchar_stream tchar_stream;
+typedef ::nadir::io::wchar_stream wchar_stream;
+typedef ::nadir::io::byte_stream byte_stream;
+typedef ::nadir::io::word_stream word_stream;
 
-#endif // _CORAL_CONSOLE_MAIN_MAIN_HPP
-#endif /// !defined(NO_USE_NADIR_BASE)
+} /// namespace io
+} /// namespace coral
+
+#endif /// ndef _CORAL_NADIR_IO_STREAM_HPP

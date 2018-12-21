@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is''
 /// and any express or implied warranties, including, but not limited to,
@@ -13,24 +13,33 @@
 /// or otherwise) arising in any way out of the use of this software,
 /// even if advised of the possibility of such damage.
 ///
-///   File: main_main.hpp
+///   File: writer.hpp
 ///
 /// Author: $author$
-///   Date: 12/15/2014
+///   Date: 12/20/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _CORAL_CONSOLE_MAIN_MAIN_HPP
-#define _CORAL_CONSOLE_MAIN_MAIN_HPP
+#ifndef _CORAL_NADIR_IO_WRITER_HPP
+#define _CORAL_NADIR_IO_WRITER_HPP
 
-#if !defined(NO_USE_NADIR_BASE)
-#include "coral/nadir/console/main.hpp"
-#else /// !defined(NO_USE_NADIR_BASE)
-#include "coral/console/main.hpp"
+#include "coral/nadir/base/base.hpp"
+#include "nadir/io/writer.hpp"
 
 namespace coral {
-namespace console {
+namespace io {
 
-} // namespace console
-} // namespace coral
+typedef ::nadir::io::writer writer;
+typedef ::nadir::io::byte_writer byte_writer;
+typedef ::nadir::io::char_writer char_writer;
+typedef ::nadir::io::wchar_writer wchar_writer;
+typedef ::nadir::io::tchar_writer tchar_writer;
 
-#endif // _CORAL_CONSOLE_MAIN_MAIN_HPP
-#endif /// !defined(NO_USE_NADIR_BASE)
+typedef ::nadir::io::writer::Implements writer_implements;
+typedef ::nadir::io::byte_writer::Implements byte_writer_implements;
+typedef ::nadir::io::char_writer::Implements char_writer_implements;
+typedef ::nadir::io::wchar_writer::Implements wchar_writer_implements;
+typedef ::nadir::io::tchar_writer::Implements tchar_writer_implements;
+
+} /// namespace io
+} /// namespace coral
+
+#endif /// ndef _CORAL_NADIR_IO_WRITER_HPP

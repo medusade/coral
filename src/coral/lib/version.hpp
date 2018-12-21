@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is''
 /// and any express or implied warranties, including, but not limited to,
@@ -13,24 +13,24 @@
 /// or otherwise) arising in any way out of the use of this software,
 /// even if advised of the possibility of such damage.
 ///
-///   File: main_main.hpp
+///   File: version.hpp
 ///
 /// Author: $author$
-///   Date: 12/15/2014
+///   Date: 12/19/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _CORAL_CONSOLE_MAIN_MAIN_HPP
-#define _CORAL_CONSOLE_MAIN_MAIN_HPP
+#ifndef _CORAL_LIB_VERSION_HPP
+#define _CORAL_LIB_VERSION_HPP
 
 #if !defined(NO_USE_NADIR_BASE)
-#include "coral/nadir/console/main.hpp"
-#else /// !defined(NO_USE_NADIR_BASE)
-#include "coral/console/main.hpp"
+#include "coral/nadir/lib/version.hpp"
+#else // !defined(NO_USE_NADIR_BASE)
+#include "coral/xos/lib/version.hpp"
+#endif // !defined(NO_USE_NADIR_BASE)
 
 namespace coral {
-namespace console {
+namespace lib {
 
-} // namespace console
-} // namespace coral
+} /// namespace lib
+} /// namespace coral
 
-#endif // _CORAL_CONSOLE_MAIN_MAIN_HPP
-#endif /// !defined(NO_USE_NADIR_BASE)
+#endif /// ndef _CORAL_LIB_VERSION_HPP

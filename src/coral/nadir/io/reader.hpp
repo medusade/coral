@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is''
 /// and any express or implied warranties, including, but not limited to,
@@ -13,24 +13,33 @@
 /// or otherwise) arising in any way out of the use of this software,
 /// even if advised of the possibility of such damage.
 ///
-///   File: main_main.hpp
+///   File: reader.hpp
 ///
 /// Author: $author$
-///   Date: 12/15/2014
+///   Date: 12/20/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _CORAL_CONSOLE_MAIN_MAIN_HPP
-#define _CORAL_CONSOLE_MAIN_MAIN_HPP
+#ifndef _CORAL_NADIR_IO_READER_HPP
+#define _CORAL_NADIR_IO_READER_HPP
 
-#if !defined(NO_USE_NADIR_BASE)
-#include "coral/nadir/console/main.hpp"
-#else /// !defined(NO_USE_NADIR_BASE)
-#include "coral/console/main.hpp"
+#include "coral/nadir/base/base.hpp"
+#include "nadir/io/reader.hpp"
 
 namespace coral {
-namespace console {
+namespace io {
 
-} // namespace console
-} // namespace coral
+typedef ::nadir::io::reader reader;
+typedef ::nadir::io::byte_reader byte_reader;
+typedef ::nadir::io::char_reader char_reader;
+typedef ::nadir::io::wchar_reader wchar_reader;
+typedef ::nadir::io::tchar_reader tchar_reader;
 
-#endif // _CORAL_CONSOLE_MAIN_MAIN_HPP
-#endif /// !defined(NO_USE_NADIR_BASE)
+typedef ::nadir::io::reader::Implements reader_implements;
+typedef ::nadir::io::byte_reader::Implements byte_reader_implements;
+typedef ::nadir::io::char_reader::Implements char_reader_implements;
+typedef ::nadir::io::wchar_reader::Implements wchar_reader_implements;
+typedef ::nadir::io::tchar_reader::Implements tchar_reader_implements;
+
+} /// namespace io
+} /// namespace coral
+
+#endif /// ndef _CORAL_NADIR_IO_READER_HPP

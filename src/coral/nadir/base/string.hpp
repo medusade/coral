@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is''
 /// and any express or implied warranties, including, but not limited to,
@@ -13,24 +13,33 @@
 /// or otherwise) arising in any way out of the use of this software,
 /// even if advised of the possibility of such damage.
 ///
-///   File: main_main.hpp
+///   File: string.hpp
 ///
 /// Author: $author$
-///   Date: 12/15/2014
+///   Date: 12/20/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _CORAL_CONSOLE_MAIN_MAIN_HPP
-#define _CORAL_CONSOLE_MAIN_MAIN_HPP
+#ifndef _CORAL_NADIR_BASE_STRING_HPP
+#define _CORAL_NADIR_BASE_STRING_HPP
 
-#if !defined(NO_USE_NADIR_BASE)
-#include "coral/nadir/console/main.hpp"
-#else /// !defined(NO_USE_NADIR_BASE)
-#include "coral/console/main.hpp"
+#include "coral/nadir/base/types.hpp"
+#include "nadir/base/string_base.hpp"
+#include "nadir/base/string.hpp"
+#include "nadir/base/to_string.hpp"
 
 namespace coral {
-namespace console {
 
-} // namespace console
-} // namespace coral
+typedef ::nadir::string_base string_base;
+typedef ::nadir::tstring_base tstring_base;
+typedef ::nadir::wstring_base wstring_base;
 
-#endif // _CORAL_CONSOLE_MAIN_MAIN_HPP
-#endif /// !defined(NO_USE_NADIR_BASE)
+typedef ::nadir::char_string string;
+typedef ::nadir::tchar_string tstring;
+typedef ::nadir::wchar_string wstring;
+
+typedef ::nadir::chars_to_string chars_to_string;
+typedef ::nadir::chars_to_tstring chars_to_tstring;
+typedef ::nadir::chars_to_wstring chars_to_wstring;
+
+} /// namespace coral
+
+#endif /// ndef _CORAL_NADIR_BASE_STRING_HPP

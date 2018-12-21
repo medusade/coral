@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is''
 /// and any express or implied warranties, including, but not limited to,
@@ -13,24 +13,24 @@
 /// or otherwise) arising in any way out of the use of this software,
 /// even if advised of the possibility of such damage.
 ///
-///   File: main_main.hpp
+///   File: argv.hpp
 ///
 /// Author: $author$
-///   Date: 12/15/2014
+///   Date: 12/20/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _CORAL_CONSOLE_MAIN_MAIN_HPP
-#define _CORAL_CONSOLE_MAIN_MAIN_HPP
+#ifndef _CORAL_NADIR_BASE_ARGV_HPP
+#define _CORAL_NADIR_BASE_ARGV_HPP
 
-#if !defined(NO_USE_NADIR_BASE)
-#include "coral/nadir/console/main.hpp"
-#else /// !defined(NO_USE_NADIR_BASE)
-#include "coral/console/main.hpp"
+#include "coral/nadir/base/array.hpp"
+#include "coral/nadir/base/string.hpp"
+#include "nadir/base/argv.hpp"
 
 namespace coral {
-namespace console {
 
-} // namespace console
-} // namespace coral
+typedef ::nadir::argv_t argv_t;
+typedef ::nadir::targv_t targv_t;
+typedef ::nadir::wargv_t wargv_t;
 
-#endif // _CORAL_CONSOLE_MAIN_MAIN_HPP
-#endif /// !defined(NO_USE_NADIR_BASE)
+} /// namespace coral
+
+#endif /// ndef _CORAL_NADIR_BASE_ARGV_HPP

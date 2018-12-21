@@ -21,7 +21,7 @@
 #ifndef _CORAL_APP_CGI_THROWER_MAIN_HPP
 #define _CORAL_APP_CGI_THROWER_MAIN_HPP
 
-#include "coral/inet/cgi/main.hpp"
+#include "coral/app/cgi/main.hpp"
 #include "coral/inet/cgi/process.hpp"
 #include "coral/inet/cgi/environment/variables/array.hpp"
 #include "coral/app/cgi/thrower/main_opt.hpp"
@@ -33,8 +33,8 @@ namespace app {
 namespace cgi {
 namespace thrower {
 
-typedef inet::cgi::main_implements main_implements;
-typedef inet::cgi::main main_extends;
+typedef coral::app::cgi::main_implements main_implements;
+typedef coral::app::cgi::main main_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main
 ///////////////////////////////////////////////////////////////////////
@@ -80,27 +80,12 @@ protected:
                 if (inet::cgi::process::mode_read == (inet::cgi::process::mode_read & m)) {
                     char_t content[1];
                     while (0 < (p.read(content, 1))) {
-                        this->out(content, 1);
+                        this->out(this->std_out(), content, 1);
                     }
                 }
                 p.destroy();
             }
         }
-        return err;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    virtual int get_cgi_query_form_data(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        return err;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    virtual int get_cgi_form_data
-    (size_t content_length, int argc, char_t** argv, char_t** env) {
-        int err = 0;
         return err;
     }
 

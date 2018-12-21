@@ -21,10 +21,10 @@
 #ifndef _CORAL_APP_CONSOLE_CORAL_MAIN_HPP
 #define _CORAL_APP_CONSOLE_CORAL_MAIN_HPP
 
-#include "coral/io/logger.hpp"
-#include "coral/inet/cgi/environment/variable/name.hpp"
-#include "coral/console/main.hpp"
 #include "coral/app/console/coral/main_opt.hpp"
+#include "coral/console/main.hpp"
+#include "coral/lib/coral/version.hpp"
+#include "coral/io/logger.hpp"
 
 namespace coral {
 namespace app {
@@ -53,8 +53,9 @@ protected:
     ///////////////////////////////////////////////////////////////////////
     virtual int run(int argc, char_t** argv, char_t** env) {
         int err = 0;
-        inet::cgi::environment::variable::name n(inet::cgi::environment::variable::GATEWAY_INTERFACE);
-        outln(n.wrapped());
+        const lib::version& version = lib::coral::version::which();
+        this->outl(version.name(), " version = ", version.to_string().chars(), NULL);
+        this->outln();
         return err;
     }
 
