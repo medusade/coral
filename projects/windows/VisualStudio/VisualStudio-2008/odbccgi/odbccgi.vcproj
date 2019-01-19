@@ -12,6 +12,9 @@
 		<Platform
 			Name="Win32"
 		/>
+		<Platform
+			Name="x64"
+		/>
 	</Platforms>
 	<ToolFiles>
 	</ToolFiles>
@@ -21,7 +24,7 @@
 			OutputDirectory="$(CORAL_BIN)"
 			IntermediateDirectory="$(CORAL_OBJ)"
 			ConfigurationType="1"
-			InheritedPropertySheets="..\coral-vcversion.vsprops;..\..\coral-nadir.vsprops;..\..\coral-medusa.vsprops;..\..\coral.vsprops;..\..\etiris.vsprops"
+			InheritedPropertySheets="..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\nadir.vsprops;..\..\medusa.vsprops;..\..\coral.vsprops;..\..\etiris.vsprops"
 			CharacterSet="0"
 			>
 			<Tool
@@ -62,7 +65,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(XOSCORAL_LIBS)"
+				AdditionalDependencies="$(CORAL_LIBS)"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -92,11 +95,87 @@
 			/>
 		</Configuration>
 		<Configuration
+			Name="Debug|x64"
+			OutputDirectory="$(CORAL_BIN)"
+			IntermediateDirectory="$(CORAL_OBJ)"
+			ConfigurationType="1"
+			InheritedPropertySheets="..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\nadir.vsprops;..\..\medusa.vsprops;..\..\coral.vsprops;..\..\etiris.vsprops"
+			CharacterSet="0"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS);$(ETIRIS_INCLUDE_DIRS)"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;$(ETIRIS_DEBUG_DEFINES)"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="$(CORAL_LIBS)"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
+				GenerateDebugInformation="true"
+				SubSystem="1"
+				TargetMachine="17"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="$(CORAL_BIN)"
 			IntermediateDirectory="$(CORAL_OBJ)"
 			ConfigurationType="1"
-			InheritedPropertySheets="..\coral-vcversion.vsprops;..\..\coral-nadir.vsprops;..\..\coral-medusa.vsprops;..\..\coral.vsprops;..\..\etiris.vsprops"
+			InheritedPropertySheets="..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\nadir.vsprops;..\..\medusa.vsprops;..\..\coral.vsprops;..\..\etiris.vsprops"
 			CharacterSet="0"
 			WholeProgramOptimization="1"
 			>
@@ -138,7 +217,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(XOSCORAL_LIBS)"
+				AdditionalDependencies="$(CORAL_LIBS)"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -146,6 +225,85 @@
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				TargetMachine="1"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|x64"
+			OutputDirectory="$(CORAL_BIN)"
+			IntermediateDirectory="$(CORAL_OBJ)"
+			ConfigurationType="1"
+			InheritedPropertySheets="..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\nadir.vsprops;..\..\medusa.vsprops;..\..\coral.vsprops;..\..\etiris.vsprops"
+			CharacterSet="0"
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="$(CORAL_INCLUDE_DIRS);$(ETIRIS_INCLUDE_DIRS)"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;$(ETIRIS_RELEASE_DEFINES)"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="$(CORAL_LIBS)"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="$(CORAL_LIB_DIRS)"
+				GenerateDebugInformation="true"
+				SubSystem="1"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"
