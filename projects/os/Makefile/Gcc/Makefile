@@ -42,5 +42,6 @@ $(PKG)/$(PRJ)/app/cgi \
 $(PKG)/$(PRJ)/app/cgicatcher \
 $(PKG)/$(PRJ)/app/cgithrower \
 $(PKG)/$(PRJ)/app/hellocgi \
+$(PKG)/$(PRJ)/app/intuit_oauth2_cgi \
 
 include $(PKG)/$(MAK)/Makedirs

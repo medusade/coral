@@ -81,10 +81,13 @@ ${CORAL_SRC}/coral/base/string.cpp \
 ${CORAL_SRC}/coral/base/array.cpp \
 ${CORAL_SRC}/coral/base/types.cpp \
 ${CORAL_SRC}/coral/base/base.cpp \
+\
 ${CORAL_SRC}/coral/io/stream.cpp \
 ${CORAL_SRC}/coral/io/writer.cpp \
 ${CORAL_SRC}/coral/io/reader.cpp \
 ${CORAL_SRC}/coral/io/sequence.cpp \
+\
+${CORAL_SRC}/coral/lib/coral/version.cpp \
 
 
 #
